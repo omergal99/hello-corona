@@ -1,0 +1,68 @@
+// small mobile
+@media (min-width: 64px) and (max-width: 279px) {
+  html {
+    font-size: 10px;
+  }
+}
+// medium mobile
+@media (min-width: 280px) and (max-width: 479px) {
+  html {
+    font-size: 12px;
+  }
+}
+// large mobile
+@media (min-width: 480px) and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+// All mobile
+@media (min-width: 64px) and (max-width: 767px) {
+  // .device-list.desktop {
+  //   display: none;
+  // }
+  .continents-map {
+    display: none;
+  }
+}
+
+// All desktop
+@media (min-width: 768px) {
+  .manage-device-preview {
+    .device-details {
+      .list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+// small desktop
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+// medium desktop
+@media (min-width: 1024px) and (max-width: 1699px) {
+  html {
+    font-size: 18px;
+  }
+}
+// large desktop
+@media (min-width: 1700px) and (max-width: 1919px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+// Xlarge desktop
+@media (min-width: 1920px) and (max-width: 2399px) {
+  html {
+    font-size: 22px;
+  }
+}
+// XXlarge desktop
+@media (min-width: 2400px) {
+  html {
+    font-size: 24px;
+  }
+}
