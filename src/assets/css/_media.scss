@@ -19,30 +19,26 @@
 
 // All mobile
 @media (min-width: 64px) and (max-width: 767px) {
-  // .device-list.desktop {
-  //   display: none;
-  // }
-  .continents-map {
-    display: none;
-  }
 }
 
 // All desktop
 @media (min-width: 768px) {
-  .manage-device-preview {
-    .device-details {
-      .list {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-  }
+  
 }
 
 // small desktop
 @media (min-width: 768px) and (max-width: 1023px) {
+  // html {
+  //   font-size: 16px;
+  // }
+}
+@media (min-width: 1024px) and (max-width: 1419px) {
+  // html {
+  //   font-size: 16px;
+  // }
 }
 // medium desktop
-@media (min-width: 1024px) and (max-width: 1699px) {
+@media (min-width: 1420px) and (max-width: 1699px) {
   html {
     font-size: 18px;
   }
