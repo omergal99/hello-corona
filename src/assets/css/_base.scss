@@ -12,8 +12,8 @@ html {
 }
 
 body {
-  color: $clr0;
-  background-color: $clr5;
+  color: var(--color1-font);
+  background-color: var(--color1-normal);
   margin: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",

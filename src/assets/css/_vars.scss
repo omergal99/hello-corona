@@ -13,8 +13,10 @@ $margin6: 0 auto 6px auto;
 :root {
   --variable: 16px;
 
-  --base-color1: 25;
-  --color1-light: hsla(var(--base-color1), 50%, 75%, 100%);
-  --color1-normal: hsla(var(--base-color1), 50%, 50%, 100%);
-  --color1-dark: hsla(var(--base-color1), 50%, 35%, 100%);
+  --base-color1: 200;
+  --color1-light: hsla(var(--base-color1), 24%, 25%, 1);
+  --color1-normal: hsla(var(--base-color1), 24%, 15%, 1);
+  --color1-dark: hsla(var(--base-color1), 24%, 10%, 1);
+  --color1-font: hsla(var(--base-color1), 0%, 93%, 1);
+  --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
 }
