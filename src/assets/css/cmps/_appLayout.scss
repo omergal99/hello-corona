@@ -12,11 +12,11 @@
     .border-left {
       position: absolute;
       top: calc(var(--navBar-height) + var(--main-padding));
-      left: calc(var(--main-padding));
+      left: var(--main-padding);
       height: calc(100% - var(--navBar-height) - var(--main-padding) * 2);
       width: 1px;
       background-color: var(--color1-light);
-      .circle-end {
+      .dot {
         box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
         width: 7px;
         height: 7px;
@@ -39,6 +39,44 @@
       .line-2 {
         top: 12%;
         height: 12%;
+      }
+    }
+    .border-top {
+      .border-top-left {
+        position: absolute;
+        top: var(--main-padding);
+        left: calc(var(--main-padding) + var(--navBar-height));
+        width: calc(68% - var(--main-padding) - var(--navBar-height));
+        height: 1px;
+        background-color: var(--color1-light);
+        .dot {
+          box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+          width: 7px;
+          height: 7px;
+          background-color: var(--color1-border);
+          border-radius: 50%;
+          position: absolute;
+          bottom: -3px;
+          right: -4px;
+        }
+      }
+      .border-top-right {
+        position: absolute;
+        top: var(--main-padding);
+        right: calc(var(--main-padding) + var(--navBar-height));
+        width: calc(28% - var(--main-padding) - var(--navBar-height));
+        height: 1px;
+        background-color: var(--color1-light);
+        .dot {
+          box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+          width: 7px;
+          height: 7px;
+          background-color: var(--color1-border);
+          border-radius: 50%;
+          position: absolute;
+          bottom: -3px;
+          left: -4px;
+        }
       }
     }
   }

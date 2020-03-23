@@ -3,6 +3,7 @@
   position: fixed;
   left: calc(var(--navBar-height) / 2 + var(--main-padding));
   .nav-link {
+    height: 100%;
     @include transform(skew(-45deg));
     display: inline-block;
     color: var(--color1-font);
@@ -13,7 +14,7 @@
     transition: all .3s;
     &.active {
       background-color: var(--color1-light);
-      box-shadow: 0 0 6px #008cdc inset, 0 0 6px #008cdc;
+      box-shadow: 0 0 6px var(--color1-border) inset, 0 0 6px var(--color1-border);
     }
     &:not(:last-child) {
       border-right-width: 1px;
@@ -22,7 +23,7 @@
       border-left-width: 2px;
     }
     &:not(.active):hover{
-      box-shadow: 0 0 3px #008cdc inset, 0 0 3px #008cdc;
+      box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
     }
     .text {
       @include transform(skew(45deg));
