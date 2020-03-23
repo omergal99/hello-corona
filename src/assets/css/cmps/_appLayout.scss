@@ -1,0 +1,45 @@
+.hud-layout {
+  @include user-select-none();
+  pointer-events: none;
+  overflow: hidden;
+  .ui-elements {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    .border-left {
+      position: absolute;
+      top: calc(var(--navBar-height) + var(--main-padding));
+      left: calc(var(--main-padding));
+      height: calc(100% - var(--navBar-height) - var(--main-padding) * 2);
+      width: 1px;
+      background-color: var(--color1-light);
+      .circle-end {
+        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+        width: 7px;
+        height: 7px;
+        background-color: var(--color1-border);
+        border-radius: 50%;
+        position: absolute;
+        bottom: -4px;
+        left: -3px;
+      }
+      .strong-line {
+        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+        position: absolute;
+        width: 1px;
+        background-color: var(--color1-border);
+      }
+      .line-1 {
+        top: 4%;
+        height: 6%;
+      }
+      .line-2 {
+        top: 12%;
+        height: 12%;
+      }
+    }
+  }
+}

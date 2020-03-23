@@ -1,11 +1,11 @@
 import React from 'react';
-import './assets/css/App.scss';
-
 import Router from './Router';
+import HudLayout from './cmps/HudLayout';
 
 function App() {
   return (
     <div className="App">
+      <HudLayout/>
       <Router />
     </div>
   );
