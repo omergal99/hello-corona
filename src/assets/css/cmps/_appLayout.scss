@@ -9,74 +9,105 @@
     bottom: 0;
     left: 0;
     height: 100vh;
-    .border-left {
+    overflow: hidden;
+    .border {
       position: absolute;
+      background-color: var(--color1-light);
+    }
+    .line {
+      position: absolute;
+      background-color: var(--color1-border);
+      &.strong {
+        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+      }
+    }
+    .dot {
+      position: absolute;
+      box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
+      background-color: var(--color1-border);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    // borders
+    .border-left {
       top: calc(var(--navBar-height) + var(--main-padding));
       left: var(--main-padding);
       height: calc(100% - var(--navBar-height) - var(--main-padding) * 2);
       width: 1px;
-      background-color: var(--color1-light);
-      .dot {
-        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
-        width: 7px;
-        height: 7px;
-        background-color: var(--color1-border);
-        border-radius: 50%;
-        position: absolute;
-        bottom: -4px;
+      .dot-1 {
+        bottom: -3px;
         left: -3px;
       }
-      .strong-line {
-        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
-        position: absolute;
-        width: 1px;
-        background-color: var(--color1-border);
-      }
       .line-1 {
+        width: 1px;
         top: 4%;
         height: 6%;
       }
       .line-2 {
+        width: 1px;
         top: 12%;
         height: 12%;
       }
     }
     .border-top {
       .border-top-left {
-        position: absolute;
         top: var(--main-padding);
         left: calc(var(--main-padding) + var(--navBar-height));
         width: calc(68% - var(--main-padding) - var(--navBar-height));
         height: 1px;
-        background-color: var(--color1-light);
-        .dot {
-          box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
-          width: 7px;
-          height: 7px;
-          background-color: var(--color1-border);
-          border-radius: 50%;
-          position: absolute;
+        .dot-1 {
           bottom: -3px;
           right: -4px;
         }
       }
       .border-top-right {
-        position: absolute;
         top: var(--main-padding);
         right: calc(var(--main-padding) + var(--navBar-height));
         width: calc(28% - var(--main-padding) - var(--navBar-height));
         height: 1px;
-        background-color: var(--color1-light);
-        .dot {
-          box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
-          width: 7px;
-          height: 7px;
-          background-color: var(--color1-border);
-          border-radius: 50%;
-          position: absolute;
+        .dot-1 {
           bottom: -3px;
           left: -4px;
         }
+        .border-1 {
+          top: calc(var(--navBar-height) / 2 - 1px);
+          right: calc(-1 * var(--navBar-height) - var(--navBar-height) * 0.4142 / 2);
+          width: calc(var(--navBar-height) * 1.4142);
+          height: 1px;
+          transform: rotate(45deg);
+        }
+        .dot-2 {
+          top: calc(var(--navBar-height) - 3px);
+          right: calc(-1 * var(--navBar-height) - var(--navBar-height) * 0.4142 / 2 + 3px * 1.4142);
+        }
+      }
+    }
+    .border-right {
+      top: calc(var(--navBar-height) + var(--main-padding) + 4%);
+      right: var(--main-padding);
+      height: calc(96% - (var(--navBar-height) + var(--main-padding)) * 2);
+      width: 1px;
+      .dot-1 {
+        top: -4px;
+        left: -3px;
+      }
+      .border-1 {
+        bottom: calc(-1 * var(--navBar-height) / 2 - 1px);
+        right: calc(-1 * var(--navBar-height) * 0.4142 / 2);
+        width: calc(var(--navBar-height) * 1.4142);
+        height: 1px;
+        transform: rotate(-45deg);
+      }
+    }
+    .border-bottom {
+      bottom: var(--main-padding);
+      right: calc(var(--main-padding) + var(--navBar-height));
+      width: calc(96% - var(--main-padding) - var(--navBar-height));
+      height: 1px;
+      .dot-1 {
+        bottom: -3px;
+        left: -4px;
       }
     }
   }

@@ -5,18 +5,27 @@ function HudLayout() {
   return (
     <div className="hud-layout">
       <div className="ui-elements">
-        <div className="border-left">
-          <div className="dot"></div>
-          <div className="strong-line line-1"></div>
-          <div className="strong-line line-2"></div>
+        <div className="border-left border">
+          <div className="dot-1 dot"></div>
+          <div className="line-1 line strong"></div>
+          <div className="line-2 line strong"></div>
         </div>
         <div className="border-top">
-          <div className="border-top-left">
-            <div className="dot"></div>
+          <div className="border-top-left border">
+            <div className="dot-1 dot"></div>
           </div>
-          <div className="border-top-right">
-            <div className="dot"></div>
+          <div className="border-top-right border">
+            <div className="dot-1 dot"></div>
+            <div className="border-1 border"></div>
+            <div className="dot-2 dot"></div>
           </div>
+        </div>
+        <div className="border-right border">
+          <div className="dot-1 dot"></div>
+          <div className="border-1 border"></div>
+        </div>
+        <div className="border-bottom border">
+          <div className="dot-1 dot"></div>
         </div>
       </div>
     </div>
