@@ -28,6 +28,7 @@ code {
   height: 100vh;
   text-align: center;
   padding: var(--main-padding);
+  // transform: perspective(1455px) scale(0.7) rotateX(35deg);
   .router {
     height: 100%;
     padding: var(--navBar-height) 0 0;

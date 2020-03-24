@@ -17,9 +17,9 @@
     .line {
       position: absolute;
       background-color: var(--color1-border);
-      &.strong {
-        box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
-      }
+    }
+    .strong {
+      box-shadow: 0 0 5px var(--color1-border) inset, 0 0 5px var(--color1-border);
     }
     .dot {
       position: absolute;
@@ -39,15 +39,32 @@
         bottom: -3px;
         left: -3px;
       }
-      .line-1 {
+      .line {
         width: 1px;
+      }
+      .line-1 {
         top: 4%;
         height: 6%;
       }
       .line-2 {
-        width: 1px;
         top: 12%;
         height: 12%;
+      }
+      .line-3 {
+        top: 40%;
+        height: 4%;
+      }
+      .line-4 {
+        top: 46%;
+        height: 8%;
+      }
+      .line-5 {
+        top: 56%;
+        height: 12%;
+      }
+      .line-6 {
+        top: 80%;
+        height: 10%;
       }
     }
     .border-top {
@@ -71,7 +88,7 @@
           left: -4px;
         }
         .border-1 {
-          top: calc(var(--navBar-height) / 2 - 1px);
+          top: calc(var(--navBar-height) / 2);
           right: calc(-1 * var(--navBar-height) - var(--navBar-height) * 0.4142 / 2);
           width: calc(var(--navBar-height) * 1.4142);
           height: 1px;
@@ -79,7 +96,7 @@
         }
         .dot-2 {
           top: calc(var(--navBar-height) - 3px);
-          right: calc(-1 * var(--navBar-height) - var(--navBar-height) * 0.4142 / 2 + 3px * 1.4142);
+          right: calc(-1 * var(--navBar-height) - 3px);
         }
       }
     }
@@ -93,7 +110,7 @@
         left: -3px;
       }
       .border-1 {
-        bottom: calc(-1 * var(--navBar-height) / 2 - 1px);
+        bottom: calc(-1 * var(--navBar-height) / 2);
         right: calc(-1 * var(--navBar-height) * 0.4142 / 2);
         width: calc(var(--navBar-height) * 1.4142);
         height: 1px;

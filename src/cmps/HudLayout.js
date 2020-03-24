@@ -9,6 +9,10 @@ function HudLayout() {
           <div className="dot-1 dot"></div>
           <div className="line-1 line strong"></div>
           <div className="line-2 line strong"></div>
+          <div className="line-3 line strong"></div>
+          <div className="line-4 line strong"></div>
+          <div className="line-5 line strong"></div>
+          <div className="line-6 line strong"></div>
         </div>
         <div className="border-top">
           <div className="border-top-left border">

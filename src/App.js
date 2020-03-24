@@ -5,8 +5,8 @@ import HudLayout from './cmps/HudLayout';
 function App() {
   return (
     <div className="App">
-      <HudLayout/>
       <Router />
+      <HudLayout/>
     </div>
   );
 }
