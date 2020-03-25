@@ -1,11 +1,15 @@
-const initialState = {
-  name: 'omer'
-}
+import countries from './data/countries.json';
 
 function getData() {
-  return Promise.resolve(initialState)
+  const initState = _getEmpty();
+  initState.countries = countries;
+  return Promise.resolve(initState);
 }
 
 export default {
   getData,
 }
+
+const _getEmpty = () => ({
+  countries: []
+})

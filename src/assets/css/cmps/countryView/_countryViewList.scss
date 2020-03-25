@@ -1,0 +1,14 @@
+.country-view-list {
+  @include scrollbar();
+  overflow-y: scroll;
+  background-color: var(--color1-dark);
+  padding: 0.25rem;
+  .country-preview {
+    background-color: var(--color1-normal);
+    padding: 0.25rem;
+    border: 1px solid var(--color1-border);
+    &:not(:last-child) {
+      margin: 0 0 12px 0;
+    }
+  }
+}
