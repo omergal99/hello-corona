@@ -1,39 +1,70 @@
 .country-view-bottom {
   overflow: hidden;
   background-color: #00000033;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .loader-svg {
-    overflow: hidden;
-    width: 12vh;
-    @include transform(perspective(100vh) scale(2.5) rotateX(70deg));
-    .g-spin {
-      @include transform(translate(50%, 50%));
-      .spiner {
-        fill: transparent;
-        stroke: var(--color1-border);
-      }
-      .spiner-1 {
-        r: 20%;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-dasharray: 15.5;
-        animation: spin 8s linear infinite;
-      }
-      .spiner-2 {
-        r: 30%;
-        stroke-width: 3px;
-        stroke-linecap: round;
-        stroke-dasharray: 11.6;
-        animation: spin-reverse 12s linear infinite;
-      }
-      .spiner-3 {
-        r: 40%;
-        stroke-width: 9px;
-        stroke-linecap: unset;
-        stroke-dasharray: 2.2;
-        animation: spin 14s linear infinite;
+  .wrap-loader-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .lighter {
+      height: 75vh;
+      // position: absolute;
+      // bottom: 20%;
+      position: fixed;
+      bottom: 6.1%;
+      width: 26vh;
+      background: linear-gradient(
+        to right,
+        #0000 0%,
+        rgba(59, 167, 222, 0.5) 25%,
+        rgba(59, 167, 222, 0.5) 75%,
+        #0000 100%
+      );
+      background: linear-gradient(to bottom, #0000 0%, rgba(59, 167, 222, 0.15) 100%);
+      // background: linear-gradient(to bottom, #0000 0%, rgba(59, 167, 222, 0) 100%),
+      //   linear-gradient(to right, #0000 0%, rgba(59, 167, 222, 0.5) 35%, rgba(59, 167, 222, 0.5) 65%, #0000 100%);
+    }
+    .lighter-1 {
+      border-radius: 50% 120% 80px 80px;
+    }
+    .lighter-2 {
+      border-radius: 120% 50% 80px 80px;
+    }
+    .loader-svg {
+      overflow: hidden;
+      width: 12vh;
+      @include transform(perspective(100vh) scale(2.5) rotateX(70deg));
+      .g-loader {
+        @include transform(translate(50%, 50%));
+        .light-source {
+          r: 15%;
+          fill: var(--color1-glare);
+        }
+        .spiner {
+          fill: transparent;
+          stroke: var(--color1-border);
+        }
+        .spiner-1 {
+          r: 20%;
+          stroke-width: 2px;
+          stroke-linecap: round;
+          stroke-dasharray: 15.5;
+          animation: spin 8s linear infinite;
+        }
+        .spiner-2 {
+          r: 30%;
+          stroke-width: 3px;
+          stroke-linecap: round;
+          stroke-dasharray: 11.6;
+          animation: spin-reverse 12s linear infinite;
+        }
+        .spiner-3 {
+          r: 40%;
+          stroke-width: 9px;
+          stroke-linecap: unset;
+          stroke-dasharray: 2.2;
+          animation: spin 14s linear infinite;
+        }
       }
     }
   }
