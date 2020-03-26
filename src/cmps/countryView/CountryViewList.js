@@ -1,26 +1,14 @@
 import React from 'react';
+import CountryViewListItem from './CountryViewListItem';
 
-function CountryViewList({ countries }) {
+function CountryViewList({ countriesStore: { countries, selectedCountryIndex },
+  onSelectCountry }) {
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
-  const list = countries.map(country => {
-    return <li className="country-preview" key={country.country}>
-      <div>
-        <span>{country.country}</span>
-      </div>
-      <div>
-        <span>Cases: </span>
-        <span>{country.cases}</span>
-      </div>
-      <div>
-        <span>Deaths: </span>
-        <span>{country.deaths}</span>
-      </div>
-      <div>
-        <span>Recovered: </span>
-        <span>{country.recovered}</span>
-      </div>
-    </li>
-  })
+  const list = countries.map(country => (
+    <CountryViewListItem key={country.name} country={country} selectedCountry={selectedCountry}
+      onSelectCountry={onSelectCountry} />
+  ))
 
   return (
     <ul className="country-view-list">

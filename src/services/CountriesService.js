@@ -11,5 +11,6 @@ export default {
 }
 
 const _getEmpty = () => ({
-  countries: []
+  countries: [],
+  selectedCountryIndex: null
 })

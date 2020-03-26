@@ -1,0 +1,40 @@
+.country-view-bottom {
+  overflow: hidden;
+  background-color: #00000033;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loader-svg {
+    overflow: hidden;
+    width: 12vh;
+    @include transform(perspective(100vh) scale(2.5) rotateX(70deg));
+    .g-spin {
+      @include transform(translate(50%, 50%));
+      .spiner {
+        fill: transparent;
+        stroke: var(--color1-border);
+      }
+      .spiner-1 {
+        r: 20%;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-dasharray: 15.5;
+        animation: spin 8s linear infinite;
+      }
+      .spiner-2 {
+        r: 30%;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke-dasharray: 11.6;
+        animation: spin-reverse 12s linear infinite;
+      }
+      .spiner-3 {
+        r: 40%;
+        stroke-width: 9px;
+        stroke-linecap: unset;
+        stroke-dasharray: 2.2;
+        animation: spin 14s linear infinite;
+      }
+    }
+  }
+}

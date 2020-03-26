@@ -1,22 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import actions from '../store/actions';
 
 import CountryViewList from '../cmps/countryView/CountryViewList';
 import CountryViewPresentation from '../cmps/countryView/CountryViewPresentation';
 import CountryViewDetails from '../cmps/countryView/CountryViewDetails';
+import CountryViewBottom from '../cmps/countryView/CountryViewBottom';
 
 function CountryView() {
 
+  const dispatch = useDispatch();
   const countriesStore = useSelector(state => state.countriesStore);
 
+  const selectCountry = country => {
+    dispatch(actions.selectCountry(country));
+  }
+
   return (
-    <div className="country-view">
-      {countriesStore && <>
-        <CountryViewList countries={countriesStore.countries} />
+    <>{countriesStore && <>
+      <div className="country-view">
+        <CountryViewList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         <CountryViewPresentation />
         <CountryViewDetails />
-      </>}
-    </div>
+        <CountryViewBottom />
+      </div>
+    </>}</>
   );
 }
 

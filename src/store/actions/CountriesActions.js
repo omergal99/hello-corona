@@ -8,6 +8,13 @@ function loadCountriesData() {
   }
 }
 
+function selectCountry(country) {
+  return async (dispatch) => {
+    dispatch({ type: ActionTypes.SET_SELECTED_COUNTRY_INDEX, payload: country })
+  }
+}
+
 export default {
-  loadCountriesData
+  loadCountriesData,
+  selectCountry
 }

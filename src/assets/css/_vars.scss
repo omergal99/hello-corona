@@ -20,4 +20,11 @@ $margin6: 0 auto 6px auto;
   --color1-dark: hsla(var(--base-color1), 24%, 10%, 1);
   --color1-font: hsla(var(--base-color1), 0%, 93%, 1);
   --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
+
+  --base-color2: 35;
+  --color2-light: hsla(var(--base-color2), 24%, 25%, 1);
+  --color2-normal: hsla(var(--base-color2), 24%, 15%, 1);
+  --color2-dark: hsla(var(--base-color2), 24%, 10%, 1);
+  --color2-font: hsla(var(--base-color2), 0%, 93%, 1);
+  --color2-border: hsla(var(--base-color2), 50%, 50%, 1);
 }
