@@ -1,6 +1,6 @@
 .country-view-bottom {
   overflow: hidden;
-  background-color: #00000033;
+  // background-color: #00000033;
   .wrap-loader-svg {
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@
       .g-loader {
         @include transform(translate(50%, 50%));
         .light-source {
-          r: 15%;
+          // r: 15%;
           fill: var(--color1-glare);
         }
         .spiner {
@@ -45,21 +45,21 @@
           stroke: var(--color1-border);
         }
         .spiner-1 {
-          r: 20%;
+          // r: 20%;
           stroke-width: 2px;
           stroke-linecap: round;
           stroke-dasharray: 15.5;
           animation: spin 8s linear infinite;
         }
         .spiner-2 {
-          r: 30%;
+          // r: 30%;
           stroke-width: 3px;
           stroke-linecap: round;
           stroke-dasharray: 11.6;
           animation: spin-reverse 12s linear infinite;
         }
         .spiner-3 {
-          r: 40%;
+          // r: 40%;
           stroke-width: 9px;
           stroke-linecap: unset;
           stroke-dasharray: 2.2;

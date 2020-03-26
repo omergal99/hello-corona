@@ -1,12 +1,12 @@
 .country-view {
   height: 100%;
   display: grid;
-  grid-template-columns: 0.2fr 0.45fr 0.35fr;
+  grid-template-columns: 0.2fr 0.5fr 0.3fr;
   grid-template-rows: 0.85fr 0.15fr;
   grid-gap: 0.5rem;
   overflow: hidden;
   padding: 0.5rem;
   .country-view-bottom {
-    grid-area: 2 / 1 / 2 / 4;
+    grid-area: 2 / 2 / 2 / 2;
   }
 }
