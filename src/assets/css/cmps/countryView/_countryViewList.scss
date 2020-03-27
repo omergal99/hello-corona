@@ -1,6 +1,6 @@
 .country-view-list {
   @include scrollbar();
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: var(--color1-dark);
   padding: 0.5rem;
   .country-preview {

@@ -1,0 +1,18 @@
+.world-dashboard-map {
+  background-color: var(--color1-light);
+  color: ghostwhite;
+  height: 100%;
+  .svg-map {
+    height: 100%;
+    width: 100%;
+    .g-paths {
+      stroke: #000;
+      path {
+        fill: rgb(180, 180, 183);
+        &:hover {
+          fill: rgb(150, 150, 184);
+        }
+      }
+    }
+  }
+}
