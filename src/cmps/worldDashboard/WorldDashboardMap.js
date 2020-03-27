@@ -2,14 +2,14 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 
 function WorldDashboardMap({ countriesStore: { countriesMap } }) {
 
-  const firstZoom = 540;
+  const firstZoom = 554;
   const baseMap = { width: 954, height: 514 };
 
   const svgRef = useRef(firstZoom);
 
   const args = {
     initZoom: firstZoom, minMapZoom: 40, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
-    diffHeightMapRatioY: (firstZoom - baseMap.height) / -2, diffHeightMapRatioX: (baseMap.width - firstZoom) / 2,
+    diffHeightMapRatioY: (baseMap.height - firstZoom) / 2, diffHeightMapRatioX: (baseMap.width - firstZoom) / 2,
     initFontSize: firstZoom / 30, initStroke: firstZoom / 1000
   };
 
@@ -62,7 +62,6 @@ function WorldDashboardMap({ countriesStore: { countriesMap } }) {
   const drag = ev => {
     if (isDragging) {
       const ratioBySvgHeight = args.initZoom / svgRef.current.clientHeight;
-      console.log(ratioBySvgHeight);
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
       const y = mapView.y - (ev.clientY - pointerDiff.y) * dynamicRatio * ratioBySvgHeight;
       setMapView({ ...mapView, x, y });
@@ -82,8 +81,7 @@ function WorldDashboardMap({ countriesStore: { countriesMap } }) {
 
   return (
     <div className="world-dashboard-map">
-      <svg className={svgClassName} viewBox={viewBox} ref={svgRef} preserveAspectRatio="xMinYMin"
-        // style={{ height: svgRef.current.clientHeight }}
+      <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onWheel={handleWheel} onMouseLeave={stopDrag}
         onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag}>
         <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio }}>
