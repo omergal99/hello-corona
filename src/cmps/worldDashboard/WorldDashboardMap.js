@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import countriesLabels from "../../services/data/countriesLabels.json"
 
-function WorldDashboardMap({ countriesStore: { countriesMap } }) {
+function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
+  onSelectCountry }) {
+
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const firstZoom = 554;
   const baseMap = { width: 954, height: 514 };
@@ -73,10 +77,17 @@ function WorldDashboardMap({ countriesStore: { countriesMap } }) {
     setIsDragging(false);
   }
 
-  const countriesPaths = countriesMap.map(country => {
-    return <path className="country-path" id={country.id} key={country.id} d={country.d} >
+  const countriesPaths = countries.map(country => {
+    const isSelected = country.name === selectedCountry.name ? 'selected' : '';
+    return <path className={`country-path ${isSelected}`} key={country.id}
+      alpha2={country.alpha2} name={country.name} d={country.d}
+      onClick={() => onSelectCountry(country)}>
       <title>{country.name}</title>
     </path>
+  })
+
+  const countriesPathsLabels = countriesLabels.map(country => {
+    return <path className="country-path-label" d={country.d} key={country.id}></path>
   })
 
   return (
@@ -84,8 +95,22 @@ function WorldDashboardMap({ countriesStore: { countriesMap } }) {
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onWheel={handleWheel} onMouseLeave={stopDrag}
         onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag}>
-        <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio }}>
+        <defs>
+          <filter id="dropshadow" height="130%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feOffset dx="2" dy="2" result="offsetblur" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.5" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
           {countriesPaths}
+          {countriesPathsLabels}
         </g>
       </svg>
     </div>

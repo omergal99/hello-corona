@@ -1,18 +1,38 @@
 .world-dashboard-map {
-  background-color: var(--color1-light);
-  color: ghostwhite;
   height: 100%;
   overflow: hidden;
+  background-color: var(--color1-light);
+  color: ghostwhite;
+  // clip-path: polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 0 100%, 0 2%);
+  background: linear-gradient(
+      135deg,
+      #0000 0%,
+      #0000 1%,
+      var(--color1-light) 1%,
+      var(--color1-light) 99%,
+      var(--color1-light) 99%,
+      #0000 99%,
+    );
   .svg-map {
     height: 100%;
     width: 100%;
     .g-paths {
       stroke: #000;
-      path {
-        fill: rgb(180, 180, 183);
+      .country-path {
+        cursor: pointer;
+        fill: hsla(200, 100%, 10%, 1);
+        stroke: hsla(35, 100%, 65%, 0.5);
         &:hover {
-          fill: rgb(150, 150, 184);
+          fill: hsla(200, 100%, 20%, 1);
         }
+        &.selected {
+          opacity: 0.4;
+        }
+      }
+      .country-path-label {
+        pointer-events: none;
+        fill: #ddd;
+        stroke: transparent;
       }
     }
   }

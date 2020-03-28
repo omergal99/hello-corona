@@ -4,7 +4,6 @@ import CountryViewListItem from './CountryViewListItem';
 function CountryViewList({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
 
-  console.log('222222');
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const list = countries.map(country => (

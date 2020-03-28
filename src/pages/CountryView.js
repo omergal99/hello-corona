@@ -16,8 +16,6 @@ function CountryView() {
     dispatch(actions.selectCountry(country));
   }
 
-  console.log('111111');
-  
   return (
     <>{countriesStore && <>
       <div className="country-view">

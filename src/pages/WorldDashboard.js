@@ -21,10 +21,10 @@ function WorldDashboard() {
       <div className="world-dashboard">
         <div>
           <WorldDashboardPreDetails />
-          <WorldDashboardDetails />
+          <WorldDashboardList />
         </div>
-        <WorldDashboardMap countriesStore={countriesStore} />
-        <WorldDashboardList />
+        <WorldDashboardMap countriesStore={countriesStore} onSelectCountry={selectCountry} />
+        <WorldDashboardDetails />
       </div>
     </>}</>
   );
