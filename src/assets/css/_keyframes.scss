@@ -1,16 +1,17 @@
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  from {
+    @include transform(rotate(0deg));
   }
-  100% {
-    transform: rotate(360deg);
+  to {
+    @include transform(rotate(360deg));
   }
 }
+
 @keyframes spin-reverse {
-  0% {
-    transform: rotate(360deg);
+  from {
+    @include transform(rotate(360deg));
   }
-  100% {
-    transform: rotate(0deg);
+  to {
+    @include transform(rotate(0deg));
   }
 }
