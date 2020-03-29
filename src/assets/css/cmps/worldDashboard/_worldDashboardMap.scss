@@ -5,14 +5,14 @@
   color: ghostwhite;
   // clip-path: polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 0 100%, 0 2%);
   background: linear-gradient(
-      135deg,
-      #0000 0%,
-      #0000 1%,
-      var(--color1-light) 1%,
-      var(--color1-light) 99%,
-      var(--color1-light) 99%,
-      #0000 99%,
-    );
+    135deg,
+    #0000 0%,
+    #0000 1%,
+    var(--color1-light) 1%,
+    var(--color1-light) 99%,
+    var(--color1-light) 99%,
+    #0000 99%
+  );
   .svg-map {
     height: 100%;
     width: 100%;
@@ -22,11 +22,14 @@
         cursor: pointer;
         fill: hsla(200, 100%, 10%, 1);
         stroke: hsla(35, 100%, 65%, 0.5);
-        &:hover {
-          fill: hsla(200, 100%, 20%, 1);
-        }
         &.selected {
-          opacity: 0.4;
+          fill: hsla(35, 92%, 12%, 0.2);
+        }
+        &.selecting {
+          fill: hsla(200, 100%, 10%, 0.4);
+        }
+        &:not(.selected):not(.selecting):hover {
+          fill: hsla(200, 100%, 20%, 0.4);
         }
       }
       .country-path-label {

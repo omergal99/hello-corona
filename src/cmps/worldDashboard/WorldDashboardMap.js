@@ -24,6 +24,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   const [pointerDiff, setPointerDiff] = useState({ x: 1, y: 1 });
 
   const [dynamicRatio, setDynamicRatio] = useState(1);
+  const [currPathName, setCurrPathName] = useState('');
 
   const svgClassName = 'svg-map';
   const handleWheel = useCallback(ev => {
@@ -62,6 +63,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   const startDrag = ev => {
     setPointerDiff({ x: ev.clientX, y: ev.clientY });
     setIsDragging(true);
+    setCurrPathName(ev.target.getAttribute('name'));
   }
   const drag = ev => {
     if (isDragging) {
@@ -79,7 +81,8 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
 
   const countriesPaths = countries.map(country => {
     const isSelected = country.name === selectedCountry.name ? 'selected' : '';
-    return <path className={`country-path ${isSelected}`} key={country.id}
+    const isSelecting = isDragging && currPathName === country.name ? 'selecting' : '';
+    return <path className={`country-path ${isSelected} ${isSelecting}`} key={country.id}
       alpha2={country.alpha2} name={country.name} d={country.d}
       onClick={() => onSelectCountry(country)}>
       <title>{country.name}</title>
