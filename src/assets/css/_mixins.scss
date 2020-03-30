@@ -23,12 +23,22 @@
   -ms-user-select: none;
   user-select: none;
 }
+@mixin linear-gradient-clip-border($color: var(--color1-light)) {
+  background: linear-gradient(
+    135deg,
+    #0000 1%,
+    $color 1%,
+    $color 99%,
+    #0000 99%
+  );
+}
 
 @mixin scrollbar() {
   &::-webkit-scrollbar {
     z-index: 500;
     width: 16px;
-    background-color: var(--color1-light);
+    // background-color: var(--color1-light);
+    background-color: transparent;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;

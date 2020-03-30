@@ -17,6 +17,7 @@ export default {
 const _getEmpty = () => ({
   countries: [],
   selectedCountryIndex: null,
+  allCountriesData: null
 })
 
 const _agregationWithCoronaData = () => (
@@ -35,7 +36,8 @@ const _agregationWithCoronaData = () => (
       active: coronaData ? coronaData.active : defaultValue,
       critical: coronaData ? coronaData.critical : defaultValue,
       casesPerOneMillion: coronaData ? coronaData.casesPerOneMillion : defaultValue,
-      deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : defaultValue
+      deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : defaultValue,
+      firstCase: coronaData ? coronaData.firstCase : defaultValue
     }
   })
 )

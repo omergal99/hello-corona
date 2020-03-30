@@ -1,0 +1,25 @@
+.world-dashboard-list {
+  overflow: hidden;
+  .selected-country-name {
+    padding: 0.25rem 0;
+    background-color: var(--color1-light);
+    border-radius: 3px 3px 10px 0px;
+    border-bottom: 2px solid var(--color1-border);
+  }
+  .countries {
+    overflow: auto;
+    @include scrollbar();
+    .country {
+      padding: 0.25rem;
+      cursor: pointer;
+      background-color: var(--color1-dark);
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: var(--color2-light);
+      }
+      &.selected {
+        background-color: var(--color1-light);
+      }
+    }
+  }
+}

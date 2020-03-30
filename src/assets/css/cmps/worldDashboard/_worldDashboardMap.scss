@@ -3,15 +3,7 @@
   overflow: hidden;
   background-color: var(--color1-light);
   color: ghostwhite;
-  background: linear-gradient(
-    135deg,
-    #0000 0%,
-    #0000 1%,
-    var(--color1-light) 1%,
-    var(--color1-light) 99%,
-    var(--color1-light) 99%,
-    #0000 99%
-  );
+  @include linear-gradient-clip-border();
   .svg-map {
     height: 100%;
     width: 100%;

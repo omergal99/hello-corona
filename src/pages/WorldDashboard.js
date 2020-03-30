@@ -4,7 +4,7 @@ import actions from '../store/actions';
 
 import WorldDashboardMap from '../cmps/worldDashboard/WorldDashboardMap';
 import WorldDashboardList from '../cmps/worldDashboard/WorldDashboardList';
-import WorldDashboardPreDetails from '../cmps/worldDashboard/WorldDashboardPreDetails';
+import WorldDashboardGlobalDetails from '../cmps/worldDashboard/WorldDashboardGlobalDetails';
 import WorldDashboardDetails from '../cmps/worldDashboard/WorldDashboardDetails';
 
 function WorldDashboard() {
@@ -16,15 +16,18 @@ function WorldDashboard() {
     dispatch(actions.selectCountry(country));
   }
 
+  const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
+    ? countriesStore.countries[selectedCountryIndex] : {};
   return (
     <>{countriesStore && <>
       <div className="world-dashboard">
-        <div>
-          <WorldDashboardPreDetails />
-          <WorldDashboardList />
+        <div className="flex-col overflow-hidden">
+          <WorldDashboardGlobalDetails allCountriesData={countriesStore.allCountriesData} />
+          <WorldDashboardList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         </div>
         <WorldDashboardMap countriesStore={countriesStore} onSelectCountry={selectCountry} />
-        <WorldDashboardDetails />
+        <WorldDashboardDetails selectedCountry={selectedCountry} />
       </div>
     </>}</>
   );

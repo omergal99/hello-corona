@@ -4,7 +4,6 @@ import SvgDefsFilterShadow from './mapHelpers/SvgDefsFilterShadow';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
-
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const firstZoom = 554;

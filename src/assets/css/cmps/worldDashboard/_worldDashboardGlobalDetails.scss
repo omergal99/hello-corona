@@ -1,0 +1,17 @@
+.world-dashboard-global-details {
+  margin-bottom: 0.5rem;
+  @include linear-gradient-clip-border(var(--color1-dark));
+  .title {
+    padding: 0.25rem 0;
+  }
+  .global-details {
+    padding: 0 0.5rem 0.5rem;
+    .global-detail {
+      background-color: var(--color1-normal);
+      font-size: 1.2rem;
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
