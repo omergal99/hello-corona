@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import countriesLabels from "../../services/data/countriesLabels.json"
+import countriesLabels from "../../services/data/countriesLabels.json";
+import SvgDefsFilterShadow from './mapHelpers/SvgDefsFilterShadow';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
@@ -13,12 +14,12 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
 
   const args = {
     initZoom: firstZoom, minMapZoom: 40, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
-    diffHeightMapRatioY: (baseMap.height - firstZoom) / 2, diffHeightMapRatioX: (baseMap.width - firstZoom) / 2,
+    minTopSvg: (baseMap.height - firstZoom) / 2, minLeftSvg: (baseMap.width - firstZoom) / 2,
     initFontSize: firstZoom / 30, initStroke: firstZoom / 1000
   };
 
   const [mapView, setMapView] = useState({ zoom: args.initZoom, x: 0, y: 0 });
-  const [viewBox, setViewBox] = useState(`${args.diffHeightMapRatioX} ${args.diffHeightMapRatioY} ${args.initZoom} ${args.initZoom}`);
+  const [viewBox, setViewBox] = useState(`${args.minLeftSvg} ${args.minTopSvg} ${args.initZoom} ${args.initZoom}`);
 
   const [isDragging, setIsDragging] = useState(false);
   const [pointerDiff, setPointerDiff] = useState({ x: 1, y: 1 });
@@ -28,36 +29,33 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
 
   const svgClassName = 'svg-map';
   const handleWheel = useCallback(ev => {
-    const isOccurInSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
+    const isMouseOnSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
       && path.className.baseVal.includes(svgClassName));
-    if (isOccurInSvgMap) {
-      const updateZoom = mapView.zoom * args.ratioUpdateZoom;
-      const copy = mapView;
-      if (ev.deltaY > 0) {
-        if (mapView.zoom + updateZoom + args.minMapZoom < args.maxMapZoom) {
-          copy.zoom = copy.zoom + updateZoom;
-          copy.x = copy.x - updateZoom / 2;
-          copy.y = copy.y - updateZoom / 2;
-          setMapView(copy);
-        }
-      } else {
-        if (mapView.zoom - updateZoom - args.minMapZoom > 0) {
-          copy.zoom = copy.zoom - updateZoom;
-          copy.x = copy.x + updateZoom / 2;
-          copy.y = copy.y + updateZoom / 2;
-          setMapView(copy);
-        }
+    if (!isMouseOnSvgMap) return;
+    const updateZoom = mapView.zoom * args.ratioUpdateZoom;
+    const copy = mapView;
+    if (ev.deltaY > 0) {
+      if (mapView.zoom + updateZoom + args.minMapZoom < args.maxMapZoom) {
+        copy.zoom = copy.zoom + updateZoom;
+        copy.x = copy.x - updateZoom / 2;
+        copy.y = copy.y - updateZoom / 2;
+        setMapView(copy);
       }
-      setDynamicRatio(mapView.zoom / args.initZoom);
-      setViewBox(`${mapView.x + args.diffHeightMapRatioX} ${mapView.y + args.diffHeightMapRatioY} ${mapView.zoom} ${mapView.zoom}`);
+    } else {
+      if (mapView.zoom - updateZoom - args.minMapZoom > 0) {
+        copy.zoom = copy.zoom - updateZoom;
+        copy.x = copy.x + updateZoom / 2;
+        copy.y = copy.y + updateZoom / 2;
+        setMapView(copy);
+      }
     }
+    setDynamicRatio(mapView.zoom / args.initZoom);
+    setViewBox(`${mapView.x + args.minLeftSvg} ${mapView.y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
   }, [mapView, args]);
 
   useEffect(() => {
     window.addEventListener("mousewheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("mousewheel", handleWheel, { passive: false });
-    }
+    return () => window.removeEventListener("mousewheel", handleWheel, { passive: false });
   })
 
   const startDrag = ev => {
@@ -71,7 +69,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
       const y = mapView.y - (ev.clientY - pointerDiff.y) * dynamicRatio * ratioBySvgHeight;
       setMapView({ ...mapView, x, y });
-      setViewBox(`${x + args.diffHeightMapRatioX} ${y + args.diffHeightMapRatioY} ${mapView.zoom} ${mapView.zoom}`);
+      setViewBox(`${x + args.minLeftSvg} ${y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
     }
   }
@@ -98,19 +96,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onWheel={handleWheel} onMouseLeave={stopDrag}
         onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag}>
-        <defs>
-          <filter id="dropshadow" height="130%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-            <feOffset dx="2" dy="2" result="offsetblur" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.5" />
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+        <SvgDefsFilterShadow />
         <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
           {countriesPaths}
           {countriesPathsLabels}
