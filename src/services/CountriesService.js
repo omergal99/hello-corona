@@ -1,12 +1,21 @@
+import HttpService from './HttpService';
 import countriesCorona from './data/countriesCorona.json';
 import countries from './data/countries.json';
 
+const isServerCountriesConnected = true;
 const defaultValue = 0;
 
-function getData() {
+async function getData() {
   const initState = _getEmpty();
-  initState.countries = _agregationWithCoronaData();
-  initState.allCountriesData = { cases: 721412, deaths: 33956, recovered: 151004 };
+  if (isServerCountriesConnected) {
+    const res = await HttpService.get(`https://coronavirus-19-api.herokuapp.com/countries`);
+    initState.countries = _agregationWithCoronaData(res.data);
+    const res2 = await HttpService.get(`https://coronavirus-19-api.herokuapp.com/all`);
+    initState.allCountriesData = res2.data;
+  } else {
+    initState.countries = _agregationWithCoronaData();
+    initState.allCountriesData = { cases: 721412, deaths: 33956, recovered: 151004 };
+  }
   return Promise.resolve(initState);
 }
 
@@ -39,5 +48,5 @@ const _agregationWithCoronaData = () => (
       deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : defaultValue,
       firstCase: coronaData ? coronaData.firstCase : defaultValue
     }
-  })
+  }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
 )
