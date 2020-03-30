@@ -6,6 +6,7 @@ const defaultValue = 0;
 function getData() {
   const initState = _getEmpty();
   initState.countries = _agregationWithCoronaData();
+  initState.allCountriesData = { cases: 721412, deaths: 33956, recovered: 151004 };
   return Promise.resolve(initState);
 }
 
@@ -20,7 +21,10 @@ const _getEmpty = () => ({
 
 const _agregationWithCoronaData = () => (
   countries.map(country => {
-    const coronaData = countriesCorona.find(corona => corona.name === country.name);
+    const coronaData = countriesCorona.find(corona => corona.country === country.name
+      || (corona.country === 'UK' && country.name === 'United Kingdom')
+      || (corona.country === 'S. Korea' && country.name === 'South Korea')
+      || (corona.country === 'USA' && country.name === 'United States'));
     return {
       ...country,
       cases: coronaData ? coronaData.cases : defaultValue,
