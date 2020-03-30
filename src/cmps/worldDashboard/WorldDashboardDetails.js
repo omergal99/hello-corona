@@ -27,7 +27,7 @@ function WorldDashboardDetails({ selectedCountry }) {
   ))
 
   return (
-    <div className="world-dashboard-details">
+    <div className="world-dashboard-details flex-col">
       <h3 className="selected-country-name">{selectedCountry.name || 'Country Name'}</h3>
       <ul className="selected-country-details">
         {list}

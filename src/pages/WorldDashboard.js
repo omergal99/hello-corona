@@ -22,7 +22,7 @@ function WorldDashboard() {
   return (
     <>{countriesStore && <>
       <div className="world-dashboard">
-        <div className="flex-col overflow-hidden">
+        <div className="wrap-global-and-list flex-col overflow-hidden">
           <WorldDashboardGlobalDetails allCountriesData={countriesStore.allCountriesData} />
           <WorldDashboardList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         </div>

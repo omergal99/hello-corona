@@ -19,6 +19,29 @@
 
 // All mobile
 @media (min-width: 64px) and (max-width: 767px) {
+  .world-dashboard {
+    flex-direction: column;
+    .wrap-global-and-list,
+    .world-dashboard-map,
+    .world-dashboard-details {
+      width: 100%;
+    }
+    .wrap-global-and-list {
+      height: 35%;
+    }
+    .world-dashboard-map {
+      height: 30%;
+    }
+    .world-dashboard-details {
+      height: 35%;
+    }
+    > :not(:last-child){
+      margin: 0 0 0.5rem 0;
+    }
+    .world-dashboard-global-details {
+      display: none;
+    }
+  }
 }
 
 // All desktop

@@ -1,9 +1,19 @@
 .world-dashboard {
   height: 100%;
-  display: grid;
-  grid-template-columns: 20% 60% 20%;
-  grid-template-columns: 0.2fr 0.6fr 0.2fr;
+  display: flex;
   grid-gap: 0.5rem;
   overflow: hidden;
   padding: 0.5rem;
+  .wrap-global-and-list {
+    width: 20%;
+  }
+  .world-dashboard-map {
+    width: 50%;
+  }
+  .world-dashboard-details {
+    width: 30%;
+  }
+  > :not(:last-child){
+    margin: 0 0.5rem 0 0;
+  }
 }

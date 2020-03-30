@@ -3,10 +3,11 @@
     padding: 0.25rem 0;
   }
   .selected-country-details {
+    @include scrollbar();
+    overflow: auto;
     text-align: left;
     .selected-country-detail {
       display: grid;
-      // grid-template-columns: 0.5fr 0.3fr 0.2fr;
       grid-template-columns: 50% 30% 20%;
       &:not(:last-child) {
         margin-bottom: 0.5rem;

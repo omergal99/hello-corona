@@ -2,7 +2,7 @@ import HttpService from './HttpService';
 import countriesCorona from './data/countriesCorona.json';
 import countries from './data/countries.json';
 
-const isServerCountriesConnected = true;
+const isServerCountriesConnected = false;
 const defaultValue = 0;
 
 async function getData() {
