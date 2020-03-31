@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WorldDashboardGlobalDetails({ allCountriesData }) {
+function WorldDashboardGlobalDetails({ globalData }) {
 
   const data = [
     { key: 'cases', title: 'Cases' },
@@ -11,7 +11,7 @@ function WorldDashboardGlobalDetails({ allCountriesData }) {
   const list = data.map(category => (
     <li className="global-detail flex-col" key={category.key}>
       <p>{category.title}</p>
-      <p>{allCountriesData[category.key]}</p>
+      <p>{globalData[category.key]}</p>
     </li>
   ))
 

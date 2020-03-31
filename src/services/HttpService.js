@@ -1,27 +1,19 @@
+import ServiceConfig from '../ServiceConfig';
 import Axios from 'axios';
+
 const axios = Axios.create({ withCredentials: false });
 
 function get(...args) {
-  return axios.get(...args)
+  return _customAxios('get', ...args);
 }
 function post(...args) {
-  return axios.post(...args)
+  return _customAxios('post', ...args);
 }
 function put(...args) {
-  return axios.put(...args)
+  return _customAxios('put', ...args);
 }
 function remove(...args) {
-  return axios.delete(...args)
-}
-
-function getUrl(entityName) {
-  return (process.env.NODE_ENV !== 'development')
-    ? `/${entityName}`
-    : `//localhost:9090/${entityName}`
-}
-
-function getNoCredAxios() {
-  return Axios
+  return _customAxios('delete', ...args);
 }
 
 export default {
@@ -29,6 +21,18 @@ export default {
   post,
   put,
   delete: remove,
-  getUrl,
-  getNoCredAxios
+}
+
+async function _customAxios(method, entityName = '', data = null, extraMsg = '') {
+  // console.log(method, entityName, data);
+  const url = ServiceConfig.getUrl(entityName);
+  try {
+    const res = await axios({ method, url, ...data })
+    // console.log(extraMsg, res);
+    return res.data;
+  } catch (err) {
+    console.log('Error in Service ', extraMsg, '- By Entity Name:', entityName);
+    if (err.response) console.log(err.response.data);
+    else console.log(err);
+  }
 }

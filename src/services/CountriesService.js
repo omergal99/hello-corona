@@ -1,20 +1,24 @@
 import HttpService from './HttpService';
-import countriesCorona from './data/countriesCorona.json';
+import JSONcoronaCountries from './data/coronaCountries.json';
 import countries from './data/countries.json';
 
-const isServerCountriesConnected = false;
+import ServiceConfig from '../ServiceConfig';
+
 const defaultValue = 0;
 
 async function getData() {
   const initState = _getEmpty();
-  if (isServerCountriesConnected) {
-    const res = await HttpService.get(`https://coronavirus-19-api.herokuapp.com/countries`);
-    initState.countries = _agregationWithCoronaData(res.data);
-    const res2 = await HttpService.get(`https://coronavirus-19-api.herokuapp.com/all`);
-    initState.allCountriesData = res2.data;
+  if (ServiceConfig.isServerCountriesConnected) {
+    const getCoronaCountries = _getCoronaCountries();
+    const getGlobalData = _getGlobalData();
+    const serverCoronaCountries = await getCoronaCountries;
+    const serverGlobalData = await getGlobalData;
+    
+    initState.countries = _mergeCoronaData(serverCoronaCountries);
+    initState.globalData = serverGlobalData;
   } else {
-    initState.countries = _agregationWithCoronaData();
-    initState.allCountriesData = { cases: 721412, deaths: 33956, recovered: 151004 };
+    initState.countries = _mergeCoronaData(JSONcoronaCountries);
+    initState.globalData = { cases: 721412, deaths: 33956, recovered: 151004 };
   }
   return Promise.resolve(initState);
 }
@@ -26,12 +30,12 @@ export default {
 const _getEmpty = () => ({
   countries: [],
   selectedCountryIndex: null,
-  allCountriesData: null
+  globalData: null
 })
 
-const _agregationWithCoronaData = () => (
+const _mergeCoronaData = coronaCountries => (
   countries.map(country => {
-    const coronaData = countriesCorona.find(corona => corona.country === country.name
+    const coronaData = coronaCountries.find(corona => corona.country === country.name
       || (corona.country === 'UK' && country.name === 'United Kingdom')
       || (corona.country === 'S. Korea' && country.name === 'South Korea')
       || (corona.country === 'USA' && country.name === 'United States'));
@@ -50,3 +54,11 @@ const _agregationWithCoronaData = () => (
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
 )
+
+async function _getCoronaCountries() {
+  return await HttpService.get(`countries`, null, 'getCoronaCountries');
+}
+
+async function _getGlobalData() {
+  return await HttpService.get(`all`, null, 'getGlobalData');
+}
