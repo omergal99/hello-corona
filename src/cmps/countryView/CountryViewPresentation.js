@@ -4,8 +4,8 @@ function CountryViewPresentation() {
 
   return (
     <div className="country-view-presentation">
-      <img src="assets/img/cyprus.svg" alt=""/>
-
+      <img src={require('../../assets/img/cyprus.svg')} alt="" />
+      {/* <img src="assets/img/cyprus.svg" alt="" /> */}
     </div>
   );
 }

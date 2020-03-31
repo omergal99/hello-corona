@@ -20,7 +20,7 @@ function WorldDashboardDetails({ selectedCountry }) {
       style={{ color: category.color }}>
       <span>{category.title}:&nbsp;</span>
       <span>{selectedCountry[category.key]}</span>
-      {category.dividBy && selectedCountry[category.key] &&
+      {category.dividBy && !!selectedCountry[category.key] &&
         <span style={{ textAlign: 'right' }} >
           {(selectedCountry[category.key] / selectedCountry[category.dividBy] * 100).toFixed(0)}%</span>
       }
