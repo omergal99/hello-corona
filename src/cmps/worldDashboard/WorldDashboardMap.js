@@ -90,11 +90,16 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     return <path className="country-path-label" d={country.d} key={country.id}></path>
   })
 
+  const handleScroll = ev => {
+    console.log(ev);
+    
+  }
+
   return (
     <div className="world-dashboard-map">
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
-        onWheel={handleWheel} onMouseLeave={stopDrag}
-        onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag}>
+        onScroll={handleScroll}
+        onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
         <SvgDefsFilterShadow />
         <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
           {countriesPaths}

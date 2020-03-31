@@ -4,7 +4,6 @@ function CountryViewBottom() {
 
   return (
     <div className="country-view-bottom">
-      {/* <div className="lala"></div> */}
       <div className="wrap-loader-svg">
         <div className="lighter-1 lighter"></div>
         <div className="lighter-2 lighter"></div>

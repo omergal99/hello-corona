@@ -15,17 +15,18 @@ function WorldDashboardDetails({ selectedCountry }) {
     { key: 'firstCase', title: 'First Case' },
   ];
 
-  const list = data.map(category => (
-    <li className="selected-country-detail" key={category.key}
+  const list = data.map(category => {
+    return <li className="selected-country-detail" key={category.key}
       style={{ color: category.color }}>
       <span>{category.title}:&nbsp;</span>
-      <span>{selectedCountry[category.key]}</span>
+      <span>{selectedCountry[category.key] || selectedCountry[category.key] === 0 ? selectedCountry[category.key] :
+        selectedCountry[category.key] === undefined ? '' : 'No Data'}</span>
       {category.dividBy && !!selectedCountry[category.key] &&
         <span style={{ textAlign: 'right' }} >
           {(selectedCountry[category.key] / selectedCountry[category.dividBy] * 100).toFixed(0)}%</span>
       }
     </li>
-  ))
+  })
 
   return (
     <div className="world-dashboard-details flex-col">

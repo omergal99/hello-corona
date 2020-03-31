@@ -4,8 +4,6 @@ import countries from './data/countries.json';
 
 import ServiceConfig from '../ServiceConfig';
 
-const defaultValue = 0;
-
 async function getData() {
   const initState = _getEmpty();
   if (ServiceConfig.isServerCountriesConnected) {
@@ -38,19 +36,21 @@ const _mergeCoronaData = coronaCountries => {
     const coronaData = coronaCountries.find(corona => corona.country === country.name
       || (corona.country === 'UK' && country.name === 'United Kingdom')
       || (corona.country === 'S. Korea' && country.name === 'South Korea')
+      || (corona.country === 'Palestine' && country.name === 'Palestinian Territories')
+      || (corona.country === 'DRC' && country.name === 'DR Congo')
       || (corona.country === 'USA' && country.name === 'United States'));
     return {
       ...country,
-      cases: coronaData ? coronaData.cases : defaultValue,
-      todayCases: coronaData ? coronaData.todayCases : defaultValue,
-      deaths: coronaData ? coronaData.deaths : defaultValue,
-      todayDeaths: coronaData ? coronaData.todayDeaths : defaultValue,
-      recovered: coronaData ? coronaData.recovered : defaultValue,
-      active: coronaData ? coronaData.active : defaultValue,
-      critical: coronaData ? coronaData.critical : defaultValue,
-      casesPerOneMillion: coronaData ? coronaData.casesPerOneMillion : defaultValue,
-      deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : defaultValue,
-      firstCase: coronaData ? coronaData.firstCase : defaultValue
+      cases: coronaData ? coronaData.cases : null,
+      todayCases: coronaData ? coronaData.todayCases : null,
+      deaths: coronaData ? coronaData.deaths : null,
+      todayDeaths: coronaData ? coronaData.todayDeaths : null,
+      recovered: coronaData ? coronaData.recovered : null,
+      active: coronaData ? coronaData.active : null,
+      critical: coronaData ? coronaData.critical : null,
+      casesPerOneMillion: coronaData ? coronaData.casesPerOneMillion : null,
+      deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : null,
+      firstCase: coronaData ? coronaData.firstCase : null
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
 }

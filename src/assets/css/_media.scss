@@ -20,7 +20,7 @@
 // All mobile
 @media (min-width: 64px) and (max-width: 767px) {
   .world-dashboard {
-    flex-direction: column;
+    flex-direction: column-reverse;
     .wrap-global-and-list,
     .world-dashboard-map,
     .world-dashboard-details {
@@ -28,15 +28,15 @@
     }
     .wrap-global-and-list {
       height: 35%;
+      margin: 0;
     }
     .world-dashboard-map {
       height: 30%;
+      margin: 0 0 0.5rem 0;
     }
     .world-dashboard-details {
       height: 35%;
-    }
-    > :not(:last-child){
-      margin: 0 0 0.5rem 0;
+      margin: 0 auto 0.5rem auto;
     }
     .world-dashboard-global-details {
       display: none;
