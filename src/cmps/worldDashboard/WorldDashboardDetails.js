@@ -21,7 +21,8 @@ function WorldDashboardDetails({ selectedCountry }) {
       <span>{category.title}:&nbsp;</span>
       <span>{selectedCountry[category.key]}</span>
       {category.dividBy && selectedCountry[category.key] &&
-        <span>{(selectedCountry[category.key] / selectedCountry[category.dividBy] * 100).toFixed(0)}%</span>
+        <span style={{ textAlign: 'right' }} >
+          {(selectedCountry[category.key] / selectedCountry[category.dividBy] * 100).toFixed(0)}%</span>
       }
     </li>
   ))

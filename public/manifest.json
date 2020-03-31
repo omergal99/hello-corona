@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Hello Corona",
+  "name": "Hello Corona World",
+  "description": "Impressive view of the world countries on Map. Check status of your country situation by the Corona virus",
   "icons": [
     {
       "src": "favicon.ico",

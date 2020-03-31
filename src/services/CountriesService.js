@@ -33,8 +33,8 @@ const _getEmpty = () => ({
   globalData: null
 })
 
-const _mergeCoronaData = coronaCountries => (
-  countries.map(country => {
+const _mergeCoronaData = coronaCountries => {
+  return countries.map(country => {
     const coronaData = coronaCountries.find(corona => corona.country === country.name
       || (corona.country === 'UK' && country.name === 'United Kingdom')
       || (corona.country === 'S. Korea' && country.name === 'South Korea')
@@ -53,7 +53,7 @@ const _mergeCoronaData = coronaCountries => (
       firstCase: coronaData ? coronaData.firstCase : defaultValue
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
-)
+}
 
 async function _getCoronaCountries() {
   return await HttpService.get(`countries`, null, 'getCoronaCountries');
