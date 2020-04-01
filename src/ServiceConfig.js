@@ -3,7 +3,7 @@
 let isServerCountriesConnected;
 
 
-// isServerCountriesConnected = true;
+isServerCountriesConnected = true;
 
 
 function getUrl(entityName) {
