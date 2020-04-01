@@ -10,6 +10,7 @@ function WorldDashboardGlobalDetails({ globalData }) {
 
   const list = data.map(category => (
     <li className="global-detail flex-col" key={category.key}>
+      <span className="pseudo-border"></span>
       <p>{category.title}</p>
       <p>{globalData[category.key]}</p>
     </li>

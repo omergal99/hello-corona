@@ -1,4 +1,5 @@
 .world-dashboard-list {
+  transform: perspective(100vh) scale(0.95) rotateY(8deg);
   overflow: hidden;
   .selected-country-name {
     padding: 0.25rem 16px 0.25rem 0;

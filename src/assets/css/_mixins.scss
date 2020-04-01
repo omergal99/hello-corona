@@ -17,20 +17,34 @@
   position: $pos;
 }
 
+@mixin clip-path($property) {
+  -webkit-clip-path: $property;
+  clip-path: $property;
+}
+
 @mixin user-select-none() {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
 @mixin linear-gradient-clip-border($color: var(--color1-light)) {
-  background: linear-gradient(
-    135deg,
-    #0000 1%,
-    $color 1%,
-    $color 99%,
-    #0000 99%
-  );
+  background: linear-gradient(135deg, #0000 1%, $color 1%, $color 99%, #0000 99%);
+}
+
+@mixin linear-gradient-pseudo-border($from: left top, $to: right bottom) {
+  border-image: -webkit-gradient(
+      linear,
+      $from,
+      $to,
+      from(var(--color1-normal)),
+      to(var(--color1-dark)),
+      color-stop(0.5, var(--color1-normal)),
+      color-stop(0.5, var(--color1-border)),
+      color-stop(0.8, var(--color1-dark))
+    )
+    21 25 27 23;
 }
 
 @mixin scrollbar() {

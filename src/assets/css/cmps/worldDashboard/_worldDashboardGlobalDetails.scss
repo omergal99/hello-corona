@@ -1,3 +1,5 @@
+$pseudo-border-size: 10px;
+
 .world-dashboard-global-details {
   margin-bottom: 0.5rem;
   @include linear-gradient-clip-border(var(--color1-dark));
@@ -12,6 +14,52 @@
       &:not(:last-child) {
         margin-bottom: 0.5rem;
       }
+      overflow: hidden;
+      border-bottom: 1px solid var(--color1-border);
+      @include clip-path(polygon(101% 0%, 100% 96%, 75% 100%, 25% 100%, 0% 96%, -1% 0%));
+      position: relative;
+      &:before {
+        @include pseudo();
+        border: $pseudo-border-size solid;
+        bottom: -$pseudo-border-size;
+        left: -$pseudo-border-size;
+        @include linear-gradient-pseudo-border(right top, left bottom);
+      }
+      &:after {
+        @include pseudo();
+        border: $pseudo-border-size solid;
+        bottom: -$pseudo-border-size;
+        right: -$pseudo-border-size;
+        @include linear-gradient-pseudo-border(left top, right bottom);
+      }
+      .pseudo-border {
+        &:before {
+          @include pseudo();
+          border: $pseudo-border-size solid;
+          top: -$pseudo-border-size;
+          left: -$pseudo-border-size;
+          @include linear-gradient-pseudo-border(right bottom, left top);
+        }
+        &:after {
+          @include pseudo();
+          border: $pseudo-border-size solid;
+          top: -$pseudo-border-size;
+          right: -$pseudo-border-size;
+          @include linear-gradient-pseudo-border(left bottom, right top);
+        }
+      }
     }
   }
+}
+
+.border-in-border {
+  border-width: 14px;
+  border-style: solid;
+  bottom: 0px;
+  right: 0px;
+  transform: rotate(45deg);
+  border-image-width: 6px;
+  border-image-width: 1px;
+  border-image-source: linear-gradient(135deg, #4095bf 0%, #4095bf 30%, #131c20 40%, #131c20 100%);
+  border-image-slice: 1;
 }
