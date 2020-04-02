@@ -4,14 +4,13 @@
   grid-gap: 0.5rem;
   overflow: hidden;
   padding: 0.5rem;
-  > :not(:last-child) {
-    margin: 0 0.5rem 0 0;
-  }
 }
 .wrap-global-and-list {
+  margin: 0 0.5rem 0 0;
   width: 20%;
 }
 .world-dashboard-map {
+  margin: 0 0.5rem 0 0;
   width: 50%;
 }
 .world-dashboard-details {

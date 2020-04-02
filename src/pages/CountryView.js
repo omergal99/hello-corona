@@ -4,10 +4,9 @@ import actions from '../store/actions';
 
 import CountryViewList from '../cmps/countryView/CountryViewList';
 import CountryViewPresentation from '../cmps/countryView/CountryViewPresentation';
+import CountryViewDetails from '../cmps/countryView/CountryViewDetails';
 import CountryViewBottom from '../cmps/countryView/CountryViewBottom';
 
-// import CountryViewDetails from '../cmps/countryView/CountryViewDetails';
-import WorldDashboardDetails from '../cmps/worldDashboard/WorldDashboardDetails';
 
 
 function CountryView() {
@@ -27,8 +26,7 @@ function CountryView() {
       <div className="country-view">
         <CountryViewList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         <CountryViewPresentation selectedCountry={selectedCountry} />
-        {/* <CountryViewDetails /> */}
-        <WorldDashboardDetails selectedCountry={selectedCountry} />
+        <CountryViewDetails selectedCountry={selectedCountry} />
         <CountryViewBottom />
       </div>
     </>}</>
