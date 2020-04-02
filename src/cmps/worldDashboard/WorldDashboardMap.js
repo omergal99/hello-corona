@@ -12,7 +12,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   const svgRef = useRef(firstZoom);
 
   const args = {
-    initZoom: firstZoom, minMapZoom: 40, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
+    initZoom: firstZoom, minMapZoom: 30, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
     minTopSvg: (baseMap.height - firstZoom) / 2, minLeftSvg: (baseMap.width - firstZoom) / 2,
     initFontSize: firstZoom / 30, initStroke: firstZoom / 1000
   };
@@ -81,7 +81,8 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     const isSelecting = isDragging && currPathName === country.name ? 'selecting' : '';
     return <path className={`country-path ${isSelected} ${isSelecting}`} key={country.id}
       alpha2={country.alpha2} name={country.name} d={country.d}
-      onClick={() => onSelectCountry(country)}>
+      onClick={(ev) => onSelectCountry(country)}>
+      {/* onClick={(ev) => onSelectCountry(country) || console.log(ev.target.getBBox())}> */}
       <title>{country.name}</title>
     </path>
   })
@@ -92,7 +93,6 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
 
   const handleScroll = ev => {
     console.log(ev);
-    
   }
 
   return (

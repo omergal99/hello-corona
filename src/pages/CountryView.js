@@ -16,11 +16,14 @@ function CountryView() {
     dispatch(actions.selectCountry(country));
   }
 
+  const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
+    ? countriesStore.countries[selectedCountryIndex] : {};
   return (
     <>{countriesStore && <>
       <div className="country-view">
         <CountryViewList countriesStore={countriesStore} onSelectCountry={selectCountry} />
-        <CountryViewPresentation />
+        <CountryViewPresentation selectedCountry={selectedCountry} />
         <CountryViewDetails />
         <CountryViewBottom />
       </div>

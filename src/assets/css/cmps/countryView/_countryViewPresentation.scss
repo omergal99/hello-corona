@@ -1,7 +1,22 @@
 .country-view-presentation {
-  background-color: #00000033;
-  img {
-    height: 300px;
-    opacity: 0.5;
+  background-color: hsla(34, 15%, 30%, 0.726);
+  .svg-country-presentation {
+    height: 100%;
+    width: 100%;
+    .country-path {
+      // cursor: pointer;
+      stroke: #000;
+      fill: hsla(200, 100%, 10%, 1);
+      stroke: hsla(35, 100%, 65%, 0.5);
+      // &.selected {
+      //   fill: hsla(35, 92%, 12%, 0.2);
+      // }
+      // &.selecting {
+      //   fill: hsla(200, 100%, 10%, 0.4);
+      // }
+      // &:not(.selected):not(.selecting):hover {
+      //   fill: hsla(200, 100%, 20%, 0.4);
+      // }
+    }
   }
 }
