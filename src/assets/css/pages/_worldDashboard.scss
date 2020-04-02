@@ -4,16 +4,16 @@
   grid-gap: 0.5rem;
   overflow: hidden;
   padding: 0.5rem;
-  .wrap-global-and-list {
-    width: 20%;
-  }
-  .world-dashboard-map {
-    width: 50%;
-  }
-  .world-dashboard-details {
-    width: 30%;
-  }
-  > :not(:last-child){
+  > :not(:last-child) {
     margin: 0 0.5rem 0 0;
   }
+}
+.wrap-global-and-list {
+  width: 20%;
+}
+.world-dashboard-map {
+  width: 50%;
+}
+.world-dashboard-details {
+  width: 100%;
 }
