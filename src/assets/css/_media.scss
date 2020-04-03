@@ -40,7 +40,7 @@
   .world-dashboard-global-details {
     display: none;
   }
-  
+
   .country-view {
     display: flex;
     flex-direction: column-reverse;
@@ -57,7 +57,10 @@
     height: 35%;
   }
   .country-view-bottom {
-    display: none;
+    position: absolute;
+    bottom: 34%;
+    left: 0;
+    right: 0;
   }
 }
 
