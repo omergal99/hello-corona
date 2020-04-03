@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FilterInput from '../helpers/FilterInput';
 
 function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
-  const list = countries.map(country => {
+  const [filteredCountries, setFilteredCountries] = useState(countries);
+
+  const list = filteredCountries.map(country => {
     const isSelected = country.name === selectedCountry.name ? 'selected' : '';
     return <li className={`country ${isSelected}`} key={country.id}
       onClick={() => onSelectCountry(country)}>
@@ -14,7 +17,10 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
 
   return (
     <div className="world-dashboard-list flex-col">
-      <h3 className="selected-country-name">{selectedCountry.name || 'Select Country'}</h3>
+      <div className="custom-filter-input">
+        <FilterInput list={countries} filterKeys={['name']} placeholder="Search Country"
+          onFilter={setFilteredCountries} />
+      </div>
       <ul className="countries">
         {list}
       </ul>

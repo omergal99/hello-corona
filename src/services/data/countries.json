@@ -1837,6 +1837,10 @@
     "id": "Hong Kong",
     "alpha2": "Hong Kong",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "Hong Kong"
   },
   {
@@ -1844,6 +1848,10 @@
     "id": "Taiwan",
     "alpha2": "Taiwan",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "Taiwan"
   },
   {
@@ -1851,6 +1859,10 @@
     "id": "Puerto Rico",
     "alpha2": "Puerto Rico",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "Puerto Rico"
   },
   {
@@ -1858,6 +1870,10 @@
     "id": "French Guiana",
     "alpha2": "French Guiana",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "French Guiana"
   },
   {
@@ -1865,6 +1881,10 @@
     "id": "Kosovo",
     "alpha2": "Kosovo",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "Kosovo"
   },
   {
@@ -1872,6 +1892,10 @@
     "id": "Palestinian Territories",
     "alpha2": "not found",
     "numericCode": "not found",
+    "centerPoint": {
+      "x": 555555,
+      "y": 555555
+    },
     "name": "Palestinian Territories"
   }
 ]

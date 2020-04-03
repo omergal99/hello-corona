@@ -1,27 +1,6 @@
 .country-view-list {
-  @include scrollbar();
-  overflow-y: auto;
-  background-color: var(--color1-dark);
-  padding: 0.5rem;
-  .country-preview {
-    cursor: pointer;
-    padding: 0.5rem;
-    background-color: var(--color1-normal);
-    border: 1px solid var(--color1-border);
-    transition: all 0.3s;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    &:not(:last-child) {
-      margin-bottom: 0.75rem;
-    }
-    &:hover {
-      background-color: var(--color1-dark);
-    }
-    &.selected {
-      background-color: var(--color1-dark);
-      border-color: var(--color2-border);
-      margin: 0 0 0.75rem 0;
-      box-shadow: 0 0 4px var(--color2-border) inset, 0 0 4px var(--color2-border);
-    }
+  .countries {
+    @include scrollbar();
+    overflow: auto;
   }
 }

@@ -1,12 +1,6 @@
 .world-dashboard-list {
   // transform: perspective(100vh) scale(0.95) rotateY(8deg);
   overflow: hidden;
-  .selected-country-name {
-    padding: 0.25rem 16px 0.25rem 0;
-    background-color: var(--color1-light);
-    border-radius: 3px 3px 10px 0px;
-    border-bottom: 2px solid var(--color1-border);
-  }
   .countries {
     overflow: auto;
     @include scrollbar();
@@ -15,6 +9,14 @@
       cursor: pointer;
       background-color: var(--color1-dark);
       transition: background-color 0.3s;
+      border-top: 1px solid var(--color1-light);
+      border-bottom: 1px solid var(--color1-light);
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: 2px solid var(--color1-light);
+      }
       &:hover {
         background-color: var(--color2-light);
       }

@@ -25,6 +25,7 @@ function CountryViewPresentation({ selectedCountry }) {
         <path className="country-path" d={selectedCountry.d} ref={countryRef}
           style={{ strokeWidth: `${dynamicRatio}px` }}>
         </path>
+        {/* <circle cx="50" cy="50" r="50"/> */}
       </svg>
     </div>
   );

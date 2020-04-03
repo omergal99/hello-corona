@@ -1,0 +1,17 @@
+.filter-input {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  padding: 0.5rem 0.5rem 0.4rem;
+  font-size: 1rem;
+  color: white;
+  &::placeholder {
+    color: rgb(202, 202, 202);
+  }
+}
+
+.custom-filter-input {
+  background-color: var(--color1-light);
+  border-radius: 3px 3px 10px 0px;
+  border-bottom: 2px solid var(--color1-border);
+}

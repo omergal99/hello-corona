@@ -8,7 +8,7 @@ function NavBar() {
   const navLinks = [
     { route: WORLD_DASHBOARD, name: 'World Dashboard' },
     { route: COUNTRY_VIEW, name: 'Country View' },
-    { route: TABLE_DATA, name: 'Table Data' }
+    // { route: TABLE_DATA, name: 'Table Data' }
   ]
 
   const list = navLinks.map(link => (
