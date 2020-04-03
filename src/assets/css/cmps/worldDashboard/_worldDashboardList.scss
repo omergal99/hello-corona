@@ -12,7 +12,7 @@
       border-top: 1px solid var(--color1-light);
       border-bottom: 1px solid var(--color1-light);
       &:first-child {
-        border-top: none;
+        border-top: 2px solid transparent;
       }
       &:last-child {
         border-bottom: 2px solid var(--color1-light);
