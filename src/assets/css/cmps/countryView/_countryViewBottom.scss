@@ -1,5 +1,6 @@
 .country-view-bottom {
-  // overflow: hidden;
+  pointer-events: none;
+  z-index: -10;
   .wrap-loader-svg {
     display: flex;
     justify-content: center;
