@@ -81,8 +81,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     const isSelecting = isDragging && currPathName === country.name ? 'selecting' : '';
     return <path className={`country-path ${isSelected} ${isSelecting}`} key={country.id}
       alpha2={country.alpha2} name={country.name} d={country.d}
-      onClick={(ev) => onSelectCountry(country)}>
-      {/* onClick={(ev) => onSelectCountry(country) || console.log(ev.target.getBBox())}> */}
+      onClick={() => onSelectCountry(country)}>
       <title>{country.name}</title>
     </path>
   })
@@ -98,7 +97,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   return (
     <div className="world-dashboard-map">
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
-        onScroll={handleScroll}
+        onScroll={handleScroll} onWheel={handleWheel}
         onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
         <SvgDefsFilterShadow />
         <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
