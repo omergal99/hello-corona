@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import countriesLabels from "../../services/data/countriesLabels.json";
-import SvgDefsFilterShadow from './mapHelpers/SvgDefsFilterShadow';
+import SvgDefsFilterShadow from '../helpers/mapHelpers/SvgDefsFilterShadow';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
@@ -26,7 +26,6 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   const [dynamicRatio, setDynamicRatio] = useState(1);
   const [currPathName, setCurrPathName] = useState('');
 
-  const svgClassName = 'svg-map';
   const handleWheel = useCallback(ev => {
     const isMouseOnSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
       && path.className.baseVal.includes(svgClassName));
@@ -62,7 +61,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     setIsDragging(true);
     setCurrPathName(ev.target.getAttribute('name'));
   }
-  const drag = ev => {
+  const handleMouseMove = ev => {
     if (isDragging) {
       const ratioBySvgHeight = args.initZoom / svgRef.current.clientHeight;
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
@@ -71,15 +70,19 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       setViewBox(`${x + args.minLeftSvg} ${y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
     }
+    if (ev.target.getAttribute('class').includes(pathClassName)) {
+      console.log(ev.target.getAttribute('name'));
+    }
   }
   const stopDrag = () => {
     setIsDragging(false);
   }
 
+  const pathClassName = 'country-path';
   const countriesPaths = countries.map(country => {
     const isSelected = country.name === selectedCountry.name ? 'selected' : '';
     const isSelecting = isDragging && currPathName === country.name ? 'selecting' : '';
-    return <path className={`country-path ${isSelected} ${isSelecting}`} key={country.id}
+    return <path className={`${pathClassName} ${isSelected} ${isSelecting}`} key={country.id}
       alpha2={country.alpha2} name={country.name} d={country.d}
       onClick={() => onSelectCountry(country)}>
       <title>{country.name}</title>
@@ -94,11 +97,12 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     console.log(ev);
   }
 
+  const svgClassName = 'svg-map';
   return (
     <div className="world-dashboard-map">
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onScroll={handleScroll} onWheel={handleWheel}
-        onMouseDown={startDrag} onMouseMove={drag} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
+        onMouseDown={startDrag} onMouseMove={handleMouseMove} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
         <SvgDefsFilterShadow />
         <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
           {countriesPaths}

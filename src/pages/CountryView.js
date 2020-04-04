@@ -30,7 +30,8 @@ function CountryView() {
   }, [dispatch, countriesStore, params, history]);
 
   const selectCountry = country => {
-    history.push(`/${COUNTRY_VIEW}/${country.alpha2}`);
+    const alpha2ToPush = country.alpha2 === selectedCountry.alpha2 ? '' : country.alpha2;
+    history.push(`/${COUNTRY_VIEW}/${alpha2ToPush}`);
     dispatch(actions.selectCountry(country));
   }
 

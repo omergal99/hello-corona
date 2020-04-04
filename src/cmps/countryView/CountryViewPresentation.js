@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import SvgDefsFilterShadow from '../helpers/mapHelpers/SvgDefsFilterShadow';
 
 function CountryViewPresentation({ selectedCountry }) {
 
@@ -15,13 +16,15 @@ function CountryViewPresentation({ selectedCountry }) {
     const max = bBox.width > bBox.height ? bBox.width : bBox.height;
     const bBoxX = bBox.width > bBox.height ? bBox.x : bBox.x - abs;
     const bBoxY = bBox.width > bBox.height ? bBox.y - abs : bBox.y;
-    setViewBox(`${bBoxX - 1} ${bBoxY - 1} ${max + 2} ${max + 2} `);
+    setViewBox(`${bBoxX - 2} ${bBoxY - 2} ${max + 4} ${max + 4} `);
     setDynamicRatio(max / initStroke);
   }, [selectedCountry])
 
   return (
     <div className="country-view-presentation" key={selectedCountry.name}>
-      <svg className='svg-country-presentation' viewBox={viewBox}>
+      <svg className='svg-country-presentation' viewBox={viewBox}
+        style={{ filter: 'url(#dropshadow-color)' }}>
+        <SvgDefsFilterShadow />
         <path className="country-path" d={selectedCountry.d} ref={countryRef}
           style={{ strokeWidth: `${dynamicRatio}px` }}>
         </path>

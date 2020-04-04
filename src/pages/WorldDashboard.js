@@ -17,7 +17,7 @@ function WorldDashboard() {
   const params = useParams();
 
   useEffect(() => {
-    if (!countriesStore || !params) return;
+    if (!countriesStore) return;
     const { countries, selectedCountryIndex } = countriesStore;
     const isSelectedCountry = selectedCountryIndex || selectedCountryIndex === 0;
     if (params.alpha2 && !isSelectedCountry) {
@@ -30,7 +30,8 @@ function WorldDashboard() {
   }, [dispatch, countriesStore, params, history]);
 
   const selectCountry = country => {
-    history.push(`/${WORLD_DASHBOARD}/${country.alpha2}`);
+    const alpha2ToPush = country.alpha2 === selectedCountry.alpha2 ? '' : country.alpha2;
+    history.push(`/${WORLD_DASHBOARD}/${alpha2ToPush}`);
     dispatch(actions.selectCountry(country));
   }
 
