@@ -20,7 +20,7 @@ function CountryViewPresentation({ selectedCountry }) {
   }, [selectedCountry])
 
   return (
-    <div className="country-view-presentation">
+    <div className="country-view-presentation" key={selectedCountry.name}>
       <svg className='svg-country-presentation' viewBox={viewBox}>
         <path className="country-path" d={selectedCountry.d} ref={countryRef}
           style={{ strokeWidth: `${dynamicRatio}px` }}>

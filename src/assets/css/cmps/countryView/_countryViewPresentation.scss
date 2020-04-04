@@ -3,10 +3,12 @@
   .svg-country-presentation {
     height: 100%;
     width: 100%;
+    animation: opacity0To1 0.4s ease-out;
     .country-path {
       stroke: #000;
-      fill: hsl(200, 100%, 50%);
+      fill: hsla(200, 100%, 50%, 1);
       stroke: hsla(200, 100%, 75%, 0);
     }
   }
 }
+
