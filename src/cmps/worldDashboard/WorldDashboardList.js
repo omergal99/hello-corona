@@ -9,9 +9,13 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
 
   const list = filteredCountries.map(country => {
     const isSelected = country.name === selectedCountry.name ? 'selected' : '';
+    let src = "";
+    try { src = require(`../../assets/img/flags/${country.alpha2.toLowerCase()}.png`); }
+    catch (err) { }
     return <li className={`country ${isSelected}`} key={country.id}
       onClick={() => onSelectCountry(country)}>
       <span>{country.name}</span>
+      <img height="50" alt="Flag" src={src} />
     </li>
   })
 

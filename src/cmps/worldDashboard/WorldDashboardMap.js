@@ -70,9 +70,9 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       setViewBox(`${x + args.minLeftSvg} ${y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
     }
-    if (ev.target.getAttribute('class').includes(pathClassName)) {
-      console.log(ev.target.getAttribute('name'));
-    }
+    // if (ev.target.getAttribute('class').includes(pathClassName)) {
+    //   console.log(ev.target.getAttribute('name'));
+    // }
   }
   const stopDrag = () => {
     setIsDragging(false);
