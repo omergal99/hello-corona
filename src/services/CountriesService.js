@@ -50,7 +50,8 @@ const _mergeCoronaData = coronaCountries => {
       critical: coronaData ? coronaData.critical : null,
       casesPerOneMillion: coronaData ? coronaData.casesPerOneMillion : null,
       deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : null,
-      firstCase: coronaData ? coronaData.firstCase : null
+      totalTests: coronaData ? coronaData.totalTests : null,
+      testsPerOneMillion: coronaData ? coronaData.testsPerOneMillion : null,
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
 }

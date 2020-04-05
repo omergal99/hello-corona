@@ -5,8 +5,12 @@
     overflow: auto;
     @include scrollbar();
     .country {
-      padding: 0.25rem;
       cursor: pointer;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.25rem;
       background-color: var(--color1-dark);
       border-top: 1px solid var(--color1-light);
       border-bottom: 1px solid var(--color1-light);
@@ -22,6 +26,22 @@
       }
       &.selected {
         background-color: var(--color1-light);
+      }
+      .country-name {
+        width: 50%;
+        min-width: 80px;
+        font-size: 1.2rem;
+      }
+      .wrap-country-flag {
+        width: 50%;
+        min-width: 100px;
+        height: 50px;
+        .country-flag {
+          height: 100%;
+          max-width: 100%;
+          object-fit: cover;
+          border: 2px solid var(--color1-border);
+        }
       }
     }
   }

@@ -12,7 +12,8 @@ function WorldDashboardDetails({ selectedCountry }) {
     { key: 'critical', title: 'Critical', dividBy: 'cases', color: 'DarkOrchid' },
     { key: 'casesPerOneMillion', title: 'Cases Per 1M' },
     { key: 'deathsPerOneMillion', title: 'Deaths Per 1M' },
-    { key: 'firstCase', title: 'First Case' },
+    { key: 'totalTests', title: 'Teststed', color: 'dodgerblue' },
+    { key: 'testsPerOneMillion', title: 'Tests Per 1M', color: 'dodgerblue' },
   ];
 
   const list = data.map(category => {
