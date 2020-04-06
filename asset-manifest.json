@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/hello-corona/static/css/main.8c1c9783.chunk.css",
+    "main.css": "/hello-corona/static/css/main.2166e799.chunk.css",
     "main.js": "/hello-corona/static/js/main.479b6b58.chunk.js",
     "main.js.map": "/hello-corona/static/js/main.479b6b58.chunk.js.map",
     "runtime-main.js": "/hello-corona/static/js/runtime-main.251d0022.js",
@@ -8,9 +8,9 @@
     "static/js/2.59746257.chunk.js": "/hello-corona/static/js/2.59746257.chunk.js",
     "static/js/2.59746257.chunk.js.map": "/hello-corona/static/js/2.59746257.chunk.js.map",
     "index.html": "/hello-corona/index.html",
-    "precache-manifest.33dc7db947d25104f0a41b5cf0f0e0d9.js": "/hello-corona/precache-manifest.33dc7db947d25104f0a41b5cf0f0e0d9.js",
+    "precache-manifest.374bb1503ffb679dcbbfae51b294b114.js": "/hello-corona/precache-manifest.374bb1503ffb679dcbbfae51b294b114.js",
     "service-worker.js": "/hello-corona/service-worker.js",
-    "static/css/main.8c1c9783.chunk.css.map": "/hello-corona/static/css/main.8c1c9783.chunk.css.map",
+    "static/css/main.2166e799.chunk.css.map": "/hello-corona/static/css/main.2166e799.chunk.css.map",
     "static/js/2.59746257.chunk.js.LICENSE.txt": "/hello-corona/static/js/2.59746257.chunk.js.LICENSE.txt",
     "static/media/ad.png": "/hello-corona/static/media/ad.d325ec36.png",
     "static/media/af.png": "/hello-corona/static/media/af.f2868461.png",
@@ -33,7 +33,7 @@
   "entrypoints": [
     "static/js/runtime-main.251d0022.js",
     "static/js/2.59746257.chunk.js",
-    "static/css/main.8c1c9783.chunk.css",
+    "static/css/main.2166e799.chunk.css",
     "static/js/main.479b6b58.chunk.js"
   ]
 }
