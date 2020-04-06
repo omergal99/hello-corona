@@ -4,7 +4,7 @@
   overflow: hidden;
   background-color: var(--color1-light);
   color: ghostwhite;
-  @include linear-gradient-clip-border();
+  @include linear-gradient-clip-border(var(--color1-light-saturation));
   .svg-map {
     height: 100%;
     width: 100%;
@@ -12,16 +12,16 @@
       stroke: #000;
       .country-path {
         cursor: pointer;
-        fill: hsla(200, 100%, 10%, 1);
-        stroke: hsla(35, 100%, 65%, 0.5);
+        fill: hsla(var(--base-color1), 100%, 10%, 1);
+        stroke: hsla(var(--base-color2), 100%, 65%, 0.5);
         &.selected {
-          fill: hsla(35, 92%, 12%, 0.2);
+          fill: hsla(var(--base-color2), 92%, 12%, 0.2);
         }
         &.selecting {
-          fill: hsla(200, 100%, 10%, 0.4);
+          fill: hsla(var(--base-color1), 100%, 10%, 0.4);
         }
         &:not(.selected):not(.selecting):hover {
-          fill: hsla(200, 100%, 20%, 0.4);
+          fill: hsla(var(--base-color1), 100%, 20%, 0.4);
         }
       }
       .country-path-label {

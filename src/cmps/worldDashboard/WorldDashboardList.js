@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import FilterInput from '../helpers/FilterInput';
 import UtilsService from '../../services/UtilsService';
+
+import VirusSVG from '../helpers/svg-icons/VirusSVG';
 function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
@@ -9,9 +11,9 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
 
   const caterogies = [
     { title: 'Cases', key: 'cases' },
+    { title: 'Deaths', key: 'deaths' },
     { title: 'Recovered', key: 'recovered' },
     { title: 'Critical', key: 'critical' },
-    { title: 'Tests', key: 'testsPerOneMillion' },
   ]
 
   const list = filteredCountries.map((country, idx) => {
@@ -27,20 +29,20 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
       <span className="numeric-code" title="Numeric Code">N-C {country.numericCode}</span>
 
       <div className="top-section">
-        <div className="wrap-country-status">
-          <h3 className="country-name">{country.name}</h3>
-          <div className="status-details">
-            <span className="rank"><span className="rank-icon">»</span>{idx + 1}</span>
-            <span className="cases">+{country.todayCases}</span>
-            <span className="deaths">+{country.todayDeaths}</span>
-          </div>
-        </div>
-
         <div className="wrap-country-flag">
           <img className="country-flag" src={src} alt="Flag" />
         </div>
+        <div className="wrap-country-status">
+          <h3 className="country-name">{country.name}</h3>
+          <div className="status-details">
+            <span className="rank"><span className="rank-icon">❱❱</span>{idx + 1}</span>
+            <div className="cases">
+              <div className="wrap-icon-svg"><VirusSVG /></div>
+              <span>+{country.todayCases}</span>
+            </div>
+          </div>
+        </div>
       </div>
-
       <div className="bottom-section">
         {categoryView}
       </div>

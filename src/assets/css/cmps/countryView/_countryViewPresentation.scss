@@ -1,13 +1,13 @@
 .country-view-presentation {
-  // background-color: hsla(34, 15%, 30%, 0.726);
+  // background-color: hsla(var(--base-color2), 15%, 30%, 0.726);
   .svg-country-presentation {
     height: 100%;
     width: 100%;
     animation: opacity0To1 0.4s ease-out;
     .country-path {
       stroke: #000;
-      fill: hsla(200, 100%, 50%, 1);
-      stroke: hsla(200, 100%, 75%, 0);
+      fill: hsla(var(--base-color1), 100%, 50%, 1);
+      stroke: hsla(var(--base-color1), 100%, 75%, 0);
     }
   }
 }
