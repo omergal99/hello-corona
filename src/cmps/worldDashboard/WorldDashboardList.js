@@ -8,20 +8,18 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
   const [filteredCountries, setFilteredCountries] = useState(countries);
 
   const caterogies = [
-    { title: '🧬', key: 'active' },
-    { title: '🞧', key: 'recovered', color: 'lightgreen' },
-    { title: '🚑', key: 'critical' },
-    { title: '🧪', key: 'testsPerOneMillion' },
+    { title: 'Cases', key: 'cases' },
+    { title: 'Recovered', key: 'recovered' },
+    { title: 'Critical', key: 'critical' },
+    { title: 'Tests', key: 'testsPerOneMillion' },
   ]
-
-  // ☣☢
 
   const list = filteredCountries.map((country, idx) => {
     const isSelected = country.name === selectedCountry.name ? 'selected' : '';
     const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
     const categoryView = caterogies.map(category => {
       return <div className="category flex-col" key={category.key}>
-        <span className="title" style={{ color: category.color }}>{category.title}</span>
+        <span className="title">{category.title}</span>
         <span className="value">{country[category.key]}</span>
       </div>
     })
@@ -32,7 +30,7 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
         <div className="wrap-country-status">
           <h3 className="country-name">{country.name}</h3>
           <div className="status-details">
-            <span className="rank">{idx + 1}</span>
+            <span className="rank"><span className="rank-icon">»</span>{idx + 1}</span>
             <span className="cases">+{country.todayCases}</span>
             <span className="deaths">+{country.todayDeaths}</span>
           </div>

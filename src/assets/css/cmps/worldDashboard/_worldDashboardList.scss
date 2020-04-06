@@ -50,14 +50,11 @@
             text-overflow: ellipsis;
             .rank {
               position: relative;
-              padding: 0 0 0 0.75rem;
-              &:before {
-                @include pseudo($content: "»");
-                transform: rotate(270deg);
+              .rank-icon {
+                transform: rotate(180deg);
                 color: gold;
-                top: -0.3rem;
-                left: -0.2rem;
                 font-size: 1.2rem;
+                writing-mode: vertical-rl;
               }
             }
             .cases {
@@ -101,6 +98,9 @@
         padding: 0.25rem 0 0;
         .category {
           .title {
+            font-size: 1rem;
+          }
+          .value {
             font-size: 1.2rem;
           }
         }
