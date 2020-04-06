@@ -70,6 +70,7 @@ $numeric-code-left: 0.875rem;
             }
             .cases {
               display: flex;
+              align-items: flex-end;
               padding: 0 0 0 0.75rem;
               .wrap-icon-svg {
                 height: 1.1rem;
@@ -84,6 +85,9 @@ $numeric-code-left: 0.875rem;
                   fill: hsla(var(--base-color2), 79%, 63%,1);
                 }
               }
+              .cases-value{
+                padding: 0 0 0 1px;
+              }
             }
           }
         }
@@ -92,7 +96,7 @@ $numeric-code-left: 0.875rem;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
         font-size: 0.8rem;
-        padding: 2px 0;
+        padding: 2px 0 1px 0;
         .category {
           .title {
             font-size: 0.8rem;

@@ -38,7 +38,7 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
             <span className="rank"><span className="rank-icon">❱❱</span>{idx + 1}</span>
             <div className="cases">
               <div className="wrap-icon-svg"><VirusSVG /></div>
-              <span>+{country.todayCases}</span>
+              <span className="cases-value">+{country.todayCases}</span>
             </div>
           </div>
         </div>
