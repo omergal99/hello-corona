@@ -1,11 +1,11 @@
 
 
-let isServerCountriesConnected;
+const isProduction = process.env.NODE_ENV === 'production';
 
+const isServerCountriesConnected = isProduction;
 
-isServerCountriesConnected = process.env.NODE_ENV === 'production';
-console.log(process.env.NODE_ENV === 'production');
-console.log(process.env);
+!isProduction && console.log(process.env.NODE_ENV === 'production');
+!isProduction && console.log(process.env);
 
 function getUrl(entityName) {
   return `${process.env.REACT_APP_SERVER_URL}/${entityName}`
