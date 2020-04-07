@@ -1,14 +1,14 @@
-import HttpService from './HttpService';
+import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
 import countries from './data/countries.json';
 
-import ServiceConfig from '../ServiceConfig';
+import ServiceConfig from '../config/ServiceConfig';
 
 async function getData() {
   const initState = _getEmpty();
   if (ServiceConfig.isServerCountriesConnected) {
-    const getCoronaCountries = _getCoronaCountries();
-    const getGlobalData = _getGlobalData();
+    const getCoronaCountries = ApiService.getCoronaCountries();
+    const getGlobalData = ApiService.getGlobalData();
     const serverCoronaCountries = await getCoronaCountries;
     const serverGlobalData = await getGlobalData;
     
@@ -54,12 +54,4 @@ const _mergeCoronaData = coronaCountries => {
       testsPerOneMillion: coronaData ? coronaData.testsPerOneMillion : null,
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
-}
-
-async function _getCoronaCountries() {
-  return await HttpService.get(`countries`, null, 'getCoronaCountries');
-}
-
-async function _getGlobalData() {
-  return await HttpService.get(`all`, null, 'getGlobalData');
 }

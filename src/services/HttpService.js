@@ -1,4 +1,4 @@
-import ServiceConfig from '../ServiceConfig';
+import ServiceConfig from '../config/ServiceConfig';
 import Axios from 'axios';
 
 const axios = Axios.create({ withCredentials: false });
@@ -31,7 +31,7 @@ async function _customAxios(method, entityName = '', data = null, extraMsg = '')
     // console.log(extraMsg, res);
     return res.data;
   } catch (err) {
-    console.log('Error in Service ', extraMsg, '- By Entity Name:', entityName);
+    console.log('Error in Service ', extraMsg);
     if (err.response) console.log(err.response.data);
     else console.log(err);
   }
