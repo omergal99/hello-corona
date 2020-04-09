@@ -1,5 +1,6 @@
 .world-dashboard-map {
-  flex-grow: 1; 
+  position: relative;
+  flex-grow: 1;
   height: 100%;
   overflow: hidden;
   background-color: var(--color1-light);
@@ -28,6 +29,39 @@
         pointer-events: none;
         fill: #ddd;
         stroke: transparent;
+      }
+    }
+    .g-circles {
+      pointer-events: none;
+      user-select: none;
+      stroke: rgba(255, 255, 255, 0.5);
+      .country-circle-data {
+        fill: rgba(255, 0, 0, 0.1);
+      }
+      .circle-text {
+        text-anchor: middle;
+        stroke: none;
+        fill: var(--color1-glare);
+      }
+    }
+  }
+  .map-options {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    .toggle-circles {
+      cursor: pointer;
+      background-color: hsla(var(--base-color1), 100%, 20%, 1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: block;
+      font-size: 1rem;
+      border-radius: 4px;
+      color: white;
+      outline: transparent;
+      padding: 3px 6px 1px 6px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: hsla(var(--base-color1), 100%, 24%, 1);
       }
     }
   }

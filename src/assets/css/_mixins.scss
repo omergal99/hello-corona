@@ -29,8 +29,8 @@
   user-select: none;
 }
 
-@mixin linear-gradient-clip-border($color: var(--color1-light)) {
-  background: linear-gradient(135deg, #0000 1%, $color 1%, $color 99%, #0000 99%);
+@mixin linear-gradient-clip-border($color: var(--color1-light), $min: 1%, $max: 99%, $deg: 135deg) {
+  background: linear-gradient($deg, #0000 $min, $color $min, $color $max, #0000 $max);
 }
 
 @mixin linear-gradient-pseudo-border($from: left top, $to: right bottom) {

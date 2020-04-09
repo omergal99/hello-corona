@@ -21,8 +21,8 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
     const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
     const categoryView = caterogies.map(category => {
       return <div className="category flex-col" key={category.key}>
-        <span className="title">{category.title}</span>
-        <span className="value">{country[category.key]}</span>
+        <span className="title" title={category.title}>{category.title}</span>
+        <span className="value" title={country[category.key]}>{country[category.key]}</span>
       </div>
     })
     return <li className={`country ${isSelected}`} key={country.id} onClick={() => onSelectCountry(country)}>
