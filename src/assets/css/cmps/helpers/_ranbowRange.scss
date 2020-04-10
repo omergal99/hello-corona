@@ -25,12 +25,17 @@
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     cursor: pointer;
-    border: 1px solid #000000;
+    border: 1px solid white;
     height: 2rem;
     width: 0.75rem;
     border-radius: 2px;
-    background: hsl(var(--base-color1), 100%, 64%);
     margin-top: -0.5rem;
+  }
+  &.class--base-color1::-webkit-slider-thumb {
+    background: hsla(var(--base-color1), 100%, 64%, 1);
+  }
+  &.class--base-color2::-webkit-slider-thumb {
+    background: hsla(var(--base-color2), 100%, 64%, 1);
   }
   &::-webkit-slider-runnable-track {
     cursor: pointer;
