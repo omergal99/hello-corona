@@ -11,12 +11,12 @@ async function getData() {
     const getGlobalData = ApiService.getGlobalData();
     const serverCoronaCountries = await getCoronaCountries;
     const serverGlobalData = await getGlobalData;
-    
+
     initState.countries = _mergeCoronaData(serverCoronaCountries);
     initState.globalData = serverGlobalData;
   } else {
     initState.countries = _mergeCoronaData(JSONcoronaCountries);
-    initState.globalData = { cases: 721412, deaths: 33956, recovered: 151004 };
+    initState.globalData = { "cases": 1510088, "deaths": 88335, "recovered": 329684 };
   }
   return Promise.resolve(initState);
 }

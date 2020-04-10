@@ -1,13 +1,12 @@
-function makeShallowCopy(state) {
+export function makeShallowCopy(state) {
   return { ...state };
 }
 
-function makeDeepCopy(state) {
+export function makeDeepCopy(state) {
   return JSON.parse(JSON.stringify(state));
 }
 
-
-function getImgSrc(entityImg) {
+export function getImgSrc(entityImg) {
   let src = '';
   try {
     src = require(`../assets/img/${entityImg}`);
@@ -16,8 +15,13 @@ function getImgSrc(entityImg) {
   return src
 }
 
+export function toTitleCase(string) {
+  return string.replace('-',' ').replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
 export default {
   makeShallowCopy,
   makeDeepCopy,
-  getImgSrc
+  getImgSrc,
+  toTitleCase
 }

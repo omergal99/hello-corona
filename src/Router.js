@@ -8,9 +8,9 @@ import NavBar from './cmps/NavBar';
 
 import WorldDashboard from './pages/WorldDashboard';
 import CountryView from './pages/CountryView';
-import TableData from './pages/TableData';
+import Settings from './pages/Settings';
 
-import { WORLD_DASHBOARD, COUNTRY_VIEW, ALPHA2, TABLE_DATA } from './constants/RouterPaths';
+import { WORLD_DASHBOARD, COUNTRY_VIEW, ALPHA2, SETTINGS } from './constants/RouterPaths';
 
 function Router() {
 
@@ -28,7 +28,7 @@ function Router() {
           <Redirect exact from="/" to={`/${WORLD_DASHBOARD}`} />
           <Route exact path={`/${WORLD_DASHBOARD}/:${ALPHA2}?`} component={WorldDashboard} />
           <Route exact path={`/${COUNTRY_VIEW}/:${ALPHA2}?`} component={CountryView} />
-          <Route exact path={`/${TABLE_DATA}`} component={TableData} />
+          <Route exact path={`/${SETTINGS}`} component={Settings} />
         </Switch>
       </div>
     </HashRouter>
