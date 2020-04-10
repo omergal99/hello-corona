@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/hello-corona/static/css/main.b9d0cd04.chunk.css",
-    "main.js": "/hello-corona/static/js/main.caa98b18.chunk.js",
-    "main.js.map": "/hello-corona/static/js/main.caa98b18.chunk.js.map",
+    "main.css": "/hello-corona/static/css/main.b00947f6.chunk.css",
+    "main.js": "/hello-corona/static/js/main.3484aaed.chunk.js",
+    "main.js.map": "/hello-corona/static/js/main.3484aaed.chunk.js.map",
     "runtime-main.js": "/hello-corona/static/js/runtime-main.251d0022.js",
     "runtime-main.js.map": "/hello-corona/static/js/runtime-main.251d0022.js.map",
     "static/js/2.0df349aa.chunk.js": "/hello-corona/static/js/2.0df349aa.chunk.js",
     "static/js/2.0df349aa.chunk.js.map": "/hello-corona/static/js/2.0df349aa.chunk.js.map",
     "index.html": "/hello-corona/index.html",
-    "precache-manifest.4baab4c08d82bca1aac0ba9c1994436b.js": "/hello-corona/precache-manifest.4baab4c08d82bca1aac0ba9c1994436b.js",
+    "precache-manifest.2942d7e6e835b892736f32efb1017f67.js": "/hello-corona/precache-manifest.2942d7e6e835b892736f32efb1017f67.js",
     "service-worker.js": "/hello-corona/service-worker.js",
-    "static/css/main.b9d0cd04.chunk.css.map": "/hello-corona/static/css/main.b9d0cd04.chunk.css.map",
+    "static/css/main.b00947f6.chunk.css.map": "/hello-corona/static/css/main.b00947f6.chunk.css.map",
     "static/js/2.0df349aa.chunk.js.LICENSE.txt": "/hello-corona/static/js/2.0df349aa.chunk.js.LICENSE.txt",
     "static/media/ad.png": "/hello-corona/static/media/ad.d325ec36.png",
     "static/media/af.png": "/hello-corona/static/media/af.f2868461.png",
@@ -32,7 +32,7 @@
   "entrypoints": [
     "static/js/runtime-main.251d0022.js",
     "static/js/2.0df349aa.chunk.js",
-    "static/css/main.b9d0cd04.chunk.css",
-    "static/js/main.caa98b18.chunk.js"
+    "static/css/main.b00947f6.chunk.css",
+    "static/js/main.3484aaed.chunk.js"
   ]
 }
