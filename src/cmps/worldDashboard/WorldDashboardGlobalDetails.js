@@ -4,8 +4,8 @@ function WorldDashboardGlobalDetails({ globalData }) {
 
   const data = [
     { key: 'cases', title: 'Cases' },
-    { key: 'deaths', title: 'Deaths' },
-    { key: 'recovered', title: 'Recovered' }
+    { key: 'deaths', title: 'Deaths', dividBy: 'cases' },
+    { key: 'recovered', title: 'Recovered', dividBy: 'cases' }
   ];
 
   const list = data.map(category => (
@@ -13,6 +13,13 @@ function WorldDashboardGlobalDetails({ globalData }) {
       <span className="pseudo-border"></span>
       <p>{category.title}</p>
       <p>{globalData[category.key]}</p>
+      {category.dividBy &&
+        <span className="wrap-precent">
+          <span className="precent">
+            {(globalData[category.key] / globalData[category.dividBy] * 100).toFixed()}%
+          </span>
+        </span>
+      }
     </li>
   ))
 
