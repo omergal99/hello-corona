@@ -1,5 +1,6 @@
 @import './cmps/navBar';
 @import './cmps/appLayout';
+@import './cmps/floatWindows';
 
 @import './cmps/countryView/countryViewList';
 @import './cmps/countryView/countryViewListItem';
@@ -7,10 +8,10 @@
 @import './cmps/countryView/countryViewPresentation';
 @import './cmps/countryView/countryViewDetails';
 
-
 @import './cmps/worldDashboard/worldDashboardMap';
 @import './cmps/worldDashboard/worldDashboardGlobalDetails';
 @import './cmps/worldDashboard/worldDashboardList';
 @import './cmps/worldDashboard/worldDashboardDetails';
 
 @import './cmps/helpers/filterInput';
+@import './cmps/helpers/ranbowRange';

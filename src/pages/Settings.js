@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import ColorControl from '../cmps/helpers/ColorControl';
 function Settings() {
-
-  const [value, setValue] = useState(200);
-
-  const updateColor = ({ target }) => {
-    setValue(target.value);
-    document.documentElement.style.setProperty('--base-color1', target.value);
-  }
 
   return (
     <div className="settings">
-      <div className="visual-settings">
-        <div className="base-color flex-col">
-          <span>{value}</span>
-          <input type="range" min="0" max="360" value={value} step="1"
-            onInput={updateColor} onChange={updateColor} />
-        </div>
+      <div className="visual-settings flex-col">
+        <h4 className="title">Color Primary</h4>
+        <ColorControl key="--base-color1" colorVar="--base-color1" />
+        <h4 className="title">Color Secondary</h4>
+        <ColorControl key="--base-color2" colorVar="--base-color2" />
       </div>
     </div>
   );

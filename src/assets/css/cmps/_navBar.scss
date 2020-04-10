@@ -1,33 +1,53 @@
 .nav-bar {
-  height: var(--navBar-height);
   position: fixed;
-  left: calc(var(--navBar-height) / 2 + var(--main-padding));
-  .nav-link {
-    height: 100%;
-    @include transform(skew(-45deg));
+  top: var(--main-padding);
+  left: 0;
+  height: var(--navBar-height);
+  width: 100%;
+  text-align: left;
+  padding: 0 calc(var(--navBar-height) / 2 + var(--main-padding));
+  display: flex;
+  align-items: center;
+  .nav-bar-links {
     display: inline-block;
-    color: var(--color1-font);
-    padding: 4px 0.75rem;
-    border-color: var(--color1-border);
-    border-style: solid;
-    border-width: 2px 3px 2px 3px;
-    transition: all .3s;
-    &.active {
-      background-color: var(--color1-light);
-      box-shadow: 0 0 6px var(--color1-border) inset, 0 0 6px var(--color1-border);
-    }
-    &:not(:last-child) {
-      border-right-width: 1px;
-    }
-    &:not(:first-child) {
-      border-left-width: 2px;
-    }
-    &:not(.active):hover{
-      box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
-    }
-    .text {
-      @include transform(skew(45deg));
+    .nav-link {
+      height: 100%;
+      @include transform(skew(-45deg));
       display: inline-block;
+      color: var(--color1-font);
+      padding: 4px 0.75rem;
+      border-color: var(--color1-border);
+      border-style: solid;
+      border-width: 2px 3px 2px 3px;
+      transition: all 0.3s;
+      &.active {
+        background-color: var(--color1-light);
+        box-shadow: 0 0 6px var(--color1-border) inset, 0 0 6px var(--color1-border);
+      }
+      &:not(:last-child) {
+        border-right-width: 1px;
+      }
+      &:not(:first-child) {
+        border-left-width: 2px;
+      }
+      &:not(.active):hover {
+        box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
+      }
+      .text {
+        @include transform(skew(45deg));
+        display: inline-block;
+      }
+    }
+  }
+  .float-windows-icon {
+    cursor: pointer;
+    margin: 0 0 0 1rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: rgba(221, 221, 221, 0.2);
     }
   }
 }

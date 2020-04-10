@@ -4,7 +4,7 @@ import { toTitleCase } from '../services/UtilsService';
 
 import { WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS } from '../constants/RouterPaths';
 
-function NavBar() {
+function NavBar({ onToggleFloatWindows }) {
 
   const navLinks = [WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS];
 
@@ -16,7 +16,10 @@ function NavBar() {
 
   return (
     <div className="nav-bar">
-      {list}
+      <div className="nav-bar-links">
+        {list}
+      </div>
+      <span className="float-windows-icon" onClick={onToggleFloatWindows}>+</span>
     </div>
   );
 }

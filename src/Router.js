@@ -12,7 +12,7 @@ import Settings from './pages/Settings';
 
 import { WORLD_DASHBOARD, COUNTRY_VIEW, ALPHA2, SETTINGS } from './constants/RouterPaths';
 
-function Router() {
+function Router({onToggleFloatWindows}) {
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ function Router() {
 
   return (
     <HashRouter>
-      <NavBar />
+      <NavBar onToggleFloatWindows={onToggleFloatWindows} />
       <div className="router">
         <Switch>
           <Redirect exact from="/" to={`/${WORLD_DASHBOARD}`} />
