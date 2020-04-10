@@ -7,6 +7,7 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const [filteredCountries, setFilteredCountries] = useState(countries.filter((c, idx) => idx < 40));
+  const [isFiltered, setIsFiltered] = useState(false);
 
   const list = filteredCountries.map((country, idx) => {
     return <WorldDashboardListItem key={country.id} country={country} idx={idx}
@@ -14,17 +15,25 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
       onSelectCountry={onSelectCountry} />
   })
 
+  const handleScroll = ev => {
+    if (isFiltered) return;
+    const scrollEnd = ev.target.scrollTop + 100 >= ev.target.scrollHeight - ev.target.clientHeight;
+    if (scrollEnd) setFilteredCountries(countries);
+  }
+
+  const filterCountries = filteredList => {
+    setFilteredCountries(filteredList);
+    setIsFiltered(true);
+  }
+
   return (
     <div className="world-dashboard-list flex-col">
       <div className="custom-filter-input">
         <FilterInput list={countries} filterKeys={['name']} placeholder="Search Country"
-          onFilter={setFilteredCountries} />
+          onFilter={filterCountries} />
       </div>
-      <ul className="countries">
+      <ul className="countries" onScroll={handleScroll}>
         {list}
-        <li className="load-more" onClick={() => setFilteredCountries(countries)}>
-          <h3>Load More</h3>
-        </li>
       </ul>
     </div>
   );
