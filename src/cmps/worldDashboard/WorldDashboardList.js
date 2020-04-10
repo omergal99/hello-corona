@@ -6,7 +6,7 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
   onSelectCountry }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
-  const [filteredCountries, setFilteredCountries] = useState(countries);
+  const [filteredCountries, setFilteredCountries] = useState(countries.filter((c, idx) => idx < 40));
 
   const list = filteredCountries.map((country, idx) => {
     return <WorldDashboardListItem key={country.id} country={country} idx={idx}
@@ -22,6 +22,9 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
       </div>
       <ul className="countries">
         {list}
+        <li className="load-more" onClick={() => setFilteredCountries(countries)}>
+          <h3>Load More</h3>
+        </li>
       </ul>
     </div>
   );
