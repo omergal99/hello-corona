@@ -20,17 +20,19 @@ function WorldDashboard() {
     if (!countriesStore) return;
     const { countries, selectedCountryIndex } = countriesStore;
     const isSelectedCountry = selectedCountryIndex || selectedCountryIndex === 0;
-    if (params.alpha2 && !isSelectedCountry) {
+    const isParamsInUrlWithCountry = params.alpha2 && !isSelectedCountry;
+    if (isParamsInUrlWithCountry) {
       const country = countries.find(country => country.alpha2 === params.alpha2);
       dispatch(actions.selectCountry(country));
     }
-    if (!params.alpha2 && isSelectedCountry) {
+    const isUrlCmpUnmount = !params.alpha2 && isSelectedCountry;
+    if (isUrlCmpUnmount) {
       history.push(`/${WORLD_DASHBOARD}/${countries[selectedCountryIndex].alpha2}`);
     }
   }, [dispatch, countriesStore, params, history]);
 
   const selectCountry = country => {
-    const alpha2ToPush = country.alpha2 === selectedCountry.alpha2 ? '' : country.alpha2;
+    const alpha2ToPush = country.alpha2 !== selectedCountry.alpha2 ? country.alpha2 : '';
     history.push(`/${WORLD_DASHBOARD}/${alpha2ToPush}`);
     dispatch(actions.selectCountry(country));
   }

@@ -16,7 +16,7 @@ function CountryViewPresentation({ selectedCountry }) {
     const max = bBox.width > bBox.height ? bBox.width : bBox.height;
     const bBoxX = bBox.width > bBox.height ? bBox.x : bBox.x - abs;
     const bBoxY = bBox.width > bBox.height ? bBox.y - abs : bBox.y;
-    setViewBox(`${bBoxX - 2} ${bBoxY - 2} ${max + 4} ${max + 4} `);
+    setViewBox(`${bBoxX - 2} ${bBoxY - 2} ${max + 4} ${max + 4}`);
     setDynamicRatio(max / initStroke);
   }, [selectedCountry])
 
@@ -28,7 +28,6 @@ function CountryViewPresentation({ selectedCountry }) {
         <path className="country-path" d={selectedCountry.d} ref={countryRef}
           style={{ strokeWidth: `${dynamicRatio}px` }}>
         </path>
-        {/* <circle cx="50" cy="50" r="50"/> */}
       </svg>
     </div>
   );
