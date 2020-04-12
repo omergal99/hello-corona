@@ -1,14 +1,16 @@
 import React from "react";
 
-function MapOptions({ isGCirclesShow, onToggleCircles }) {
+function MapOptions({ isCirclesShow, isAutoFocus,
+  onToggleIsCirclesShow, onToggleIsAutoFocus }) {
 
 
   return (
     <div className="map-options">
-      {/* <button className="toggle-circles" onClick={onToggleCircles}>Click</button> */}
-      <button className="toggle-circles"
-        onClick={() => onToggleCircles(!isGCirclesShow)}>
-        {isGCirclesShow ? 'Hide Circles' : 'Show Circles'}
+      <button className="toggle-btn" onClick={onToggleIsCirclesShow}>
+        {isCirclesShow ? 'Hide Circles' : 'Show Circles'}
+      </button>
+      <button className="toggle-btn" onClick={onToggleIsAutoFocus}>
+        {isAutoFocus ? 'Dissable Auto Focus' : 'Enable Auto Focus'}
       </button>
     </div>
   );

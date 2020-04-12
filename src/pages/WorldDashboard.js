@@ -12,6 +12,8 @@ import WorldDashboardDetails from '../cmps/worldDashboard/WorldDashboardDetails'
 function WorldDashboard() {
 
   const countriesStore = useSelector(state => state.countriesStore);
+  const settingsStore = useSelector(state => state.settingsStore);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const params = useParams();
@@ -37,17 +39,23 @@ function WorldDashboard() {
     dispatch(actions.selectCountry(country));
   }
 
+  const toggleIsCirclesShow = () => dispatch(actions.toggleIsCirclesShow());
+  const toggleIsAutoFocus = () => dispatch(actions.toggleIsAutoFocus());
+
+
   const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
     ? countriesStore.countries[selectedCountryIndex] : {};
   return (
-    <>{countriesStore && <>
+    <>{countriesStore && settingsStore && <>
       <div className="world-dashboard">
         <div className="wrap-global-and-list flex-col overflow-hidden">
           <WorldDashboardGlobalDetails globalData={countriesStore.globalData} />
           <WorldDashboardList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         </div>
-        <WorldDashboardMap countriesStore={countriesStore} onSelectCountry={selectCountry} />
+        <WorldDashboardMap countriesStore={countriesStore} settings={settingsStore.worldMap}
+          onSelectCountry={selectCountry} onToggleIsCirclesShow={toggleIsCirclesShow}
+          onToggleIsAutoFocus={toggleIsAutoFocus} />
         <WorldDashboardDetails selectedCountry={selectedCountry} />
       </div>
     </>}</>

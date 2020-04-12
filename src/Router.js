@@ -17,6 +17,7 @@ function Router({onToggleFloatWindows}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(actions.loadSettingsData());
     dispatch(actions.loadCountriesData());
   }, [dispatch]);
 

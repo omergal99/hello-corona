@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from "react";
 import countriesLabels from "../../../services/data/countriesLabels.json";
 
 function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom,
-  pathClassName, currPathName, isDragging, initZoom,
+  pathClassName, currPathName, isDragging, initZoom, isAutoFocus,
   onSetViewBox, onSetDynamicRatio, onSetMapView, onSelectCountry }) {
 
   const selectedCountryRef = useRef();
 
   useEffect(() => {
-    if (!selectedCountryRef.current) return;
+    if (!selectedCountryRef.current || !isAutoFocus) return;
     const bBox = selectedCountryRef.current.getBBox();
     if (selectedCountry.name === 'United States') bBox.width = 265;
     const abs = Math.abs(bBox.width - bBox.height) / 2;
@@ -19,7 +19,7 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom,
     onSetViewBox(`${x} ${y} ${zoom} ${zoom}`);
     onSetDynamicRatio(zoom / initZoom);
     onSetMapView({ zoom, x, y });
-  }, [selectedCountry, onSetViewBox, onSetDynamicRatio, onSetMapView, initZoom, minMapZoom])
+  }, [selectedCountry, onSetViewBox, onSetDynamicRatio, onSetMapView, initZoom, minMapZoom, isAutoFocus])
 
   const countriesPaths = countries.map(country => {
     const isSelected = country.name === selectedCountry.name;

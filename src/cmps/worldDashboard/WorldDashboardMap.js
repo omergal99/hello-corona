@@ -6,7 +6,8 @@ import GPaths from './mapUtils/GPaths';
 import MapOptions from './mapUtils/MapOptions';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
-  onSelectCountry }) {
+  settings: { isCirclesShow, isAutoFocus },
+  onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const initZoom = 554;
@@ -20,16 +21,14 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     initFontSize: initZoom / 30, initStroke: initZoom / 1000
   };
 
-  const [mapView, setMapView] = useState({ zoom: initZoom, x: 0, y: 0 });
   const [viewBox, setViewBox] = useState(`${args.minLeftSvg} ${args.minTopSvg} ${initZoom} ${initZoom}`);
+  const [mapView, setMapView] = useState({ zoom: initZoom, x: args.minLeftSvg, y: args.minTopSvg });
+  const [dynamicRatio, setDynamicRatio] = useState(1);
 
   const [isDragging, setIsDragging] = useState(false);
   const [pointerDiff, setPointerDiff] = useState({ x: 1, y: 1 });
 
-  const [dynamicRatio, setDynamicRatio] = useState(1);
   const [currPathName, setCurrPathName] = useState('');
-
-  const [isGCirclesShow, setIsGCirclesShow] = useState(true);
 
   const handleWheel = useCallback(ev => {
     const isMouseOnSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
@@ -53,10 +52,8 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       }
     }
     setDynamicRatio(mapView.zoom / initZoom);
-    selectedCountry.alpha2
-      ? setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`)
-      : setViewBox(`${mapView.x + args.minLeftSvg} ${mapView.y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
-  }, [mapView, args, selectedCountry]);
+    setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
+  }, [mapView, args]);
 
   useEffect(() => {
     window.addEventListener("mousewheel", handleWheel, { passive: false });
@@ -74,9 +71,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
       const y = mapView.y - (ev.clientY - pointerDiff.y) * dynamicRatio * ratioBySvgHeight;
       setMapView({ ...mapView, x, y });
-      selectedCountry.alpha2
-        ? setViewBox(`${x} ${y} ${mapView.zoom} ${mapView.zoom}`)
-        : setViewBox(`${x + args.minLeftSvg} ${y + args.minTopSvg} ${mapView.zoom} ${mapView.zoom}`);
+      setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
     }
     // if (ev.target.getAttribute('class').includes(pathClassName)) {
@@ -101,14 +96,15 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         <SvgDefsFilterShadow />
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName}
-          initZoom={initZoom} minMapZoom={args.minMapZoom}
+          initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus}
           onSetViewBox={setViewBox} onSetDynamicRatio={setDynamicRatio} onSetMapView={setMapView}
           onSelectCountry={onSelectCountry} />
-        {isGCirclesShow &&
+        {isCirclesShow &&
           <GCircles countries={countries} dynamicRatio={dynamicRatio} args={args} />
         }
       </svg>
-      <MapOptions isGCirclesShow={isGCirclesShow} onToggleCircles={setIsGCirclesShow} />
+      <MapOptions isCirclesShow={isCirclesShow} isAutoFocus={isAutoFocus}
+        onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus} />
     </div>
   );
 }
