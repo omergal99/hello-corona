@@ -8,7 +8,9 @@ function GCircles({ countries, dynamicRatio, args }) {
     if (!radius) return '';
     return <g key={country.id}>
       <circle className="country-circle-data" name={country.name}
-        cx={country.centerPoint.x} cy={country.centerPoint.y} r={radius * dynamicRatio} />
+        // style={{ cx: country.centerPoint.x, cy: country.centerPoint.y, r: radius * dynamicRatio }}
+        cx={country.centerPoint.x} cy={country.centerPoint.y} r={radius * dynamicRatio}
+      />
       <text className="circle-text" x={country.centerPoint.x} y={country.centerPoint.y}
         dy={`${radius * dynamicRatio / 3}px`} fontSize={`${radius * 0.8 * dynamicRatio}px`}>
         {`${calcRadius}${calcRadius < 1000 ? 'K' : 'M'}`}
