@@ -12,18 +12,8 @@ function ColorControl({ colorVar = '--default-css-var' }) {
     document.documentElement.style.setProperty(colorVar, target.value);
   }
 
-  // const forceUpdate = useCallback(() => {
-  //   setValueColor(Number(getComputedStyle(document.documentElement).getPropertyValue(colorVar)));
-  // }, [colorVar]);
-
   useEffect(() => {
-    // const forceUpdate = (() => {
-    //   setValueColor(Number(getComputedStyle(document.documentElement).getPropertyValue(colorVar)));
-    // });
-    // forceUpdate();
-    (() =>
-      setValueColor(Number(getComputedStyle(document.documentElement).getPropertyValue(colorVar)))
-    )();
+    (() => setValueColor(Number(getComputedStyle(document.documentElement).getPropertyValue(colorVar))))();
   })
 
   return (
