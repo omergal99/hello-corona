@@ -12,7 +12,7 @@ import Settings from './pages/Settings';
 
 import { WORLD_DASHBOARD, COUNTRY_VIEW, ALPHA2, SETTINGS } from './constants/RouterPaths';
 
-function Router({onToggleFloatWindows}) {
+function Router({ onToggleFloatWindows }) {
 
   const dispatch = useDispatch();
 
