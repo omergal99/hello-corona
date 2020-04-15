@@ -14,10 +14,12 @@ function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
   const categoryView = caterogies.map(category => {
+    const shortNum = UtilsService.numberToShortString(country[category.key]);
+    const commasNum = UtilsService.numberWithCommas(country[category.key]);
     return <div className="category flex-col" key={category.key}
-      title={`${category.title} ${country[category.key]}`}>
+      title={`${commasNum} ${category.title}`}>
       <span className="title">{category.title}</span>
-      <span className="value">{country[category.key]}</span>
+      <span className="value">{shortNum}</span>
     </div>
   })
 

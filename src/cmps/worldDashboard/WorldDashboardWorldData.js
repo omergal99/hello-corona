@@ -1,4 +1,5 @@
 import React from 'react';
+import UtilsService from '../../services/UtilsService';
 
 function WorldDashboardWorldData({ worldData }) {
 
@@ -12,7 +13,8 @@ function WorldDashboardWorldData({ worldData }) {
     <li className="global-detail flex-col" key={category.key}>
       <span className="pseudo-border"></span>
       <p>{category.title}</p>
-      <p>{worldData[category.key]}</p>
+      <p>{UtilsService.numberWithCommas(worldData[category.key])}</p>
+
       {category.dividBy &&
         <span className="wrap-precent">
           <span className="precent">

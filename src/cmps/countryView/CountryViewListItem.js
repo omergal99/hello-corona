@@ -1,4 +1,5 @@
 import React from 'react';
+import UtilsService from '../../services/UtilsService';
 
 function CountryViewListItem({ country, selectedCountry,
   onSelectCountry }) {
@@ -12,15 +13,15 @@ function CountryViewListItem({ country, selectedCountry,
         </div>
         <div>
           <span>Cases: </span>
-          <span>{country.cases}</span>
+          <span>{UtilsService.numberWithCommas(country.cases)}</span>
         </div>
         <div>
           <span>Deaths: </span>
-          <span>{country.deaths}</span>
+          <span>{UtilsService.numberWithCommas(country.deaths)}</span>
         </div>
         <div>
           <span>Recovered: </span>
-          <span>{country.recovered}</span>
+          <span>{UtilsService.numberWithCommas(country.recovered)}</span>
         </div>
       </div>
     </li>

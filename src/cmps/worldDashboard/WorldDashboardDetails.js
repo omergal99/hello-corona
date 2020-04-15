@@ -1,4 +1,5 @@
 import React from 'react';
+import UtilsService from '../../services/UtilsService';
 
 function WorldDashboardDetails({ selectedCountry }) {
 
@@ -17,15 +18,20 @@ function WorldDashboardDetails({ selectedCountry }) {
   ];
 
   const list = data.map(category => {
-    return <li className="selected-country-detail" key={category.key}
-      style={{ color: category.color }}>
+    return <li className="selected-country-detail" key={category.key} style={{ color: category.color }}>
       <span>{category.title}:&nbsp;</span>
-      <span>{selectedCountry[category.key] || selectedCountry[category.key] === 0 ? selectedCountry[category.key] :
-        selectedCountry[category.key] === undefined ? '' : 'No Data'}</span>
+
+      <span>
+        {selectedCountry[category.key] || selectedCountry[category.key] === 0
+          ? UtilsService.numberWithCommas(selectedCountry[category.key])
+          : selectedCountry[category.key] === undefined ? '' : 'No Data'}
+      </span>
+
       {category.dividBy && !!selectedCountry[category.key] &&
         <span style={{ textAlign: 'right' }} >
           {(selectedCountry[category.key] / selectedCountry[category.dividBy] * 100).toFixed(0)}%</span>
       }
+
     </li>
   })
 
