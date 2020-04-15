@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WorldDashboardGlobalDetails({ globalData }) {
+function WorldDashboardWorldData({ worldData }) {
 
   const data = [
     { key: 'cases', title: 'Cases' },
@@ -12,11 +12,11 @@ function WorldDashboardGlobalDetails({ globalData }) {
     <li className="global-detail flex-col" key={category.key}>
       <span className="pseudo-border"></span>
       <p>{category.title}</p>
-      <p>{globalData[category.key]}</p>
+      <p>{worldData[category.key]}</p>
       {category.dividBy &&
         <span className="wrap-precent">
           <span className="precent">
-            {(globalData[category.key] / globalData[category.dividBy] * 100).toFixed()}%
+            {(worldData[category.key] / worldData[category.dividBy] * 100).toFixed()}%
           </span>
         </span>
       }
@@ -25,7 +25,7 @@ function WorldDashboardGlobalDetails({ globalData }) {
 
   return (
     <div className="world-dashboard-global-details">
-      <h2 className="title">Global Data</h2>
+      <h2 className="title">World</h2>
       <ul className="global-details">
         {list}
       </ul>
@@ -33,4 +33,4 @@ function WorldDashboardGlobalDetails({ globalData }) {
   );
 }
 
-export default WorldDashboardGlobalDetails;
+export default WorldDashboardWorldData;

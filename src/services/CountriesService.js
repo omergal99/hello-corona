@@ -8,15 +8,16 @@ async function getData() {
   const initState = _getEmpty();
   if (ServiceConfig.isServerCountriesConnected) {
     const getCoronaCountries = ApiService.getCoronaCountries();
-    const getGlobalData = ApiService.getGlobalData();
+    // const getWorldData = ApiService.getWorldData();
     const serverCoronaCountries = await getCoronaCountries;
-    const serverGlobalData = await getGlobalData;
+    // const serverWorldData = await getWorldData;
 
     initState.countries = _mergeCoronaData(serverCoronaCountries);
-    initState.globalData = serverGlobalData;
+    initState.worldData = _pickWorldData(serverCoronaCountries);
   } else {
     initState.countries = _mergeCoronaData(JSONcoronaCountries);
-    initState.globalData = { "cases": 1510088, "deaths": 88335, "recovered": 329684 };
+    initState.worldData = _pickWorldData(JSONcoronaCountries);
+    // initState.worldData = { "cases": 1997666, "deaths": 126597, "recovered": 478503 };
   }
   return Promise.resolve(initState);
 }
@@ -28,7 +29,7 @@ export default {
 const _getEmpty = () => ({
   countries: [],
   selectedCountryIndex: null,
-  globalData: null
+  worldData: null
 })
 
 const _mergeCoronaData = coronaCountries => {
@@ -54,4 +55,9 @@ const _mergeCoronaData = coronaCountries => {
       testsPerOneMillion: coronaData ? coronaData.testsPerOneMillion : null,
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
+}
+
+const _pickWorldData = coronaCountries => {
+  const findWorld = coronaCountries.find(corona => corona.country === 'World');
+  return { ...findWorld, name: findWorld.country };
 }

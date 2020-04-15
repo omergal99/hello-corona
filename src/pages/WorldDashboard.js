@@ -6,7 +6,7 @@ import { WORLD_DASHBOARD } from '../constants/RouterPaths';
 
 import WorldDashboardMap from '../cmps/worldDashboard/WorldDashboardMap';
 import WorldDashboardList from '../cmps/worldDashboard/WorldDashboardList';
-import WorldDashboardGlobalDetails from '../cmps/worldDashboard/WorldDashboardGlobalDetails';
+import WorldDashboardWorldData from '../cmps/worldDashboard/WorldDashboardWorldData';
 import WorldDashboardDetails from '../cmps/worldDashboard/WorldDashboardDetails';
 
 function WorldDashboard() {
@@ -45,12 +45,13 @@ function WorldDashboard() {
 
   const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
-    ? countriesStore.countries[selectedCountryIndex] : {};
+    ? countriesStore.countries[selectedCountryIndex]
+    : countriesStore ? countriesStore.worldData : {};
   return (
     <>{countriesStore && settingsStore && <>
       <div className="world-dashboard">
         <div className="wrap-global-and-list flex-col overflow-hidden">
-          <WorldDashboardGlobalDetails globalData={countriesStore.globalData} />
+          <WorldDashboardWorldData worldData={countriesStore.worldData} />
           <WorldDashboardList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         </div>
         <WorldDashboardMap countriesStore={countriesStore} settings={settingsStore.worldMap}
