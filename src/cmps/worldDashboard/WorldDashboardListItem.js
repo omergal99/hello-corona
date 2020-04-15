@@ -14,7 +14,7 @@ function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
   const categoryView = caterogies.map(category => {
-    const shortNum = UtilsService.numberToShortString(country[category.key]);
+    const shortNum = UtilsService.numberWithCommas(country[category.key]);
     const commasNum = UtilsService.numberWithCommas(country[category.key]);
     return <div className="category flex-col" key={category.key}
       title={`${commasNum} ${category.title}`}>
@@ -38,9 +38,9 @@ function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry
               <span className="rank-icon">❱❱</span>
               {idx + 1}
             </span>
-            <div className="cases" title={`Today Cases ${country.todayCases}`}>
+            <div className="cases" title={`Today Cases ${UtilsService.numberWithCommas(country.todayCases)}`}>
               <div className="wrap-icon-svg"><VirusSVG /></div>
-              <span className="cases-value">+{country.todayCases}</span>
+              <span className="cases-value">+{UtilsService.numberWithCommas(country.todayCases)}</span>
             </div>
           </div>
         </div>
