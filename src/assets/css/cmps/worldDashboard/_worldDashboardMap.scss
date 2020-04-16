@@ -50,23 +50,19 @@
     bottom: 0.75rem;
     left: 0.75rem;
     width: calc(100% - 1.5rem);
-    display: flex;
-    :not(:last-child) {
-      margin: 0 0.5rem 0 0;
+    & > :not(:last-child) {
+      margin: 0 0 0.5rem 0;
     }
-    .toggle-btn {
-      cursor: pointer;
-      background-color: hsla(var(--base-color1), 100%, 20%, 1);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      display: block;
-      font-size: 1rem;
-      border-radius: 4px;
-      color: white;
-      outline: transparent;
-      padding: 3px 6px 1px 6px;
-      transition: all 0.3s;
-      &:hover {
-        background-color: hsla(var(--base-color1), 100%, 24%, 1);
+    .circles-options {
+      display: flex;
+      :not(:last-child) {
+        margin: 0 0.5rem 0 0;
+      }
+    }
+    .main-options {
+      display: flex;
+      :not(:last-child) {
+        margin: 0 0.5rem 0 0;
       }
     }
   }
