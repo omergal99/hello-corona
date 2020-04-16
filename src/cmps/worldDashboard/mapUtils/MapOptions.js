@@ -2,7 +2,7 @@ import React from "react";
 import Button from '../../elements/Button';
 import { CASES, DEATHS, RECOVERED, TOTAL_TESTS, getDataKeysByKeys } from '../../../constants/DataKeys';
 
-function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey,
+function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES,
   onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey }) {
 
   const circleClicked = key => {
@@ -14,6 +14,7 @@ function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey,
   const circlesDataButtons = circlesData.map(circle => {
     const isActive = circlesDataKey === circle.key;
     return <Button key={circle.key} text={circle.title} type={`${circle.color} ${isActive && 'active'}`}
+      style={{ fontSize: '0.8rem' }}
       onClick={() => circleClicked(circle.key)} />
   })
 

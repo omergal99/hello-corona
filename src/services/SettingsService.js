@@ -37,7 +37,7 @@ const _getEmpty = () => ({
   worldMap: {
     viewBox: '',
     isCirclesShow: true,
-    circlesDataKey: null,
+    circlesDataKey: undefined,
     isAutoFocus: true,
   }
 })
