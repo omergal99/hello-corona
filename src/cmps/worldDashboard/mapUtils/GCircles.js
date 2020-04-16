@@ -1,15 +1,18 @@
 import React from "react";
 import UtilsService from '../../../services/UtilsService';
+import { CASES, getDataKeyByKey } from '../../../constants/DataKeys';
 
-function GCircles({ countries, dynamicRatio, args }) {
+function GCircles({ circlesDataKey = CASES, countries, dynamicRatio, args }) {
 
   const countriesCircles = countries.map(country => {
-    const calcRadius = (country.cases / 1000).toFixed();
-    const radius = calcRadius > 15 ? 17 : calcRadius > 5 ? 12 : calcRadius > 1 ? 8 : 0;
-    const shortNum = UtilsService.numberToShortString(country.cases);
+    const calcRadius = (country[circlesDataKey] / 1000).toFixed();
+    const radius = calcRadius > 15 ? 17 : calcRadius > 5 ? 13 : calcRadius > 1 ? 9 : 0;
     if (!radius) return '';
+    const shortNum = UtilsService.numberToShortString(country[circlesDataKey]);
+    const dataKey = getDataKeyByKey(circlesDataKey);
+    const fill = `${dataKey.colorHEX}1a`;
     return <g key={country.id}>
-      <circle className="country-circle-data" name={country.name}
+      <circle className="country-circle-data" name={country.name} style={{ fill }}
         // style={{ cx: country.centerPoint.x, cy: country.centerPoint.y, r: radius * dynamicRatio }}
         cx={country.centerPoint.x} cy={country.centerPoint.y} r={radius * dynamicRatio}
       />

@@ -15,6 +15,9 @@ export default (state = initialState, action) => {
     case ActionTypes.WORLD_MAP_TOGGLE_IS_AUTO_FOCUS:
       copy.worldMap.isAutoFocus = !copy.worldMap.isAutoFocus;
       return copy;
+    case ActionTypes.WORLD_MAP_SET_CIRCLES_DATA_KEY:
+      copy.worldMap.circlesDataKey = action.payload;
+      return copy;
     default:
       return state;
   }

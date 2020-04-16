@@ -1,18 +1,15 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
 import VirusSVG from '../helpers/svg-icons/VirusSVG';
+import { CASES, DEATHS, RECOVERED, CRITICAL, getDataKeysByKeys } from '../../constants/DataKeys';
 
 function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry }) {
 
-  const caterogies = [
-    { title: 'Cases', key: 'cases' },
-    { title: 'Deaths', key: 'deaths' },
-    { title: 'Recovered', key: 'recovered' },
-    { title: 'Critical', key: 'critical' },
-  ]
-
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
+
+  const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, CRITICAL]);
+  
   const categoryView = caterogies.map(category => {
     const shortNum = UtilsService.numberWithCommas(country[category.key]);
     const commasNum = UtilsService.numberWithCommas(country[category.key]);

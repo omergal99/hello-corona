@@ -41,7 +41,8 @@ function WorldDashboard() {
 
   const toggleIsCirclesShow = () => dispatch(actions.toggleIsCirclesShow());
   const toggleIsAutoFocus = () => dispatch(actions.toggleIsAutoFocus());
-
+  const setCirclesDataKey = dataKey => dispatch(actions.setCirclesDataKey(dataKey));
+  
 
   const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
@@ -56,7 +57,7 @@ function WorldDashboard() {
         </div>
         <WorldDashboardMap countriesStore={countriesStore} settings={settingsStore.worldMap}
           onSelectCountry={selectCountry} onToggleIsCirclesShow={toggleIsCirclesShow}
-          onToggleIsAutoFocus={toggleIsAutoFocus} />
+          onToggleIsAutoFocus={toggleIsAutoFocus} onSetCirclesDataKey={setCirclesDataKey} />
         <WorldDashboardDetails selectedCountry={selectedCountry} />
       </div>
     </>}</>

@@ -17,6 +17,14 @@
       &:not(:last-child) {
         margin: 0 0 0.5rem 0;
       }
+      .title {
+        display: flex;
+        align-items: center;
+        .wrap-icon-svg {
+          height: 1.1rem;
+          width: 1.1rem;
+        }
+      }
     }
   }
 }

@@ -1,13 +1,10 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
+import { CASES, DEATHS, RECOVERED, getDataKeysByKeys } from '../../constants/DataKeys';
 
 function WorldDashboardWorldData({ worldData }) {
 
-  const data = [
-    { key: 'cases', title: 'Cases' },
-    { key: 'deaths', title: 'Deaths', dividBy: 'cases' },
-    { key: 'recovered', title: 'Recovered', dividBy: 'cases' }
-  ];
+  const data = getDataKeysByKeys([CASES, DEATHS, RECOVERED]);
 
   const list = data.map(category => (
     <li className="global-detail flex-col" key={category.key}>

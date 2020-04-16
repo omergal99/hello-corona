@@ -25,10 +25,17 @@ function toggleIsAutoFocus() {
     SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
   }
 }
+function setCirclesDataKey(dataKey) {
+  return async (dispatch, getState) => {
+    dispatch({ type: ActionTypes.WORLD_MAP_SET_CIRCLES_DATA_KEY, payload: dataKey });
+    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+  }
+}
 
 export default {
   loadSettingsData,
   toggleIsCirclesShow,
   toggleIsAutoFocus,
   updateColors,
+  setCirclesDataKey,
 }

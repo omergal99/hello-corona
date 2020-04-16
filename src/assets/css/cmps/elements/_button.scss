@@ -14,4 +14,42 @@
       background-color: hsla(var(--base-color1), 100%, 24%, 1);
     }
   }
+  $opacity: 0.2;
+  $opacityHover: 0.7;
+  &.lightblue {
+    background-color: rgba(0, 128, 128, $opacity);
+    &.active {
+      background-color: #008080;
+    }
+    &:hover {
+      background-color: rgba(0, 128, 128, $opacityHover);
+    }
+  }
+  &.firebrick {
+    background-color: rgba(178, 34, 34, $opacity);
+    &.active {
+      background-color: firebrick;
+    }
+    &:hover {
+      background-color: rgba(178, 34, 34, $opacityHover);
+    }
+  }
+  &.mediumseagreen {
+    background-color: rgba(60, 179, 114, $opacity);
+    &.active {
+      background-color: mediumseagreen;
+    }
+    &:hover {
+      background-color: rgba(60, 179, 114, $opacityHover);
+    }
+  }
+  &.dodgerblue {
+    background-color: rgba(30, 143, 255, $opacity);
+    &.active {
+      background-color: dodgerblue;
+    }
+    &:hover {
+      background-color: rgba(30, 143, 255, $opacityHover);
+    }
+  }
 }

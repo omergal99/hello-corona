@@ -6,8 +6,8 @@ import GPaths from './mapUtils/GPaths';
 import MapOptions from './mapUtils/MapOptions';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
-  settings: { isCirclesShow, isAutoFocus },
-  onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus }) {
+  settings: { isCirclesShow, circlesDataKey, isAutoFocus },
+  onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const initZoom = 554;
@@ -100,11 +100,12 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
           onSetViewBox={setViewBox} onSetDynamicRatio={setDynamicRatio} onSetMapView={setMapView}
           onSelectCountry={onSelectCountry} />
         {isCirclesShow &&
-          <GCircles countries={countries} dynamicRatio={dynamicRatio} args={args} />
+          <GCircles circlesDataKey={circlesDataKey} countries={countries} dynamicRatio={dynamicRatio} args={args} />
         }
       </svg>
-      <MapOptions isCirclesShow={isCirclesShow} isAutoFocus={isAutoFocus}
-        onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus} />
+      <MapOptions isCirclesShow={isCirclesShow} isAutoFocus={isAutoFocus} circlesDataKey={circlesDataKey}
+        onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus}
+        onSetCirclesDataKey={onSetCirclesDataKey} />
     </div>
   );
 }

@@ -1,23 +1,11 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
 
+import { getAllDataKeys } from '../../constants/DataKeys';
+
 function CountryViewDetails({ selectedCountry }) {
 
-  const data = [
-    { key: 'cases', title: 'Cases', color: 'lightblue' },
-    { key: 'todayCases', title: 'Today Cases', dividBy: 'cases', color: 'lightblue' },
-    { key: 'deaths', title: 'Deaths', dividBy: 'cases', color: 'FireBrick' },
-    { key: 'todayDeaths', title: 'Today Deaths', dividBy: 'deaths', color: 'FireBrick' },
-    { key: 'recovered', title: 'Recovered', dividBy: 'cases', color: 'MediumSpringGreen' },
-    { key: 'active', title: 'Active', dividBy: 'cases', color: 'orange' },
-    { key: 'critical', title: 'Critical', dividBy: 'cases', color: 'DarkOrchid' },
-    { key: 'casesPerOneMillion', title: 'Cases Per 1M' },
-    { key: 'deathsPerOneMillion', title: 'Deaths Per 1M' },
-    { key: 'totalTests', title: 'Teststed', color: 'dodgerblue' },
-    { key: 'testsPerOneMillion', title: 'Tests Per 1M', color: 'dodgerblue' },
-  ];
-
-  const list = data.map(category => {
+  const list = getAllDataKeys().map(category => {
     return <li className="selected-country-detail" key={category.key}
       style={{ color: category.color }}>
       <span>{category.title}:&nbsp;</span>

@@ -1,6 +1,7 @@
 import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
 import countries from './data/countries.json';
+import * as DataKeys from '../constants/DataKeys';
 
 import ServiceConfig from '../config/ServiceConfig';
 
@@ -42,17 +43,17 @@ const _mergeCoronaData = coronaCountries => {
       || (corona.country === 'USA' && country.name === 'United States'));
     return {
       ...country,
-      cases: coronaData ? coronaData.cases : null,
-      todayCases: coronaData ? coronaData.todayCases : null,
-      deaths: coronaData ? coronaData.deaths : null,
-      todayDeaths: coronaData ? coronaData.todayDeaths : null,
-      recovered: coronaData ? coronaData.recovered : null,
-      active: coronaData ? coronaData.active : null,
-      critical: coronaData ? coronaData.critical : null,
-      casesPerOneMillion: coronaData ? coronaData.casesPerOneMillion : null,
-      deathsPerOneMillion: coronaData ? coronaData.deathsPerOneMillion : null,
-      totalTests: coronaData ? coronaData.totalTests : null,
-      testsPerOneMillion: coronaData ? coronaData.testsPerOneMillion : null,
+      [DataKeys.CASES]: coronaData ? coronaData.cases : null,
+      [DataKeys.TODAY_CASES]: coronaData ? coronaData.todayCases : null,
+      [DataKeys.DEATHS]: coronaData ? coronaData.deaths : null,
+      [DataKeys.TODAY_DEATHS]: coronaData ? coronaData.todayDeaths : null,
+      [DataKeys.RECOVERED]: coronaData ? coronaData.recovered : null,
+      [DataKeys.ACTIVE]: coronaData ? coronaData.active : null,
+      [DataKeys.CRITICAL]: coronaData ? coronaData.critical : null,
+      [DataKeys.CASES_PER_ONE_MILLION]: coronaData ? coronaData.casesPerOneMillion : null,
+      [DataKeys.DEATHS_PER_ONE_MILLION]: coronaData ? coronaData.deathsPerOneMillion : null,
+      [DataKeys.TOTAL_TESTS]: coronaData ? coronaData.totalTests : null,
+      [DataKeys.TESTS_PER_ONE_MILLION]: coronaData ? coronaData.testsPerOneMillion : null,
     }
   }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
 }
