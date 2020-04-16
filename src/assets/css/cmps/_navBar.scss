@@ -41,13 +41,32 @@
   }
   .float-windows-icon {
     cursor: pointer;
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.5rem;
     padding: 0 0.5rem;
     border-radius: 4px;
     font-size: 1.4rem;
     transition: background-color 0.3s;
     &:hover {
       background-color: rgba(221, 221, 221, 0.2);
+    }
+  }
+  .wrap-icon-svg {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    svg {
+      fill: var(--color1-border);
+      g :first-child {
+        fill: hsla(var(--base-color1), 75%, 50%, 1);
+      }
+    }
+    &.top-left {
+      top: -7px;
+      left: 5px;
+    }
+    &.top-right {
+      top: -7px;
+      right: 5px;
     }
   }
 }

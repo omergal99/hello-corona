@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { toTitleCase } from '../services/UtilsService';
-
+import VirusLogoSVG from './helpers/svg-icons/VirusLogoSVG';
 import { WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS } from '../constants/RouterPaths';
 
 function NavBar({ onToggleFloatWindows }) {
@@ -20,6 +20,8 @@ function NavBar({ onToggleFloatWindows }) {
         {list}
       </div>
       <span className="float-windows-icon" onClick={onToggleFloatWindows}>+</span>
+      <div className="wrap-icon-svg top-left"><VirusLogoSVG /></div>
+      <div className="wrap-icon-svg top-right"><VirusLogoSVG /></div>
     </div>
   );
 }
