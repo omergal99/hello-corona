@@ -26,8 +26,8 @@ export const getAllDataKeys = () => ([
   { key: RECOVERED, title: 'Recovered', dividBy: 'cases', color: 'mediumseagreen', colorHEX: '#3cb371', svgIcon: <HeartbeatSVG /> },
   { key: ACTIVE, title: 'Active', dividBy: 'cases', color: 'orange', colorHEX: '#ffa500', svgIcon: <VirusSVG /> },
   { key: CRITICAL, title: 'Critical', dividBy: 'cases', color: 'darkorchid', colorHEX: '#9932cc', svgIcon: <SickBedSVG /> },
-  { key: CASES_PER_ONE_MILLION, title: 'Cases Per 1M' },
-  { key: DEATHS_PER_ONE_MILLION, title: 'Deaths Per 1M' },
+  { key: CASES_PER_ONE_MILLION, title: 'Cases Per 1M', color: 'lightblue', colorHEX: '#add8e6', },
+  { key: DEATHS_PER_ONE_MILLION, title: 'Deaths Per 1M', color: 'firebrick', colorHEX: '#b22222', },
   { key: TOTAL_TESTS, title: 'Teststed', color: 'dodgerblue', colorHEX: '#1e90ff', svgIcon: <TestTubeSVG /> },
   { key: TESTS_PER_ONE_MILLION, title: 'Tests Per 1M', color: 'dodgerblue', colorHEX: '#1e90ff' },
 ])

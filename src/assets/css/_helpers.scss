@@ -21,6 +21,11 @@
   flex-direction: column;
 }
 
+.flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /********** Text **********/
 
 .text-wrap {

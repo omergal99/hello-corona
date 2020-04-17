@@ -106,7 +106,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         <SvgDefsFilterShadow />
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName}
-          initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus}
+          initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus} isTooltipShow={isTooltipShow}
           onSetViewBox={setViewBox} onSetDynamicRatio={setDynamicRatio} onSetMapView={setMapView}
           onSelectCountry={onSelectCountry} />
         {isCirclesShow &&

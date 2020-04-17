@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import countriesLabels from "../../../services/data/countriesLabels.json";
 
 function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom,
-  pathClassName, currPathName, isDragging, initZoom, isAutoFocus,
+  pathClassName, currPathName, isDragging, initZoom, isAutoFocus, isTooltipShow,
   onSetViewBox, onSetDynamicRatio, onSetMapView, onSelectCountry }) {
 
   const selectedCountryRef = useRef();
@@ -29,9 +29,9 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom,
       alpha2={country.alpha2} name={country.name} d={country.d}
       onClick={() => onSelectCountry(country)}
       ref={isSelected ? selectedCountryRef : undefined}>
-      <title>{country.name}</title>
+      {!isTooltipShow && <title>{country.name}</title>}
     </path>
-  })
+  })  
 
   const countriesPathsLabels = countriesLabels.map(country => {
     return <path className="country-path-label" d={country.d} key={country.id}></path>
