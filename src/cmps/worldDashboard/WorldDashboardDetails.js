@@ -1,9 +1,10 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
 import { getAllDataKeys } from '../../constants/DataKeys';
-import GraphLines from '../helpers/graphs/GraphLines';
+import GraphRows from '../helpers/graphs/GraphRows';
 
-function WorldDashboardDetails({ selectedCountry }) {
+function WorldDashboardDetails({ countriesStore: { countries, selectedCountryIndex, worldData } }) {
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : worldData;
 
   const detailsList = getAllDataKeys().map(category => {
     return <li className="selected-country-detail" key={category.key} style={{ color: category.color }}>
@@ -32,7 +33,7 @@ function WorldDashboardDetails({ selectedCountry }) {
       <ul className="selected-country-details">
         {detailsList}
       </ul>
-      <GraphLines />
+      <GraphRows countries={countries} />
     </div>
   );
 }

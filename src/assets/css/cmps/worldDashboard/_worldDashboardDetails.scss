@@ -4,7 +4,7 @@
   min-width: 16rem;
   margin: 0 auto;
   .selected-country-name {
-    padding: 0.25rem 0 0.5rem;
+    padding: 0.25rem 0;
   }
   .selected-country-details {
     @include scrollbar();

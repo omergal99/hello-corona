@@ -34,7 +34,8 @@ function WorldDashboard() {
   }, [dispatch, countriesStore, params, history]);
 
   const selectCountry = country => {
-    const alpha2ToPush = country.alpha2 !== selectedCountry.alpha2 ? country.alpha2 : '';
+    const isSameCountry = country.alpha2 === countriesStore.countries[countriesStore.selectedCountryIndex].alpha2;
+    const alpha2ToPush = isSameCountry ? '' : country.alpha2;
     history.push(`/${WORLD_DASHBOARD}/${alpha2ToPush}`);
     dispatch(actions.selectCountry(country));
   }
@@ -43,12 +44,7 @@ function WorldDashboard() {
   const toggleIsAutoFocus = () => dispatch(actions.toggleIsAutoFocus());
   const setCirclesDataKey = dataKey => dispatch(actions.setCirclesDataKey(dataKey));
   const toggleIsTooltipShow = () => dispatch(actions.toggleIsTooltipShow());
-  
 
-  const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
-  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
-    ? countriesStore.countries[selectedCountryIndex]
-    : countriesStore ? countriesStore.worldData : {};
   return (
     <>{countriesStore && settingsStore && <>
       <div className="world-dashboard">
@@ -60,7 +56,7 @@ function WorldDashboard() {
           onSelectCountry={selectCountry} onToggleIsCirclesShow={toggleIsCirclesShow}
           onToggleIsAutoFocus={toggleIsAutoFocus} onSetCirclesDataKey={setCirclesDataKey}
           onToggleIsTooltipShow={toggleIsTooltipShow} />
-        <WorldDashboardDetails selectedCountry={selectedCountry} />
+        <WorldDashboardDetails countriesStore={countriesStore} />
       </div>
     </>}</>
   );

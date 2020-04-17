@@ -36,6 +36,9 @@
     width: 100%;
     height: 30%;
     margin: 0 auto 0.5rem auto;
+    .graph-lines {
+      display: none;
+    }
   }
   .world-dashboard-global-details {
     display: none;

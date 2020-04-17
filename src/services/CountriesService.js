@@ -34,6 +34,7 @@ const _getEmpty = () => ({
 })
 
 const _mergeCoronaData = coronaCountries => {
+  const sortBy = DataKeys.CASES;
   return countries.map(country => {
     const coronaData = coronaCountries.find(corona => corona.country === country.name
       || (corona.country === 'UK' && country.name === 'United Kingdom')
@@ -55,7 +56,7 @@ const _mergeCoronaData = coronaCountries => {
       [DataKeys.TOTAL_TESTS]: coronaData ? coronaData.totalTests : null,
       [DataKeys.TESTS_PER_ONE_MILLION]: coronaData ? coronaData.testsPerOneMillion : null,
     }
-  }).sort((b, a) => (a.cases > b.cases) ? 1 : ((b.cases > a.cases) ? -1 : 0))
+  }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }
 
 const _pickWorldData = coronaCountries => {
