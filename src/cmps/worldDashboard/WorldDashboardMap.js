@@ -4,10 +4,11 @@ import SvgDefsFilterShadow from '../helpers/mapHelpers/SvgDefsFilterShadow';
 import GCircles from './mapUtils/GCircles';
 import GPaths from './mapUtils/GPaths';
 import MapOptions from './mapUtils/MapOptions';
+import MapTooltip from './mapUtils/MapTooltip';
 
 function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
-  settings: { isCirclesShow, circlesDataKey, isAutoFocus },
-  onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey }) {
+  settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow },
+  onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const initZoom = 554;
@@ -27,6 +28,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
 
   const [isDragging, setIsDragging] = useState(false);
   const [pointerDiff, setPointerDiff] = useState({ x: 1, y: 1 });
+  const [tooltip, setTooltip] = useState(null);
 
   const [currPathName, setCurrPathName] = useState('');
 
@@ -74,9 +76,17 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
     }
-    // if (ev.target.getAttribute('class').includes(pathClassName)) {
-    //   console.log(ev.target.getAttribute('name'));
-    // }
+    if (isTooltipShow) {
+      if (ev.target.getAttribute('class').includes(pathClassName)) {
+        setTooltip({
+          name: ev.target.getAttribute('name'),
+          alpha2: ev.target.getAttribute('alpha2'),
+          style: { top: ev.clientY - 110, left: ev.clientX - 310 }
+        });
+      } else {
+        setTooltip(null);
+      }
+    }
   }
   const stopDrag = () => {
     setIsDragging(false);
@@ -104,8 +114,10 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         }
       </svg>
       <MapOptions isCirclesShow={isCirclesShow} isAutoFocus={isAutoFocus} circlesDataKey={circlesDataKey}
+        isTooltipShow={isTooltipShow}
         onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus}
-        onSetCirclesDataKey={onSetCirclesDataKey} />
+        onSetCirclesDataKey={onSetCirclesDataKey} onToggleIsTooltipShow={onToggleIsTooltipShow} />
+      {tooltip && <MapTooltip tooltip={tooltip} />}
     </div>
   );
 }

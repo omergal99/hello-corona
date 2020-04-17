@@ -66,4 +66,22 @@
       }
     }
   }
+  .map-tooltip {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 2px 4px;
+    color: white;
+    outline: transparent;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: hsla(var(--base-color1), 100%, 20%, 1);
+    .tooltip-img {
+      height: 1.6rem;
+    }
+    .tooltip-title {
+      margin: 0 0 0 0.25rem;
+    }
+  }
 }

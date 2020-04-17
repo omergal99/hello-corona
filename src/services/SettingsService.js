@@ -36,6 +36,7 @@ export default {
 const _getEmpty = () => ({
   worldMap: {
     viewBox: '',
+    isTooltipShow: true,
     isCirclesShow: true,
     circlesDataKey: undefined,
     isAutoFocus: true,

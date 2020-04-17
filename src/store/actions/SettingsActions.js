@@ -19,6 +19,13 @@ function toggleIsCirclesShow() {
   }
 }
 
+function toggleIsTooltipShow() {
+  return async (dispatch, getState) => {
+    dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_TOOLTIP_SHOW });
+    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+  }
+}
+
 function toggleIsAutoFocus() {
   return async (dispatch, getState) => {
     dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_AUTO_FOCUS });
@@ -38,4 +45,5 @@ export default {
   toggleIsAutoFocus,
   updateColors,
   setCirclesDataKey,
+  toggleIsTooltipShow,
 }

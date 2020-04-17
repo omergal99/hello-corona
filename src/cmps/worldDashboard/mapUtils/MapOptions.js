@@ -2,8 +2,8 @@ import React from "react";
 import Button from '../../elements/Button';
 import { CASES, DEATHS, RECOVERED, TOTAL_TESTS, getDataKeysByKeys } from '../../../constants/DataKeys';
 
-function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES,
-  onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey }) {
+function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES, isTooltipShow,
+  onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow }) {
 
   const circleClicked = key => {
     if (circlesDataKey !== key) onSetCirclesDataKey(key);
@@ -32,6 +32,8 @@ function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES,
           onClick={onToggleIsCirclesShow} />
         <Button text="Dissable Auto Focus" toggleText="Enable Auto Focus" textCondition={isAutoFocus}
           onClick={onToggleIsAutoFocus} />
+        <Button text="Hide Tooltip" toggleText="Show Tooltip" textCondition={isTooltipShow}
+          onClick={onToggleIsTooltipShow} />
       </div>
 
     </div>

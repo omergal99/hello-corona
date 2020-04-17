@@ -12,6 +12,9 @@ export default (state = initialState, action) => {
     case ActionTypes.WORLD_MAP_TOGGLE_IS_CIRCLES_SHOW:
       copy.worldMap.isCirclesShow = !copy.worldMap.isCirclesShow;
       return copy;
+    case ActionTypes.WORLD_MAP_TOGGLE_IS_TOOLTIP_SHOW:
+      copy.worldMap.isTooltipShow = !copy.worldMap.isTooltipShow;
+      return copy;
     case ActionTypes.WORLD_MAP_TOGGLE_IS_AUTO_FOCUS:
       copy.worldMap.isAutoFocus = !copy.worldMap.isAutoFocus;
       return copy;
