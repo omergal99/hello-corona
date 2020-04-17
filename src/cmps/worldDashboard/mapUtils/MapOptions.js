@@ -28,11 +28,11 @@ function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES, isTool
       }
 
       <div className="main-options">
-        <Button text="Hide Circles" toggleText="Show Circles" textCondition={isCirclesShow}
+        <Button text="Circles" textCondition={isCirclesShow} isBoolean={true}
           onClick={onToggleIsCirclesShow} />
-        <Button text="Dissable Auto Focus" toggleText="Enable Auto Focus" textCondition={isAutoFocus}
+        <Button text="Auto Focus" textCondition={isAutoFocus} isBoolean={true}
           onClick={onToggleIsAutoFocus} />
-        <Button text="Hide Tooltip" toggleText="Show Tooltip" textCondition={isTooltipShow}
+        <Button text="Tooltip" textCondition={isTooltipShow} isBoolean={true}
           onClick={onToggleIsTooltipShow} />
       </div>
 

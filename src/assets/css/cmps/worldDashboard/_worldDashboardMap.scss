@@ -55,13 +55,13 @@
     }
     .circles-options {
       display: flex;
-      :not(:last-child) {
+      & > :not(:last-child) {
         margin: 0 0.5rem 0 0;
       }
     }
     .main-options {
       display: flex;
-      :not(:last-child) {
+      & > :not(:last-child) {
         margin: 0 0.5rem 0 0;
       }
     }
