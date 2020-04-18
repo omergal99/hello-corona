@@ -81,7 +81,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         setTooltip({
           name: ev.target.getAttribute('name'),
           alpha2: ev.target.getAttribute('alpha2'),
-          style: { top: ev.clientY - 110, left: ev.clientX - 310 }
+          style: { top: ev.nativeEvent.offsetY - 50, left: ev.nativeEvent.offsetX + 25 }
         });
       } else {
         setTooltip(null);
