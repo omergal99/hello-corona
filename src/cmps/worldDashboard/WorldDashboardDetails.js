@@ -1,16 +1,18 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
-import { getAllDataKeys } from '../../constants/DataKeys';
+import { CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS, getAllDataKeys } from '../../constants/DataKeys';
 import GraphRows from '../helpers/graphs/GraphRows';
 
 function WorldDashboardDetails({ countriesStore: { countries, selectedCountryIndex, worldData } }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : worldData;
 
+  const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS];
   const detailsList = getAllDataKeys().map(category => {
+    const isWishIcon = categoriesToAddIcon.some(key => key === category.key);
     return <li className="selected-country-detail" key={category.key} style={{ color: category.color }}>
       <span className="title">
         {category.title}:&nbsp;
-        {category.svgIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
+        {isWishIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
       </span>
 
       <span className="value">

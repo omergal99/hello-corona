@@ -34,10 +34,11 @@ function GraphRows({ countries }) {
   const diff = 5;
   return (
     <div className="graph-rows">
-      <h3 className="title" onClick={toggleGraph}>
+      <div className="wrap-title" onClick={toggleGraph}>
         <div className="wrap-icon-svg"><ReplaceSVG /></div>
-        <span>{graphDataKey.title}</span>
-      </h3>
+        <h3 className="title">{graphDataKey.title}</h3>
+        <div className="wrap-icon-svg" style={{ color: graphDataKey.color }}>{graphDataKey.svgIcon}</div>
+      </div>
       <ul className="rows">
         {list}
         <li className="flex-evenly">
