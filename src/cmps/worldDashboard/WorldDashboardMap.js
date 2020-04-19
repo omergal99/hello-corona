@@ -26,11 +26,12 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   const [mapView, setMapView] = useState({ zoom: initZoom, x: args.minLeftSvg, y: args.minTopSvg });
   const [dynamicRatio, setDynamicRatio] = useState(1);
 
+  const [didDrag, setDidDrag] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [pointerDiff, setPointerDiff] = useState({ x: 1, y: 1 });
   const [tooltip, setTooltip] = useState(null);
 
-  const [currPathName, setCurrPathName] = useState('');
+  const [currPathName, setCurrPathName] = useState(null);
 
   const handleWheel = useCallback(ev => {
     const isMouseOnSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
@@ -75,6 +76,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
       setMapView({ ...mapView, x, y });
       setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
+      (ev.movementX !== 0 || ev.movementY !== 0) && setDidDrag(true);
     }
     if (isTooltipShow) {
       if (ev.target.getAttribute('class').includes(pathClassName)) {
@@ -90,6 +92,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
   }
   const stopDrag = () => {
     setIsDragging(false);
+    setTimeout(() => setDidDrag(false), 0);
   }
 
   const handleScroll = ev => {
@@ -105,7 +108,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         onMouseDown={startDrag} onMouseMove={handleMouseMove} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
         <SvgDefsFilterShadow />
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
-          currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName}
+          currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName} didDrag={didDrag}
           initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus} isTooltipShow={isTooltipShow}
           onSetViewBox={setViewBox} onSetDynamicRatio={setDynamicRatio} onSetMapView={setMapView}
           onSelectCountry={onSelectCountry} />
@@ -117,7 +120,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         isTooltipShow={isTooltipShow}
         onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus}
         onSetCirclesDataKey={onSetCirclesDataKey} onToggleIsTooltipShow={onToggleIsTooltipShow} />
-      {tooltip && <MapTooltip tooltip={tooltip} />}
+      {isTooltipShow && tooltip && <MapTooltip tooltip={tooltip} />}
     </div>
   );
 }
