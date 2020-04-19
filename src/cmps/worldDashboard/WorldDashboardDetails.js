@@ -3,7 +3,8 @@ import UtilsService from '../../services/UtilsService';
 import { CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS, getAllDataKeys } from '../../constants/DataKeys';
 import GraphRows from '../helpers/graphs/GraphRows';
 
-function WorldDashboardDetails({ countriesStore: { countries, selectedCountryIndex, worldData } }) {
+function WorldDashboardDetails({ countriesStore: { countries, selectedCountryIndex, worldData },
+  onSelectCountry }) {
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : worldData;
 
   const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS];
@@ -35,7 +36,7 @@ function WorldDashboardDetails({ countriesStore: { countries, selectedCountryInd
       <ul className="selected-country-details">
         {detailsList}
       </ul>
-      <GraphRows countries={countries} />
+      <GraphRows countries={countries} onSelectCountry={onSelectCountry} />
     </div>
   );
 }

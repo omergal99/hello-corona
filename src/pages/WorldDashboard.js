@@ -61,7 +61,7 @@ function WorldDashboard() {
           onSelectCountry={selectCountry} onToggleIsCirclesShow={toggleIsCirclesShow}
           onToggleIsAutoFocus={toggleIsAutoFocus} onSetCirclesDataKey={setCirclesDataKey}
           onToggleIsTooltipShow={toggleIsTooltipShow} />
-        <WorldDashboardDetails countriesStore={countriesStore} />
+        <WorldDashboardDetails countriesStore={countriesStore} onSelectCountry={selectCountry} />
       </div>
     </>}</>
   );

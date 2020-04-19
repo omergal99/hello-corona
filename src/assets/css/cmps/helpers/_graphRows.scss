@@ -40,7 +40,14 @@
       border-radius: 2px;
       background-color: rgb(77, 77, 77);
       .name {
+        cursor: pointer;
         white-space: nowrap;
+        transition: all 0.3s;
+        &:hover {
+          position: relative;
+          top: -1px;
+          text-decoration: underline;
+        }
       }
     }
   }
