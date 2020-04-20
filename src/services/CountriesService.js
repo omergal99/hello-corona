@@ -1,6 +1,7 @@
 import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
 import countries from './data/countries.json';
+import countriesPopulation from './data/countriesPopulation.json';
 import * as DataKeys from '../constants/DataKeys';
 
 import ServiceConfig from '../config/ServiceConfig';
@@ -60,6 +61,11 @@ const _mergeCoronaData = coronaCountries => {
 }
 
 const _pickWorldData = coronaCountries => {
-  const findWorld = coronaCountries.find(corona => corona.country === 'World');
-  return { ...findWorld, name: findWorld.country };
+  const coronaWorld = coronaCountries.find(corona => corona.country === 'World');
+  const populationWorld = countriesPopulation.find(pop => pop.officialName === 'World');
+  return {
+    ...coronaWorld,
+    name: coronaWorld.country,
+    [DataKeys.POPULATION]: populationWorld.populationInThousands2020 * 1000
+  };
 }
