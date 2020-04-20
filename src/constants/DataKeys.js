@@ -26,7 +26,7 @@ export const getAllDataKeys = () => ([
 ])
 
 export const getCoronaDataKeys = () => ([
-  { key: CASES, title: 'Cases', dividBy: POPULATION, color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
+  { key: CASES, title: 'Cases', color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
   { key: TODAY_CASES, title: 'Today Cases', dividBy: CASES, color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
   { key: DEATHS, title: 'Deaths', dividBy: CASES, color: 'firebrick', colorHEX: '#b22222', svgIcon: <HeartBrokenSVG /> },
   { key: TODAY_DEATHS, title: 'Today Deaths', dividBy: 'deaths', color: 'firebrick', colorHEX: '#b22222', svgIcon: <HeartBrokenSVG /> },

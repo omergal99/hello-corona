@@ -16,14 +16,15 @@ function WorldDashboardDetails({ countriesStore: { countries, selectedCountryInd
     const value = selectedCountry[category.key] || selectedCountry[category.key] === 0
       ? UtilsService.numberWithCommas(selectedCountry[category.key])
       : selectedCountry[category.key] === undefined ? '' : 'No Data';
-    const percent = selectedCountry[category.key] / selectedCountry[category.dividBy] * 100;
+      const dividBy = category.key === CASES ? POPULATION : category.dividBy;
+    const percent = selectedCountry[category.key] / selectedCountry[dividBy] * 100;
     return <li className="selected-country-detail" key={category.key} style={{ color: category.color }}>
       <span className="title">
         {category.title}:&nbsp;
         {isWishIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
       </span>
       <span className="value" title={value}>{value}</span>
-      {category.dividBy && !!selectedCountry[category.key] &&
+      {dividBy && !!selectedCountry[category.key] &&
         <span className="percent" title={percent.toFixed(2)}>
           {Number(percent.toFixed(0)) !== 0 ? percent.toFixed(0) : percent.toFixed(2)}
           %
