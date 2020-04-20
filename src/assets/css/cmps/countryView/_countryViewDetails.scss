@@ -12,11 +12,14 @@
     overflow: auto;
     text-align: left;
     .selected-country-detail {
-      padding: 0 0.5rem 0 0;
+      padding: 0 0.4rem 0 0;
       display: grid;
-      grid-template-columns: 50% 34% 16%;
+      grid-template-columns: 48% 36% 16%;
       &:not(:last-child) {
         margin: 0 0 0.5rem 0;
+      }
+      .percent {
+        text-align: right;
       }
     }
   }

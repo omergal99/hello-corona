@@ -36,8 +36,11 @@
     width: 100%;
     height: 30%;
     margin: 0 auto 0.5rem auto;
-    .graph-lines {
+    .graph-rows {
       display: none;
+    }
+    .selected-country-details{
+      max-height: 100%;
     }
   }
   .world-dashboard-global-details {

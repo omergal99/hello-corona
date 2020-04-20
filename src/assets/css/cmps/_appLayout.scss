@@ -10,6 +10,7 @@
     left: 0;
     height: 100vh;
     overflow: hidden;
+    z-index: -1;
     .border {
       position: absolute;
       background-color: var(--color1-light);

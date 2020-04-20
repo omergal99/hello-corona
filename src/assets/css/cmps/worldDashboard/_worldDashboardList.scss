@@ -1,15 +1,18 @@
-$numeric-code-left: 0.875rem;
+$numeric-code-left: 1rem;
 .world-dashboard-list {
   // transform: perspective(100vh) scale(0.95) rotateY(8deg);
   overflow: hidden;
   .countries {
     overflow: auto;
     @include scrollbar();
-    background-color: var(--color1-dark);
+    // background-color: var(--color1-dark);
     .country {
       cursor: pointer;
       position: relative;
-      margin: 0.25rem 0.25rem 0.25rem $numeric-code-left;
+      // margin: 0.25rem 0.25rem 0.25rem $numeric-code-left;
+      border-color: var(--color1-dark);
+      border-width: 0.25rem 0.25rem 0 $numeric-code-left;
+      border-style: solid;
       background-color: hsla(var(--base-color1), 25%, 25%, 1);
       transition: background-color 0.3s;
       &:not(.selected):hover {

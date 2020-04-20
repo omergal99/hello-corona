@@ -48,10 +48,12 @@ function GraphRows({ countries, onSelectCountry }) {
         {list}
         <li className="flex-evenly">
           {rowsAmount > diff &&
-            <Button text={`- ${diff}`} style={{ fontWeight: 'bold' }} onClick={() => setRowsAmount(rowsAmount - diff)} />
+            <Button text={`− ${diff}`} style={{ fontWeight: 'bold', width: '2.5rem' }}
+              onClick={() => setRowsAmount(rowsAmount - diff)} />
           }
           {rowsAmount < diff * 10 &&
-            <Button text={`+ ${diff}`} style={{ fontWeight: 'bold' }} onClick={() => setRowsAmount(rowsAmount + diff)} />
+            <Button text={`+ ${diff}`} style={{ fontWeight: 'bold', width: '2.5rem' }}
+              onClick={() => setRowsAmount(rowsAmount + diff)} />
           }
         </li>
       </ul>
