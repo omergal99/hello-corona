@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/hello-corona/static/css/main.46a18ecc.chunk.css",
-    "main.js": "/hello-corona/static/js/main.25da7577.chunk.js",
-    "main.js.map": "/hello-corona/static/js/main.25da7577.chunk.js.map",
+    "main.css": "/hello-corona/static/css/main.a8333f7a.chunk.css",
+    "main.js": "/hello-corona/static/js/main.b14b87c1.chunk.js",
+    "main.js.map": "/hello-corona/static/js/main.b14b87c1.chunk.js.map",
     "runtime-main.js": "/hello-corona/static/js/runtime-main.251d0022.js",
     "runtime-main.js.map": "/hello-corona/static/js/runtime-main.251d0022.js.map",
-    "static/js/2.09de21c2.chunk.js": "/hello-corona/static/js/2.09de21c2.chunk.js",
-    "static/js/2.09de21c2.chunk.js.map": "/hello-corona/static/js/2.09de21c2.chunk.js.map",
+    "static/js/2.6bd2d34c.chunk.js": "/hello-corona/static/js/2.6bd2d34c.chunk.js",
+    "static/js/2.6bd2d34c.chunk.js.map": "/hello-corona/static/js/2.6bd2d34c.chunk.js.map",
     "index.html": "/hello-corona/index.html",
-    "precache-manifest.2bd3d6315117a9e640ed8b384430e1bb.js": "/hello-corona/precache-manifest.2bd3d6315117a9e640ed8b384430e1bb.js",
+    "precache-manifest.da5aa4c57963714a66892acddf62dc41.js": "/hello-corona/precache-manifest.da5aa4c57963714a66892acddf62dc41.js",
     "service-worker.js": "/hello-corona/service-worker.js",
-    "static/css/main.46a18ecc.chunk.css.map": "/hello-corona/static/css/main.46a18ecc.chunk.css.map",
-    "static/js/2.09de21c2.chunk.js.LICENSE.txt": "/hello-corona/static/js/2.09de21c2.chunk.js.LICENSE.txt",
+    "static/css/main.a8333f7a.chunk.css.map": "/hello-corona/static/css/main.a8333f7a.chunk.css.map",
+    "static/js/2.6bd2d34c.chunk.js.LICENSE.txt": "/hello-corona/static/js/2.6bd2d34c.chunk.js.LICENSE.txt",
     "static/media/ad.png": "/hello-corona/static/media/ad.d325ec36.png",
     "static/media/af.png": "/hello-corona/static/media/af.f2868461.png",
     "static/media/bt.png": "/hello-corona/static/media/bt.a17fc74f.png",
     "static/media/bz.png": "/hello-corona/static/media/bz.eedc0e43.png",
     "static/media/ck.png": "/hello-corona/static/media/ck.4cd37162.png",
+    "static/media/earth.gif": "/hello-corona/static/media/earth.510f2e3c.gif",
     "static/media/ec.png": "/hello-corona/static/media/ec.2838cc6f.png",
     "static/media/kg.png": "/hello-corona/static/media/kg.663f992d.png",
     "static/media/kz.png": "/hello-corona/static/media/kz.5e6d0614.png",
@@ -31,8 +32,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.251d0022.js",
-    "static/js/2.09de21c2.chunk.js",
-    "static/css/main.46a18ecc.chunk.css",
-    "static/js/main.25da7577.chunk.js"
+    "static/js/2.6bd2d34c.chunk.js",
+    "static/css/main.a8333f7a.chunk.css",
+    "static/js/main.b14b87c1.chunk.js"
   ]
 }
