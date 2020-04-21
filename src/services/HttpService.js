@@ -31,7 +31,7 @@ async function _customAxios(method, entityName = '', data = null, extraMsg = '')
     // console.log(extraMsg, res);
     return res.data;
   } catch (err) {
-    console.log('Error in Service ', extraMsg);
+    console.log('Error in Service', extraMsg);
     if (err.response) console.log(err.response.data);
     else console.log(err);
   }

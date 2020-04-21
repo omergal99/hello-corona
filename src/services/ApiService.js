@@ -21,7 +21,7 @@ async function _customGet(url, extraMsg) {
     const res = await axios({ method: 'get', url })
     return res.data;
   } catch (err) {
-    console.log('Error in Service ', extraMsg);
+    console.log('Error in Service', extraMsg);
     if (err.response) console.log(err.response.data);
     else console.log(err);
   }

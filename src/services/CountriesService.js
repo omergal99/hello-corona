@@ -8,19 +8,15 @@ import ServiceConfig from '../config/ServiceConfig';
 
 async function getData() {
   const initState = _getEmpty();
+  let coronaCountries = JSONcoronaCountries;
   if (ServiceConfig.isServerCountriesConnected) {
     const getCoronaCountries = ApiService.getCoronaCountries();
-    // const getWorldData = ApiService.getWorldData();
     const serverCoronaCountries = await getCoronaCountries;
-    // const serverWorldData = await getWorldData;
-
-    initState.countries = _mergeCoronaData(serverCoronaCountries);
-    initState.worldData = _createWorldData(serverCoronaCountries);
-  } else {
-    initState.countries = _mergeCoronaData(JSONcoronaCountries);
-    initState.worldData = _createWorldData(JSONcoronaCountries);
-    // initState.worldData = { "cases": 1997666, "deaths": 126597, "recovered": 478503 };
+    if (serverCoronaCountries) coronaCountries = serverCoronaCountries;
+    else alert('There is problem with data access.\nDisplays latest system data.');
   }
+  initState.countries = _mergeCoronaData(coronaCountries);
+  initState.worldData = _createWorldData(coronaCountries);
   return Promise.resolve(initState);
 }
 
