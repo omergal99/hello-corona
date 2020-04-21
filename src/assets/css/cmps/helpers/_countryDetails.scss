@@ -1,0 +1,44 @@
+.country-details {
+  .country-details-title {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0.5rem 0;
+    .wrap-country-flag {
+      margin: 0 0.5rem 0 0;
+      height: 3rem;
+      text-align: right;
+      .country-flag {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .country-details-list {
+    @include scrollbar();
+    overflow: auto;
+    text-align: left;
+    padding: 0 0.5rem 0 0;
+    .country-details-item {
+      padding: 0 0.4rem 0 0;
+      display: grid;
+      grid-template-columns: 48% 36% 16%;
+      &:not(:last-child) {
+        padding: 0 0 0.5rem 0;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        .wrap-icon-svg {
+          height: 1.1rem;
+          width: 1.1rem;
+        }
+      }
+      .population {
+        grid-column: 2 / 4;
+      }
+      .percent {
+        text-align: right;
+      }
+    }
+  }
+}

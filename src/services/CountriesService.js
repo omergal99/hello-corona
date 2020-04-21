@@ -15,10 +15,10 @@ async function getData() {
     // const serverWorldData = await getWorldData;
 
     initState.countries = _mergeCoronaData(serverCoronaCountries);
-    initState.worldData = _pickWorldData(serverCoronaCountries);
+    initState.worldData = _createWorldData(serverCoronaCountries);
   } else {
     initState.countries = _mergeCoronaData(JSONcoronaCountries);
-    initState.worldData = _pickWorldData(JSONcoronaCountries);
+    initState.worldData = _createWorldData(JSONcoronaCountries);
     // initState.worldData = { "cases": 1997666, "deaths": 126597, "recovered": 478503 };
   }
   return Promise.resolve(initState);
@@ -60,12 +60,13 @@ const _mergeCoronaData = coronaCountries => {
   }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }
 
-const _pickWorldData = coronaCountries => {
+const _createWorldData = coronaCountries => {
   const coronaWorld = coronaCountries.find(corona => corona.country === 'World');
   const populationWorld = countriesPopulation.find(pop => pop.officialName === 'World');
   return {
     ...coronaWorld,
-    name: coronaWorld.country,
-    [DataKeys.POPULATION]: populationWorld.populationInThousands2020 * 1000
+    name: 'World',
+    gifName: 'earth',
+    [DataKeys.POPULATION]: populationWorld.populationInThousands2020 * 1000,
   };
 }

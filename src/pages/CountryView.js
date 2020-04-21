@@ -43,7 +43,7 @@ function CountryView() {
       <div className="country-view">
         <CountryViewList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         <CountryViewPresentation selectedCountry={selectedCountry} />
-        <CountryViewDetails selectedCountry={selectedCountry} />
+        <CountryViewDetails selectedCountry={selectedCountry} worldData={countriesStore.worldData} />
         <CountryViewBottom />
       </div>
     </>}</>

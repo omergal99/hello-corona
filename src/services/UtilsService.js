@@ -15,6 +15,10 @@ export function getImgSrc(entityImg) {
   return src
 }
 
+export function getGifSrc(entityImg) {
+  return require(`../assets/gifs/${entityImg}`);
+}
+
 export function toTitleCase(string) {
   return string.replace('-', ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 }
@@ -37,6 +41,7 @@ export default {
   makeShallowCopy,
   makeDeepCopy,
   getImgSrc,
+  getGifSrc,
   toTitleCase,
   numberWithCommas,
   numberToShortString

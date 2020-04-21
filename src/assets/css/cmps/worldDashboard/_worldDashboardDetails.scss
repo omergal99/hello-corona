@@ -3,50 +3,7 @@
   max-width: 19rem;
   min-width: 16rem;
   margin: 0 auto;
-  .selected-country-title {
-    display: flex;
-    align-items: center;
-    padding: 0 0 0.5rem 0;
-    .wrap-country-flag {
-      margin: 0 0.5rem 0 0;
-      height: 3rem;
-      text-align: right;
-      .country-flag {
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-  .selected-country-details {
-    @include scrollbar();
-    overflow: auto;
-    text-align: left;
-    max-height: 40%;
-    padding: 0 0.5rem 0 0;
-    .selected-country-detail {
-      padding: 0 0.4rem 0 0;
-      display: grid;
-      grid-template-columns: 48% 36% 16%;
-      &:not(:last-child) {
-        padding: 0 0 0.5rem 0;
-      }
-      .title {
-        display: flex;
-        align-items: center;
-        .wrap-icon-svg {
-          height: 1.1rem;
-          width: 1.1rem;
-        }
-      }
-      .population {
-        grid-column: 2 / 4;
-      }
-      .percent {
-        text-align: right;
-      }
-    }
-  }
-  .graph-rows {
-    flex-shrink: 100000;
+  .country-details {
+    max-height: 50%;
   }
 }
