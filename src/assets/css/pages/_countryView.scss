@@ -3,6 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 20% 50% 30%;
+  grid-template-columns: 20fr 50fr 30fr;
   grid-template-rows: 85% 15%;
   grid-gap: 0.5rem;
   overflow: hidden;

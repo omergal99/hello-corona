@@ -94,6 +94,10 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     setIsDragging(false);
     setTimeout(() => setDidDrag(false), 0);
   }
+  const handleMouseLeave = () => {
+    stopDrag();
+    setTooltip(null);
+  }
 
   const handleScroll = ev => {
     console.log(ev);
@@ -105,7 +109,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
     <div className="world-dashboard-map">
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onScroll={handleScroll} onWheel={handleWheel}
-        onMouseDown={startDrag} onMouseMove={handleMouseMove} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
+        onMouseDown={startDrag} onMouseMove={handleMouseMove} onMouseUp={stopDrag} onMouseLeave={handleMouseLeave}>
         <SvgDefsFilterShadow />
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName} didDrag={didDrag}
