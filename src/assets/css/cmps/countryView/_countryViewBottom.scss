@@ -9,15 +9,20 @@
     .lighter {
       height: 60vh;
       position: absolute;
-      bottom: 2vh;
+      bottom: 5vh;
       width: 26vh;
-      background: linear-gradient(to bottom, #0000 0%, hsla(var(--base-color1), 71%, 55%, 0.15) 100%);
+      background: linear-gradient(
+        180deg,
+        transparent,
+        hsla(var(--base-color1), 71%, 55%, 0.2),
+        hsla(var(--base-color1), 71%, 55%, 0.4)
+      );
     }
     .lighter-1 {
-      border-radius: 50% 120% 11vh 11vh;
+      border-radius: 50% 50% 26vh 26vh / 130% 130% 100% 100%;
     }
     .lighter-2 {
-      border-radius: 120% 50% 11vh 11vh;
+      border-radius: 20% 20% 360vh 360vh / 130% 130% 2000% 2000%;
     }
     .loader-svg {
       overflow: hidden;
@@ -36,19 +41,22 @@
           stroke-width: 2px;
           stroke-linecap: round;
           stroke-dasharray: 15.5;
-          // animation: spin 8s linear infinite;
+          animation: spin 8s linear;
+          animation-iteration-count: 2;
         }
         .spiner-2 {
           stroke-width: 3px;
           stroke-linecap: round;
           stroke-dasharray: 11.6;
-          // animation: spin-reverse 12s linear infinite;
+          animation: spin-reverse 12s linear;
+          animation-iteration-count: 1;
         }
         .spiner-3 {
           stroke-width: 9px;
           stroke-linecap: unset;
           stroke-dasharray: 2.2;
-          // animation: spin 14s linear infinite;
+          animation: spin 16s linear;
+          animation-iteration-count: 1;
         }
       }
     }
