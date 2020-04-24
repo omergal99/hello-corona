@@ -3,13 +3,25 @@
     display: flex;
     align-items: center;
     padding: 0 0 0.5rem 0;
-    .wrap-country-flag {
+    .wrap-country-icon {
+      $icon-height: 3rem;
       margin: 0 0.5rem 0 0;
-      height: 3rem;
       text-align: right;
+      height: $icon-height;
+      &.earth {
+        border-radius: 50%;
+        overflow: hidden;
+        max-width: $icon-height;
+      }
       .country-flag {
-        height: 100%;
         object-fit: cover;
+        height: 100%;
+      }
+      .country-earth {
+        height: 105%;
+        position: relative;
+        left: -2%;
+        top: -2%;
       }
     }
   }

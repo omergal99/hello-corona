@@ -1,24 +1,26 @@
-.wrap-country {
-  padding: 0.5rem 0.25rem 0;
-  background-color: var(--color1-dark);
-  &:last-child {
-    padding: 0.5rem 0.25rem;
-  }
-  .country {
-    cursor: pointer;
-    padding: 0.5rem;
-    background-color: var(--color1-normal);
-    border: 1px solid var(--color1-border);
-    transition: all 0.3s;
-    margin: 0 0.5rem;
-    &:hover {
-      background-color: var(--color1-dark);
+.country-view-list {
+  .wrap-country {
+    padding: 0.5rem 0.25rem 0;
+    background-color: var(--color1-dark);
+    &:last-child {
+      padding: 0.5rem 0.25rem;
     }
-    &.selected {
-      margin: 0;
-      background-color: var(--color1-dark);
-      border-color: var(--color2-border);
-      box-shadow: 0 0 4px var(--color2-border) inset, 0 0 4px var(--color2-border);
+    .country {
+      cursor: pointer;
+      padding: 0.5rem;
+      background-color: var(--color1-normal);
+      border: 1px solid var(--color1-border);
+      transition: all 0.3s;
+      margin: 0 0.5rem;
+      &:hover {
+        background-color: var(--color1-dark);
+      }
+      &.selected {
+        margin: 0;
+        background-color: var(--color1-dark);
+        border-color: var(--color2-border);
+        box-shadow: 0 0 4px var(--color2-border) inset, 0 0 4px var(--color2-border);
+      }
     }
   }
 }

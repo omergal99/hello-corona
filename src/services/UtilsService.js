@@ -6,6 +6,10 @@ export function makeDeepCopy(state) {
   return JSON.parse(JSON.stringify(state));
 }
 
+export function getSrc(entityImg) {
+  return require(`../assets/gifs/${entityImg}`);
+}
+
 export function getImgSrc(entityImg) {
   let src = '';
   try {
@@ -13,10 +17,6 @@ export function getImgSrc(entityImg) {
   }
   catch (err) { }
   return src
-}
-
-export function getGifSrc(entityImg) {
-  return require(`../assets/gifs/${entityImg}`);
 }
 
 export function toTitleCase(string) {
@@ -40,8 +40,8 @@ function numberToShortString(number) {
 export default {
   makeShallowCopy,
   makeDeepCopy,
+  getSrc,
   getImgSrc,
-  getGifSrc,
   toTitleCase,
   numberWithCommas,
   numberToShortString
