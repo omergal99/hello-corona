@@ -1,6 +1,6 @@
 import React from "react";
 import Button from '../../elements/Button';
-import { CASES, DEATHS, RECOVERED, TOTAL_TESTS, getDataKeysByKeys } from '../../../constants/DataKeys';
+import { CASES, DEATHS, RECOVERED, TESTS, getDataKeysByKeys } from '../../../constants/DataKeys';
 
 function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES, isTooltipShow,
   onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow }) {
@@ -9,7 +9,7 @@ function MapOptions({ isCirclesShow, isAutoFocus, circlesDataKey = CASES, isTool
     if (circlesDataKey !== key) onSetCirclesDataKey(key);
   }
 
-  const circlesData = getDataKeysByKeys([CASES, DEATHS, RECOVERED, TOTAL_TESTS]);
+  const circlesData = getDataKeysByKeys([CASES, DEATHS, RECOVERED, TESTS]);
 
   const circlesDataButtons = circlesData.map(circle => {
     const isActive = circlesDataKey === circle.key;

@@ -1,5 +1,6 @@
 import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
+import JSONcoronaWorld from './data/JSONcoronaWorld.json';
 import countries from './data/countries.json';
 import countriesPopulation from './data/countriesPopulation.json';
 import * as DataKeys from '../constants/DataKeys';
@@ -9,14 +10,20 @@ import ServiceConfig from '../config/ServiceConfig';
 async function getData() {
   const initState = _getEmpty();
   let coronaCountries = JSONcoronaCountries;
+  let coronaWorld = JSONcoronaWorld;
   if (ServiceConfig.isServerCountriesConnected) {
     const getCoronaCountries = ApiService.getCoronaCountries();
+    const getCoronaWorld = ApiService.getCoronaWorld();
     const serverCoronaCountries = await getCoronaCountries;
-    if (serverCoronaCountries) coronaCountries = serverCoronaCountries;
+    const serverCoronaWorld = await getCoronaWorld;
+    if (serverCoronaCountries) {
+      coronaCountries = serverCoronaCountries;
+      coronaWorld = serverCoronaWorld;
+    }
     else alert('There is problem with data access.\nDisplays latest system data.');
   }
   initState.countries = _mergeCoronaData(coronaCountries);
-  initState.worldData = _createWorldData(coronaCountries);
+  initState.worldData = _createWorldData(coronaWorld);
   return Promise.resolve(initState);
 }
 
@@ -50,14 +57,14 @@ const _mergeCoronaData = coronaCountries => {
       [DataKeys.CRITICAL]: coronaData ? coronaData.critical : null,
       [DataKeys.CASES_PER_ONE_MILLION]: coronaData ? coronaData.casesPerOneMillion : null,
       [DataKeys.DEATHS_PER_ONE_MILLION]: coronaData ? coronaData.deathsPerOneMillion : null,
-      [DataKeys.TOTAL_TESTS]: coronaData ? coronaData.totalTests : null,
+      [DataKeys.TESTS]: coronaData ? coronaData.tests : null,
       [DataKeys.TESTS_PER_ONE_MILLION]: coronaData ? coronaData.testsPerOneMillion : null,
     }
   }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }
 
-const _createWorldData = coronaCountries => {
-  const coronaWorld = coronaCountries.find(corona => corona.country === 'World');
+const _createWorldData = coronaWorld => {
+  // const coronaWorld = coronaCountries.find(corona => corona.country === 'World');
   const populationWorld = countriesPopulation.find(pop => pop.officialName === 'World');
   return {
     ...coronaWorld,

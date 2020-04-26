@@ -1,13 +1,13 @@
 import React from 'react';
 import UtilsService from '../../../services/UtilsService';
 import {
-  POPULATION, CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS,
+  POPULATION, CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS,
   getCoronaDataKeys, getDataKeyByKey
 } from '../../../constants/DataKeys';
 
 function CountryDetailsList({ country }) {
 
-  const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TOTAL_TESTS];
+  const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS];
   const coronaDetails = getCoronaDataKeys().map(category => {
     const isWishIcon = categoriesToAddIcon.some(key => key === category.key);
     const value = country[category.key] || country[category.key] === 0
