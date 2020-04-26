@@ -8,7 +8,7 @@ async function getCoronaCountries() {
 }
 
 async function getCoronaWorld() {
-  return await _customGet(ApiUrls.GET_GLOBAL_DATA, 'getCoronaWorld');
+  return await _customGet(ApiUrls.GET_WORLD_DATA, 'getCoronaWorld');
 }
 
 export default {

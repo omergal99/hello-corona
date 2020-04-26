@@ -19,6 +19,7 @@ export const TESTS = 'tests';
 export const TESTS_PER_ONE_MILLION = 'testsPerOneMillion';
 export const CASES_PER_ONE_MILLION = 'casesPerOneMillion';
 export const DEATHS_PER_ONE_MILLION = 'deathsPerOneMillion';
+export const CONTINENT = 'continent';
 
 export const getAllDataKeys = () => ([
   { key: POPULATION, title: 'Population', color: 'dodgerblue', colorHEX: '#1e90ff' },

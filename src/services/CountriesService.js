@@ -1,6 +1,6 @@
 import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
-import JSONcoronaWorld from './data/JSONcoronaWorld.json';
+import JSONcoronaWorld from './data/coronaWorld.json';
 import countries from './data/countries.json';
 import countriesPopulation from './data/countriesPopulation.json';
 import * as DataKeys from '../constants/DataKeys';
@@ -40,12 +40,21 @@ const _getEmpty = () => ({
 const _mergeCoronaData = coronaCountries => {
   const sortBy = DataKeys.CASES;
   return countries.map(country => {
-    const coronaData = coronaCountries.find(corona => corona.country === country.name
-      || (corona.country === 'UK' && country.name === 'United Kingdom')
-      || (corona.country === 'S. Korea' && country.name === 'South Korea')
-      || (corona.country === 'Palestine' && country.name === 'Palestinian Territories')
-      || (corona.country === 'DRC' && country.name === 'DR Congo')
-      || (corona.country === 'USA' && country.name === 'United States'));
+    const coronaData = coronaCountries.find(corona => corona.countryInfo._id === country.numericCode);
+    // const coronaData = coronaCountries.find(corona => corona.country === country.name
+    //   || (corona.country === 'UK' && country.name === 'United Kingdom')
+    //   || (corona.country === 'S. Korea' && country.name === 'South Korea')
+    //   || (corona.country === 'Palestine' && country.name === 'Palestinian Territories')
+    //   || (corona.country === 'DRC' && country.name === 'DR Congo')
+    //   || (corona.country === 'Syrian Arab Republic' && country.name === 'Syria')
+    //   || (corona.country === 'Macedonia' && country.name === 'North Macedonia')
+    //   || (corona.country === 'Swaziland' && country.name === 'Eswatini')
+    //   || (corona.country === 'Libyan Arab Jamahiriya' && country.name === 'Libya')
+    //   || (corona.country === 'Lao People\'s Democratic Republic' && country.name === 'Laos')
+    //   || (corona.country === 'Côte d\'Ivoire' && country.name === 'Ivory Coast')
+    //   || (corona.country === 'Bosnia' && country.name === 'Bosnia and Herzegovina')
+    //   || (corona.country === 'USA' && country.name === 'United States')
+    //   );
     return {
       ...country,
       [DataKeys.CASES]: coronaData ? coronaData.cases : null,
@@ -59,6 +68,7 @@ const _mergeCoronaData = coronaCountries => {
       [DataKeys.DEATHS_PER_ONE_MILLION]: coronaData ? coronaData.deathsPerOneMillion : null,
       [DataKeys.TESTS]: coronaData ? coronaData.tests : null,
       [DataKeys.TESTS_PER_ONE_MILLION]: coronaData ? coronaData.testsPerOneMillion : null,
+      [DataKeys.CONTINENT]: coronaData ? coronaData.continent : null,
     }
   }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }

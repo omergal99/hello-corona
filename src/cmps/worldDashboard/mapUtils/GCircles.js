@@ -6,7 +6,7 @@ function GCircles({ circlesDataKey = CASES, countries, dynamicRatio, args }) {
 
   const countriesCircles = countries.map(country => {
     const calcRadius = (country[circlesDataKey] / 1000).toFixed();
-    const radius = calcRadius > 15 ? 17 : calcRadius > 5 ? 13 : calcRadius > 1 ? 9 : 0;
+    const radius = calcRadius > 15 ? 18 : calcRadius > 5 ? 14 : calcRadius > 1 ? 10 : 0;
     if (!radius) return '';
     const shortNum = UtilsService.numberToShortString(country[circlesDataKey]);
     const dataKey = getDataKeyByKey(circlesDataKey);
@@ -17,7 +17,7 @@ function GCircles({ circlesDataKey = CASES, countries, dynamicRatio, args }) {
         cx={country.centerPoint.x} cy={country.centerPoint.y} r={radius * dynamicRatio}
       />
       <text className="circle-text" x={country.centerPoint.x} y={country.centerPoint.y}
-        dy={`${radius * dynamicRatio / 3}px`} fontSize={`${radius * 0.8 * dynamicRatio}px`}>
+        dy={`${radius * dynamicRatio / 3}px`} fontSize={`${radius * 0.85 * dynamicRatio}px`}>
         {shortNum}
       </text>
     </g>

@@ -20,7 +20,10 @@ function CountryDetailsTitle({ country }) {
       <div className={`wrap-country-icon ${isWorld ? 'earth' : 'flag'}`}>
         {countryIcon}
       </div>
-      <h2>{country.name}</h2>
+      <div className="wrap-country-title">
+        <h2>{country.name}</h2>
+        <span className="continent">{country.continent}</span>
+      </div>
     </div>
   );
 }

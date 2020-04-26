@@ -24,6 +24,12 @@
         top: -2%;
       }
     }
+    .wrap-country-title {
+      text-align: left;
+      .continent {
+        font-size: 0.8rem;
+      }
+    }
   }
   .country-details-list {
     @include scrollbar();

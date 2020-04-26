@@ -21,7 +21,7 @@ $pseudo-border-size: 10px;
       @include clip-path(polygon(101% 0%, 100% 96%, 75% 100%, 25% 100%, 0% 96%, -1% 0%));
       margin-left: auto;
       margin-right: auto;
-      transition: all .3s;
+      transition: all .5s;
       &:hover {
         width: 100%;
         color: var(--color1-border);
