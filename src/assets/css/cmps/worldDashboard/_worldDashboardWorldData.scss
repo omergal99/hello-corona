@@ -1,34 +1,31 @@
 $pseudo-border-size: 10px;
 
-.world-dashboard-global-details {
+.world-dashboard-world-details {
   margin-bottom: 0.5rem;
   @include linear-gradient-clip-border(var(--color1-dark));
   .title {
     padding: 0.25rem 0;
   }
-  .global-details {
-    padding: 0 0.5rem 0.5rem;
-    .global-detail {
+  .world-details {
+    padding: 0 0.5rem 1rem;
+    margin: 0 auto;
+    animation: width-opacity-0To100 1s linear;
+    .world-detail {
+      cursor: pointer;
       position: relative;
       background-color: var(--color1-normal);
       font-size: 1.2rem;
       overflow: hidden;
       border-bottom: 1px solid var(--color1-border);
+      width: 94%;
       @include clip-path(polygon(101% 0%, 100% 96%, 75% 100%, 25% 100%, 0% 96%, -1% 0%));
-      animation: costumWidth 1s linear;
-      // animation-iteration-count: 1;
-      @keyframes costumWidth {
-        0% {
-          opacity: 0;
-          width: 0%;
-        }
-        100% {
-          opacity: 1;
-          width: 100%;
-        }
-      }
       margin-left: auto;
       margin-right: auto;
+      transition: all .3s;
+      &:hover {
+        width: 100%;
+        color: var(--color1-border);
+      }
       &:not(:last-child) {
         margin-bottom: 0.5rem;
       }

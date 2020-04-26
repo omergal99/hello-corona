@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
       return action.payload;
     case ActionTypes.SET_SELECTED_COUNTRY_INDEX:
       const idx = copy.countries.findIndex(country => country.name === action.payload.name);
-      copy.selectedCountryIndex = copy.selectedCountryIndex === idx ? null : idx;
+      copy.selectedCountryIndex = idx > -1 && copy.selectedCountryIndex !== idx ? idx : null;
       return copy;
     default:
       return state;

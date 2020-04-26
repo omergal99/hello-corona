@@ -2,12 +2,12 @@ import React from 'react';
 import UtilsService from '../../services/UtilsService';
 import { CASES, DEATHS, RECOVERED, getDataKeysByKeys } from '../../constants/DataKeys';
 
-function WorldDashboardWorldData({ worldData }) {
+function WorldDashboardWorldData({ worldData, onSelectCountry }) {
 
   const data = getDataKeysByKeys([CASES, DEATHS, RECOVERED]);
 
   const list = data.map(category => (
-    <li className="global-detail flex-col" key={category.key}>
+    <li className="world-detail flex-col" key={category.key} onClick={() => onSelectCountry()}>
       <span className="pseudo-border"></span>
       <p>{category.title}</p>
       <p>{UtilsService.numberWithCommas(worldData[category.key])}</p>
@@ -23,9 +23,9 @@ function WorldDashboardWorldData({ worldData }) {
   ))
 
   return (
-    <div className="world-dashboard-global-details">
+    <div className="world-dashboard-world-details">
       <h2 className="title">World</h2>
-      <ul className="global-details">
+      <ul className="world-details">
         {list}
       </ul>
     </div>
