@@ -29,6 +29,10 @@
   user-select: none;
 }
 
+@mixin height-animation($name: height0To100) {
+  animation: $name 1s linear;
+}
+
 @mixin linear-gradient-clip-border($color: var(--color1-light), $min: 1%, $max: 99%, $deg: 135deg) {
   background: linear-gradient($deg, #0000 $min, $color $min, $color $max, #0000 $max);
 }

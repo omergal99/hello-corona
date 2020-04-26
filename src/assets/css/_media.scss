@@ -22,7 +22,7 @@
   .world-dashboard {
     flex-direction: column-reverse;
   }
-  .wrap-global-and-list {
+  .wrap-worldData-and-list {
     width: 100%;
     height: 40%;
     margin: 0;
@@ -43,7 +43,7 @@
       max-height: 100%;
     }
   }
-  .world-dashboard-global-details {
+  .world-dashboard-world-details {
     display: none;
   }
 
@@ -72,7 +72,7 @@
 
 // All desktop
 @media (min-width: 768px) {
-  .wrap-global-and-list {
+  .wrap-worldData-and-list {
     max-width: 20rem;
     min-width: 18rem;
   }

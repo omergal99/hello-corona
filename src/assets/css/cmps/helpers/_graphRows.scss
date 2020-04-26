@@ -25,9 +25,10 @@
     }
   }
   .rows {
-    @include scrollbar();
     overflow: auto;
+    @include scrollbar();
     padding: 0.5rem 0.5rem 0.5rem 0;
+    @include height-animation();
     & > :not(:last-child) {
       margin: 0 0 0.5rem;
     }

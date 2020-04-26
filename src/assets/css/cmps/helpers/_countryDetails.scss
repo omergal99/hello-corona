@@ -30,7 +30,7 @@
     overflow: auto;
     text-align: left;
     padding: 0 0.5rem 0 0;
-    animation: height0To100 1s linear;
+    @include height-animation();
     .country-details-item {
       padding: 0 0.4rem 0 0;
       display: grid;

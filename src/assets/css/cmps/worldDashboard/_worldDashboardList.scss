@@ -5,6 +5,7 @@ $numeric-code-left: 1rem;
   .countries {
     overflow: auto;
     @include scrollbar();
+    @include height-animation();
     // background-color: var(--color1-dark);
     .country {
       cursor: pointer;
