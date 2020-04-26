@@ -1,27 +1,39 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "371b263bc2393dd92bb5fd613b63003b",
+    "revision": "580fdea747744abd3aae6e8855ad081a",
     "url": "/hello-corona/index.html"
   },
   {
-    "revision": "0911f4a04234fbbb4d10",
-    "url": "/hello-corona/static/css/main.f776df30.chunk.css"
+    "revision": "f00fd48f5d4e5ac6e0f4",
+    "url": "/hello-corona/static/css/main.d6a2706a.chunk.css"
   },
   {
-    "revision": "c3d670fe5b95264cceb3",
-    "url": "/hello-corona/static/js/2.6bd2d34c.chunk.js"
+    "revision": "8d9c7b20d40612e24441",
+    "url": "/hello-corona/static/js/2.c780bce1.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/hello-corona/static/js/2.6bd2d34c.chunk.js.LICENSE.txt"
+    "url": "/hello-corona/static/js/2.c780bce1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0911f4a04234fbbb4d10",
-    "url": "/hello-corona/static/js/main.d46be81d.chunk.js"
+    "revision": "3db675e2fc5113635bc5",
+    "url": "/hello-corona/static/js/3.9bbd31dd.chunk.js"
   },
   {
-    "revision": "f50e6db75dc62d8d2cb5",
-    "url": "/hello-corona/static/js/runtime-main.251d0022.js"
+    "revision": "83763f9d9535d61bb8f8",
+    "url": "/hello-corona/static/js/4.354dd29a.chunk.js"
+  },
+  {
+    "revision": "fd4e0ce8edf3f46ae6d0",
+    "url": "/hello-corona/static/js/5.a3d3ffba.chunk.js"
+  },
+  {
+    "revision": "f00fd48f5d4e5ac6e0f4",
+    "url": "/hello-corona/static/js/main.06fffdbf.chunk.js"
+  },
+  {
+    "revision": "8c58e45ed04116e6d154",
+    "url": "/hello-corona/static/js/runtime-main.28fb4f19.js"
   },
   {
     "revision": "d325ec368ef121f557cee3e378ba05b9",
@@ -46,6 +58,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "510f2e3c2ac4f1b7ebab163d2b5cfb9c",
     "url": "/hello-corona/static/media/earth.510f2e3c.gif"
+  },
+  {
+    "revision": "e60d39f60bca3194584db81f9e0425c9",
+    "url": "/hello-corona/static/media/earth.e60d39f6.mp4"
   },
   {
     "revision": "2838cc6f38d1e56529cf0049453f268a",
