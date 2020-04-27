@@ -27,8 +27,8 @@ function Router({ onToggleFloatWindows }) {
 
   return (
     <HashRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        <NavBar onToggleFloatWindows={onToggleFloatWindows} />
+      <NavBar onToggleFloatWindows={onToggleFloatWindows} />
+      <Suspense fallback={<div className="router">Loading...</div>}>
         <div className="router">
           <Switch>
             <Redirect exact from="/" to={`/${WORLD_DASHBOARD}`} />
