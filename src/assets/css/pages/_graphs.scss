@@ -1,0 +1,13 @@
+.graphs {
+  height: 100%;
+  padding: 0.5rem;
+  .wrap-lines-graph {
+    margin: 200px auto 0;
+    height: 400px;
+    width: 700px;
+    .lines-graph {
+      height: 100%;
+      background-color: rgb(117, 117, 117);
+    }
+  }
+}

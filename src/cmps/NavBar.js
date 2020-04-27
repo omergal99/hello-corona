@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { toTitleCase } from '../services/UtilsService';
 import VirusLogoSVG from './helpers/svg-icons/VirusLogoSVG';
-import { WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS } from '../constants/RouterPaths';
+import { WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS, GRAPHS } from '../constants/RouterPaths';
 
 function NavBar({ onToggleFloatWindows }) {
 
-  const navLinks = [WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS];
+  const navLinks = process.env.NODE_ENV === 'production'
+    ? [WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS]
+    : [WORLD_DASHBOARD, COUNTRY_VIEW, SETTINGS, GRAPHS];
+
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [classAnimation, setClassAnimation] = useState('');
