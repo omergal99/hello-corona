@@ -11,7 +11,6 @@ function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry
   const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, CRITICAL]);
   
   const categoryView = caterogies.map(category => {
-    // const shortNum = UtilsService.numberWithCommas(country[category.key]);
     const shortNum = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
     const commasNum = UtilsService.numberWithCommas(country[category.key]);
     return <div className="category flex-col" key={category.key}

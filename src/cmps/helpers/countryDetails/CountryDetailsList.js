@@ -10,9 +10,6 @@ function CountryDetailsList({ country }) {
   const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS];
   const coronaDetails = getCoronaDataKeys().map(category => {
     const isWishIcon = categoriesToAddIcon.some(key => key === category.key);
-    // const value = country[category.key] || country[category.key] === 0
-    //   ? UtilsService.numberWithCommas(country[category.key])
-    //   : country[category.key] === undefined ? '' : 'No Data';
     const value = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
     const dividBy = category.key === CASES ? POPULATION : category.dividBy;
     const percent = country[category.key] / country[dividBy] * 100;
