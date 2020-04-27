@@ -8,9 +8,11 @@
     position: relative;
     .lighter {
       height: 60vh;
+      max-height: 50vw;
       position: absolute;
       bottom: 5vh;
       width: 26vh;
+      max-width: 40vw;
       background: linear-gradient(
         180deg,
         transparent,

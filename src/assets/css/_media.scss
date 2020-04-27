@@ -19,6 +19,19 @@
 
 // All mobile
 @media (min-width: 64px) and (max-width: 767px) {
+  .nav-bar .nav-bar-links {
+    &.desktop {
+      display: none;
+    }
+    .nav-link {
+      &:not(:last-child) {
+        border-bottom-width: 1px;
+      }
+      &:not(:first-child) {
+        border-top-width: 2px;
+      }
+    }
+  }
   .world-dashboard {
     flex-direction: column-reverse;
   }
@@ -39,7 +52,7 @@
     .graph-rows {
       display: none;
     }
-    .country-details{
+    .country-details {
       max-height: 100%;
     }
   }
@@ -72,6 +85,28 @@
 
 // All desktop
 @media (min-width: 768px) {
+  .nav-bar {
+    .nav-menu {
+      display: none;
+    }
+    .nav-bar-links {
+      flex-direction: row;
+      position: relative;
+      top: auto;
+      left: auto;
+      &.mobile {
+        display: none;
+      }
+      .nav-link {
+        &:not(:last-child) {
+          border-right-width: 1px;
+        }
+        &:not(:first-child) {
+          border-left-width: 2px;
+        }
+      }
+    }
+  }
   .wrap-worldData-and-list {
     max-width: 20rem;
     min-width: 18rem;
