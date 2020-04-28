@@ -23,8 +23,8 @@ function GraphColumns({ selectedCountry }) {
     const height = item.value / maxHeight * 100 + '%';
     const line = arr[idx + 1] ? calcLine(item, idx) : 0;
     const style = {
-      top: `-${line.slant * 4}px`, width: `${line.slant * line.slant + 100}%`,
-      transform: `rotate(-${line.angle}deg)`
+      top: `-${line.slant * 2}px`,
+      transform: `rotate(${line.angle * -1}deg)`
     }
     return <li className="column" key={item.date} style={{ width }}>
       <div className="column-percent" style={{ height }}>
@@ -37,7 +37,6 @@ function GraphColumns({ selectedCountry }) {
   }), [arr, calcLine, maxHeight])
 
   const [list, setList] = useState(createList());
-
   useEffect(() => {
     setList(createList());
   }, [selectedCountry])

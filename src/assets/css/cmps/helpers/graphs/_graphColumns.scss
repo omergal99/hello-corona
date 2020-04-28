@@ -55,10 +55,12 @@
         }
         .line {
           position: absolute;
+          width: 125%;
           left: 25%;
           height: 2px;
           background-color: white;
           z-index: 20;
+          border-radius: 0.1rem;
         }
       }
     }
