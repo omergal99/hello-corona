@@ -11,9 +11,19 @@ async function getCoronaWorld() {
   return await _customGet(ApiUrls.GET_WORLD_DATA, 'getCoronaWorld');
 }
 
+async function getWorldHistory() {
+  return await _customGet(ApiUrls.GET_WORLD_HISTORY, 'getWorldHistory');
+}
+
+async function getCountryHistory(id) {
+  return await _customGet(`${ApiUrls.GET_COUNTRY_HISTORY}${id}`, 'getCountryHistory');
+}
+
 export default {
   getCoronaCountries,
-  getCoronaWorld
+  getCoronaWorld,
+  getWorldHistory,
+  getCountryHistory,
 }
 
 async function _customGet(url, extraMsg) {

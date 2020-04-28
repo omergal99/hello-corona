@@ -1,6 +1,7 @@
 import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
 import JSONcoronaWorld from './data/coronaWorld.json';
+import JSONcoronaWorldHistory from './data/coronaWorldHistory.json';
 import countries from './data/countries.json';
 import countriesPopulation from './data/countriesPopulation.json';
 import * as DataKeys from '../constants/DataKeys';
@@ -11,24 +12,35 @@ async function getData() {
   const initState = _getEmpty();
   let coronaCountries = JSONcoronaCountries;
   let coronaWorld = JSONcoronaWorld;
+  let coronaWorldHistory = JSONcoronaWorldHistory;
   if (ServiceConfig.isServerCountriesConnected) {
     const getCoronaCountries = ApiService.getCoronaCountries();
     const getCoronaWorld = ApiService.getCoronaWorld();
+    const getWorldHistory = ApiService.getWorldHistory();
     const serverCoronaCountries = await getCoronaCountries;
     const serverCoronaWorld = await getCoronaWorld;
+    const serverCoronaWorldHistory = await getWorldHistory;
     if (serverCoronaCountries) {
       coronaCountries = serverCoronaCountries;
       coronaWorld = serverCoronaWorld;
+      coronaWorldHistory = serverCoronaWorldHistory;
     }
     else alert('There is problem with data access.\nDisplays latest system data.');
   }
   initState.countries = _mergeCoronaData(coronaCountries);
-  initState.worldData = _createWorldData(coronaWorld);
+  initState.worldData = _createWorldData(coronaWorld, coronaWorldHistory);
   return Promise.resolve(initState);
+}
+async function getCountryHistory(country) {
+  const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
+  const serverCountryHistory = await getCountryHistory;
+  console.log(serverCountryHistory);
+  return serverCountryHistory;
 }
 
 export default {
   getData,
+  getCountryHistory,
 }
 
 const _getEmpty = () => ({
@@ -59,12 +71,13 @@ const _mergeCoronaData = coronaCountries => {
   }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }
 
-const _createWorldData = coronaWorld => {
+const _createWorldData = (coronaWorld, worldHistory) => {
   const populationWorld = countriesPopulation.find(pop => pop.officialName === 'World');
   return {
     ...coronaWorld,
     name: 'World',
     gifName: 'earth',
     [DataKeys.POPULATION]: populationWorld.populationInThousands2020 * 1000,
+    history: { timeline: worldHistory }
   };
 }
