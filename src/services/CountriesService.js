@@ -2,6 +2,7 @@ import ApiService from './ApiService';
 import JSONcoronaCountries from './data/coronaCountries.json';
 import JSONcoronaWorld from './data/coronaWorld.json';
 import JSONcoronaWorldHistory from './data/coronaWorldHistory.json';
+import JSONcoronaCountriesHistory from './data/coronaCountriesHistory.json';
 import countries from './data/countries.json';
 import countriesPopulation from './data/countriesPopulation.json';
 import * as DataKeys from '../constants/DataKeys';
@@ -32,8 +33,11 @@ async function getData() {
   return Promise.resolve(initState);
 }
 async function getCountryHistory(country) {
-  const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
-  const serverCountryHistory = await getCountryHistory;
+  let serverCountryHistory = JSONcoronaCountriesHistory.find(his => his.country === country.name);
+  if (ServiceConfig.isServerCountriesConnected) {
+    const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
+    serverCountryHistory = await getCountryHistory;
+  }
   console.log(serverCountryHistory);
   return serverCountryHistory;
 }
