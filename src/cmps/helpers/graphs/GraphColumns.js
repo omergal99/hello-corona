@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import UtilsService from '../../../services/UtilsService';
+import React, { useRef } from 'react';
+
+import GraphColumnsPreview from './GraphColumnsPreview';
 
 function GraphColumns({ selectedCountry }) {
 
@@ -10,42 +11,9 @@ function GraphColumns({ selectedCountry }) {
 
   const maxHeight = arr.length ? arr[arr.length - 1].value * 1.05 : 0;
 
-  const calcLine = useCallback((item, idx) => {
-    const diff = (arr[idx + 1].value - item.value) / maxHeight * 100;
-    const colWidth = 1 / arr.length * 100 * graphRef.current.clientWidth / graphRef.current.clientHeight;
-    const calcSlant = Math.sqrt(diff * diff + colWidth * colWidth);
-    const tanAngle = Math.atan(diff / colWidth) * 180 / Math.PI;
-    return { angle: tanAngle, slant: calcSlant };
-  }, [arr, maxHeight])
-
-  const createList = useCallback(() => arr.map((item, idx) => {
-    const width = 1 / arr.length * 100 + '%';
-    const height = item.value / maxHeight * 100 + '%';
-    const line = arr[idx + 1] ? calcLine(item, idx) : 0;
-    const style = {
-      top: `-${line.slant * 2}px`,
-      transform: `rotate(${line.angle * -1}deg)`
-    }
-    return <li className="column" key={item.date} style={{ width }}>
-      <div className="column-percent" style={{ height }}>
-        <div className="wrap-value">
-          <span className="value">{UtilsService.numberWithCommas(item.value)}</span>
-        </div>
-        {arr[idx + 1] && <span className="line" style={style}></span>}
-      </div>
-    </li>
-  }), [arr, calcLine, maxHeight])
-
-  const [list, setList] = useState(createList());
-  useEffect(() => {
-    setList(createList());
-  }, [selectedCountry])
-
   return (
     <div className="graph-columns" ref={graphRef}>
-      <ul className="columns">
-        {list}
-      </ul>
+      <GraphColumnsPreview arr={arr} maxHeight={maxHeight} graphRef={graphRef} />
     </div>
   );
 }
