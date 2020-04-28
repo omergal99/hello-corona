@@ -84,8 +84,8 @@ function Graphs() {
 
   return (
     <div className="graphs">
-      <div className="wrap-lines-graph">
-        <div className="lines-graph" ref={graphRef}>
+      <div className="wrap-graph-columns">
+        <div className="graph-columns" ref={graphRef}>
           <ul className="columns">{list}</ul>
         </div>
       </div>

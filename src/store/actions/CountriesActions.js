@@ -10,10 +10,11 @@ function loadCountriesData() {
 
 function selectCountry(country) {
   return async (dispatch) => {
-    dispatch({ type: ActionTypes.SET_SELECTED_COUNTRY_INDEX, payload: country });
     if (country.alpha2 && !country.history) {
       const getHistory = await CountriesService.getCountryHistory(country);
-      dispatch({ type: ActionTypes.SET_COUNTRY_HISTORY, payload: { country, history: getHistory } });
+      dispatch({ type: ActionTypes.SET_SELECTED_COUNTRY_INDEX, payload: { country, history: getHistory } });
+    } else {
+      dispatch({ type: ActionTypes.SET_SELECTED_COUNTRY_INDEX, payload: { country } });
     }
   }
 }

@@ -5,11 +5,14 @@ import GCircles from './mapUtils/GCircles';
 import GPaths from './mapUtils/GPaths';
 import MapOptions from './mapUtils/MapOptions';
 import MapTooltip from './mapUtils/MapTooltip';
+import GraphColumns from '../helpers/graphs/GraphColumns';
 
-function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex },
+function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex, worldData },
   settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow },
   onSelectCountry, onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow }) {
-  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
+
+  const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
+    ? countries[selectedCountryIndex] : worldData;
 
   const initZoom = 554;
   const baseMap = { width: 954, height: 514 };
@@ -124,7 +127,12 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex }
         isTooltipShow={isTooltipShow}
         onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus}
         onSetCirclesDataKey={onSetCirclesDataKey} onToggleIsTooltipShow={onToggleIsTooltipShow} />
-      {isTooltipShow && tooltip && <MapTooltip tooltip={tooltip} />}
+      {isTooltipShow && tooltip &&
+        <MapTooltip tooltip={tooltip} />
+      }
+      <div className="wrap-graph-columns">
+        <GraphColumns selectedCountry={selectedCountry} />
+      </div>
     </div>
   );
 }
