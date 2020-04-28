@@ -1,2 +1,0 @@
-(this["webpackJsonphello-corona"]=this["webpackJsonphello-corona"]||[]).push([[6],{291:function(e,a,s){"use strict";s.r(a);var n=s(0),r=s.n(n);a.default=function(){return r.a.createElement("div",{className:"graphs"},r.a.createElement("div",{className:"wrap-lines-graph"},r.a.createElement("div",{className:"lines-graph"})))}}}]);
-//# sourceMappingURL=6.6d6f177f.chunk.js.map
