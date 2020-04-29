@@ -2,12 +2,9 @@ import React, { useRef } from 'react';
 
 import GraphColumnsPreview from './GraphColumnsPreview';
 
-function GraphColumns({ selectedCountry }) {
+function GraphColumns({ arr }) {
 
   const graphRef = useRef({});
-
-  const historyObj = selectedCountry.history ? selectedCountry.history.timeline.cases : {};
-  const arr = Object.keys(historyObj).map(key => ({ date: key, value: historyObj[key] }));
 
   const maxHeight = arr.length ? arr[arr.length - 1].value * 1.05 : 0;
 
