@@ -108,8 +108,6 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex, 
 
   const pathClassName = 'country-path';
   const svgClassName = 'svg-map';
-  const historyObj = selectedCountry.history ? selectedCountry.history.timeline.cases : {};
-  const historyArr = Object.keys(historyObj).map(key => ({ date: key, value: historyObj[key] }));
 
   return (
     <div className="world-dashboard-map">
@@ -134,7 +132,7 @@ function WorldDashboardMap({ countriesStore: { countries, selectedCountryIndex, 
         <MapTooltip tooltip={tooltip} />
       }
       <div className="wrap-graph-columns">
-        <GraphColumns arr={historyArr} />
+        <GraphColumns selectedCountry={selectedCountry} />
       </div>
     </div>
   );

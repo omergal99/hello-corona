@@ -29,6 +29,8 @@ function GraphColumnsPreview({ arr, maxHeight, graphRef }) {
     </li>
   })
 
+  console.log('update - GraphColumns - Preview')
+
   return (
     <ul className="columns">
       {list}
