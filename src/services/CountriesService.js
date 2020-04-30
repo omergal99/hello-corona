@@ -38,7 +38,6 @@ async function getCountryHistory(country) {
     const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
     serverCountryHistory = await getCountryHistory;
   }
-  console.log(serverCountryHistory);
   return serverCountryHistory;
 }
 

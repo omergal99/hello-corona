@@ -1,15 +1,15 @@
 {
-  "updated": 1587922789739,
-  "cases": 2971533,
-  "todayCases": 52129,
-  "deaths": 205930,
-  "todayDeaths": 2766,
-  "recovered": 873868,
-  "active": 1891735,
-  "critical": 57553,
-  "casesPerOneMillion": 381,
-  "deathsPerOneMillion": 26,
-  "tests": 27533003,
-  "testsPerOneMillion": 3530.2,
-  "affectedCountries": 212
+  "updated": 1588264247074,
+  "cases": 3261476,
+  "todayCases": 43293,
+  "deaths": 230381,
+  "todayDeaths": 2352,
+  "recovered": 1028686,
+  "active": 2002409,
+  "critical": 54751,
+  "casesPerOneMillion": 418,
+  "deathsPerOneMillion": 29,
+  "tests": 32660232,
+  "testsPerOneMillion": 4185.8,
+  "affectedCountries": 214
 }
