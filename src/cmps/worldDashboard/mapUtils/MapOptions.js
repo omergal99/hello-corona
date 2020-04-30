@@ -21,12 +21,6 @@ function MapOptions({ settings: { isCirclesShow, isAutoFocus, circlesDataKey = C
   return (
     <div className="map-options">
 
-      {isCirclesShow &&
-        <div className="circles-options">
-          {circlesDataButtons}
-        </div>
-      }
-
       <div className="main-options">
         <Button text="Circles" textCondition={isCirclesShow} isBoolean={true}
           onClick={onToggleIsCirclesShow} />
@@ -35,6 +29,12 @@ function MapOptions({ settings: { isCirclesShow, isAutoFocus, circlesDataKey = C
         <Button text="Tooltip" textCondition={isTooltipShow} isBoolean={true}
           onClick={onToggleIsTooltipShow} />
       </div>
+
+      {isCirclesShow &&
+        <div className="circles-options">
+          {circlesDataButtons}
+        </div>
+      }
 
     </div>
   );
