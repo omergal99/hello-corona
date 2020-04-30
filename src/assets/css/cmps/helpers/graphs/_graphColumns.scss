@@ -2,10 +2,12 @@
   height: 100%;
   // background-color: var(--color1-light-saturation);
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
   .columns {
     display: flex;
     height: 100%;
-    padding: 1rem;
     .column {
       display: flex;
       flex-direction: column-reverse;
@@ -62,6 +64,21 @@
           z-index: 20;
           border-radius: 0.1rem;
         }
+      }
+    }
+  }
+  .graph-options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0.25rem 0 0 0;
+    .graph-text{
+      flex-grow: 1;
+    }
+    .buttons-options {
+      flex-grow: 1;
+      & > :not(:last-child) {
+        margin: 0 0.5rem 0 0;
       }
     }
   }

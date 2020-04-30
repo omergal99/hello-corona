@@ -8,7 +8,7 @@ function Button({ type = 'normal', style, isBoolean = false,
   return (
     <button className={`custom-buttom ${type}`} style={style}
       onClick={onClick}>
-      {isBoolean && <span className={`light ${textCondition ? 'on' : 'off'}`}></span>}
+      {isBoolean && <span className={`toggle-light ${textCondition ? 'on' : 'off'}`}></span>}
       <span>{textIn}</span>
     </button>
   );
