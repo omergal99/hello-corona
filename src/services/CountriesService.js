@@ -21,12 +21,12 @@ async function getData() {
     const serverCoronaCountries = await getCoronaCountries;
     const serverCoronaWorld = await getCoronaWorld;
     const serverCoronaWorldHistory = await getWorldHistory;
-    if (serverCoronaCountries) {
-      coronaCountries = serverCoronaCountries;
-      coronaWorld = serverCoronaWorld;
-      coronaWorldHistory = serverCoronaWorldHistory;
+    if (serverCoronaCountries) coronaCountries = serverCoronaCountries;
+    if (serverCoronaWorld) coronaWorld = serverCoronaWorld;
+    if (serverCoronaWorldHistory) coronaWorldHistory = serverCoronaWorldHistory;
+    if (!serverCoronaCountries || serverCoronaCountries || serverCoronaCountries) {
+      alert('There is problem with data access.\nDisplays latest system data.');
     }
-    else alert('There is problem with data access.\nDisplays latest system data.');
   }
   initState.countries = _mergeCoronaData(coronaCountries);
   initState.worldData = _createWorldData(coronaWorld, coronaWorldHistory);
