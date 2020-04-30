@@ -24,7 +24,7 @@ async function getData() {
     if (serverCoronaCountries) coronaCountries = serverCoronaCountries;
     if (serverCoronaWorld) coronaWorld = serverCoronaWorld;
     if (serverCoronaWorldHistory) coronaWorldHistory = serverCoronaWorldHistory;
-    if (!serverCoronaCountries || serverCoronaCountries || serverCoronaCountries) {
+    if (!serverCoronaCountries || !serverCoronaCountries || !serverCoronaCountries) {
       alert('There is problem with data access.\nDisplays latest system data.');
     }
   }
