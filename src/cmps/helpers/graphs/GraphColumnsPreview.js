@@ -1,11 +1,11 @@
 import React from 'react';
 import UtilsService from '../../../services/UtilsService';
 
-function GraphColumnsPreview({ arr, maxHeight, graphRef }) {
+function GraphColumnsPreview({ arr, maxHeight, graphRatio }) {
 
   const calcLine = (item, idx) => {
     const diff = (arr[idx + 1].value - item.value) / maxHeight * 100;
-    const colWidth = 1 / arr.length * 100 * graphRef.current.clientWidth / graphRef.current.clientHeight;
+    const colWidth = 1 / arr.length * 100 * graphRatio;
     const calcSlant = Math.sqrt(diff * diff + colWidth * colWidth);
     const tanAngle = Math.atan(diff / colWidth) * 180 / Math.PI;
     return { angle: tanAngle, slant: calcSlant };
@@ -28,8 +28,6 @@ function GraphColumnsPreview({ arr, maxHeight, graphRef }) {
       </div>
     </li>
   })
-
-  console.log('update - GraphColumns - Preview')
 
   return (
     <ul className="columns">
