@@ -1,5 +1,4 @@
 import ApiService from './ApiService';
-import UtilsService from './UtilsService';
 
 import JSONcoronaCountries from './data/coronaCountries.json';
 import JSONcoronaWorld from './data/coronaWorld.json';
@@ -12,6 +11,9 @@ import * as DataKeys from '../constants/DataKeys';
 import ServiceConfig from '../config/ServiceConfig';
 import actions from '../store/actions';
 import store from '../store/AppStore';
+
+// import UtilsService from './UtilsService';
+// await UtilsService.sleep(2000);
 
 async function getData() {
   const initState = _getEmpty();
