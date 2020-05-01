@@ -37,6 +37,8 @@ function numberToShortString(number) {
   return number;
 }
 
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+
 export default {
   makeShallowCopy,
   makeDeepCopy,
@@ -44,5 +46,6 @@ export default {
   getImgSrc,
   toTitleCase,
   numberWithCommas,
-  numberToShortString
+  numberToShortString,
+  sleep
 }

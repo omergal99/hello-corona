@@ -38,10 +38,6 @@ function GraphColumns({ selectedCountry }) {
 
   return (
     <div className="graph-columns" ref={graphRef}>
-      {graphRef && graphRef.current &&
-        <GraphColumnsPreview arr={historyArr} maxHeight={maxHeight} graphRatio={graphRatio}
-          graphDataType={graphDataType} />
-      }
       <div className="graph-options">
         <div className="graph-text">
           <p>
@@ -52,6 +48,11 @@ function GraphColumns({ selectedCountry }) {
           {graphTypesButtons}
         </div>
       </div>
+      
+      {graphRef && graphRef.current &&
+        <GraphColumnsPreview arr={historyArr} maxHeight={maxHeight} graphRatio={graphRatio}
+          graphDataType={graphDataType} />
+      }
     </div>
   );
 }
