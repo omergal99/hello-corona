@@ -22,7 +22,7 @@
     border-style: solid;
     border-width: 2px 3px 2px 3px;
     transition: all 0.3s;
-    &.open{
+    &.open {
       background-color: var(--color1-strong);
     }
     &:hover {
@@ -39,11 +39,11 @@
     top: 100%;
     padding: 0 calc(var(--navBar-height) / 2);
     left: calc(var(--main-padding) + 2px);
-    &.animation-out {
-      animation: animation-out 0.5s linear;
+    &.height-animation-out {
+      animation: height-animation-out 0.5s linear;
     }
-    &.animation-in {
-      animation: animation-in 0.5s linear;
+    &.height-animation-in {
+      animation: height-animation-in 0.5s linear;
     }
   }
   .nav-bar-links {

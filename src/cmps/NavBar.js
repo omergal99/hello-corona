@@ -21,15 +21,15 @@ function NavBar({ onToggleFloatWindows }) {
   ))
 
   const menuClicked = () => {
+    if (classAnimation) return;
     if (isMenuOpen) {
-      setClassAnimation('animation-out');
+      setClassAnimation('height-animation-out');
       setTimeout(() => setIsMenuOpen(!isMenuOpen), 500);
-      setTimeout(() => setClassAnimation(''), 500);
     } else {
-      setClassAnimation('animation-in');
+      setClassAnimation('height-animation-in');
       setIsMenuOpen(!isMenuOpen);
-      setTimeout(() => setClassAnimation(''), 500);
     }
+    setTimeout(() => setClassAnimation(''), 500);
   }
 
   return (
