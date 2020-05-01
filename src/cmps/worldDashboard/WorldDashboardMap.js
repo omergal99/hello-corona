@@ -10,7 +10,7 @@ function WorldDashboardMap({ settings,
 
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
     ? countries[selectedCountryIndex] : worldData;
-  
+
   return (
     <div className="world-dashboard-map">
       <SvgCountriesMap countries={countries} settings={settings} selectedCountry={selectedCountry}
@@ -18,9 +18,11 @@ function WorldDashboardMap({ settings,
       <MapOptions settings={settings}
         onToggleIsCirclesShow={onToggleIsCirclesShow} onToggleIsAutoFocus={onToggleIsAutoFocus}
         onSetCirclesDataKey={onSetCirclesDataKey} onToggleIsTooltipShow={onToggleIsTooltipShow} />
-      <div className="wrap-graph-columns">
-        <GraphColumns selectedCountry={selectedCountry} />
-      </div>
+      {selectedCountry.history &&
+        <div className="wrap-graph-columns">
+          <GraphColumns selectedCountry={selectedCountry} />
+        </div>
+      }
     </div>
   );
 }

@@ -4,7 +4,7 @@ function MapTooltip({ tooltip }) {
 
   return (
     <div className="map-tooltip" style={tooltip.style}>
-      <img className="tooltip-img" alt={tooltip.name}
+      <img className="tooltip-img" alt="Flag"
         src={UtilsService.getImgSrc(`flags/${tooltip.alpha2.toLowerCase()}.png`)} />
       <span className="tooltip-title">{tooltip.name}</span>
     </div>

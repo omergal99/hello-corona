@@ -36,8 +36,6 @@ function GraphColumns({ selectedCountry }) {
     }
   }, [graphRef, graphRatio])
 
-  console.log(historyArr);
-
   return (
     <div className="graph-columns" ref={graphRef}>
       {graphRef && graphRef.current &&
@@ -46,7 +44,9 @@ function GraphColumns({ selectedCountry }) {
       }
       <div className="graph-options">
         <div className="graph-text">
-          <p>{`From ${historyArr[0].date} To ${historyArr[historyArr.length - 1].date}`}</p>
+          <p>
+            <span className="text">{`From ${historyArr[0].date} To ${historyArr[historyArr.length - 1].date}`}</span>
+          </p>
         </div>
         <div className="buttons-options flex-center">
           {graphTypesButtons}
@@ -56,6 +56,6 @@ function GraphColumns({ selectedCountry }) {
   );
 }
 
-// export default GraphColumns;
-export default React.memo(GraphColumns);
+export default GraphColumns;
+// export default React.memo(GraphColumns);
 

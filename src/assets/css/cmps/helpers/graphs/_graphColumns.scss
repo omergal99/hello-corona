@@ -72,8 +72,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0.25rem 0 0 0;
-    .graph-text{
+    .graph-text {
       flex-grow: 1;
+      .text {
+        background-color: var(--color1-light);
+        padding: 1px 4px;
+        border-radius: 4px;
+      }
     }
     .buttons-options {
       flex-grow: 1;
