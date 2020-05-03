@@ -57,7 +57,7 @@ async function getCountryHistory(country) {
     const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
     if (countriesLclStrg) {
       const idx = countriesLclStrg.coronaCountries.findIndex(corona => corona.countryInfo._id === country.numericCode);
-      if (idx >= 0) countriesLclStrg.coronaCountries[idx][HISTORY] = serverCountryHistory;
+      if (idx > -1) countriesLclStrg.coronaCountries[idx][HISTORY] = serverCountryHistory;
       StorageService.store(COUNTRIES_STATE, { ...countriesLclStrg });
     }
   }
