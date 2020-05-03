@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ddc2e22b1a3a3a0345f5a7347bd6eef1",
+    "revision": "003ac971055e23af0530b81cfe621a6a",
     "url": "/hello-corona/index.html"
   },
   {
-    "revision": "fc6c64273afe23750fad",
+    "revision": "219bf26f9ca6ed311c10",
     "url": "/hello-corona/static/css/main.927c3c88.chunk.css"
   },
   {
-    "revision": "3264e73d65894e976277",
-    "url": "/hello-corona/static/js/2.d5ea33ad.chunk.js"
+    "revision": "51e4b10b494ba8b20d10",
+    "url": "/hello-corona/static/js/2.69216e56.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/hello-corona/static/js/2.d5ea33ad.chunk.js.LICENSE.txt"
+    "url": "/hello-corona/static/js/2.69216e56.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6fda69191e598d24c045",
-    "url": "/hello-corona/static/js/3.0728cc7c.chunk.js"
+    "revision": "c54da0df8839326b41e9",
+    "url": "/hello-corona/static/js/3.83e1b1c5.chunk.js"
   },
   {
-    "revision": "93380a44dcc6497dce17",
-    "url": "/hello-corona/static/js/4.b4b8dda8.chunk.js"
+    "revision": "c7c9cd85a21f160b055b",
+    "url": "/hello-corona/static/js/4.24913a8c.chunk.js"
   },
   {
-    "revision": "2c5052a3fede3356280e",
-    "url": "/hello-corona/static/js/5.d0005059.chunk.js"
+    "revision": "1dc7c95074d81c1273e1",
+    "url": "/hello-corona/static/js/5.89be34a2.chunk.js"
   },
   {
-    "revision": "166523670935d4275777",
-    "url": "/hello-corona/static/js/6.2dc1a01f.chunk.js"
+    "revision": "486bb0430bbee879a817",
+    "url": "/hello-corona/static/js/6.b49e78b5.chunk.js"
   },
   {
-    "revision": "fc6c64273afe23750fad",
-    "url": "/hello-corona/static/js/main.6010074e.chunk.js"
+    "revision": "219bf26f9ca6ed311c10",
+    "url": "/hello-corona/static/js/main.1cbb3eb1.chunk.js"
   },
   {
-    "revision": "399b591b7ff12ab0f00c",
-    "url": "/hello-corona/static/js/runtime-main.0c7731a5.js"
+    "revision": "adac7e3e4968a3a675fd",
+    "url": "/hello-corona/static/js/runtime-main.8a0b1dcc.js"
   },
   {
     "revision": "d325ec368ef121f557cee3e378ba05b9",
