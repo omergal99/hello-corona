@@ -6,6 +6,18 @@
     {
       "src": "virus.svg",
       "sizes": "150x150"
+    },
+    {
+      "src": "virus64.png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "virus192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "virus512.png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
