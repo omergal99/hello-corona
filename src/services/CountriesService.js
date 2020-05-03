@@ -9,7 +9,7 @@ import countriesPopulation from './data/countriesPopulation.json';
 
 import {
   CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
-  DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, POPULATION
+  DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, POPULATION, RANK
 } from '../constants/DataKeys';
 
 import StorageService from './StorageService';
@@ -96,12 +96,14 @@ const _mergeCoronaData = coronaCountries => {
   const sortBy = CASES;
   return countries.map(country => {
     const coronaObj = { ...country };
-    const coronaArrKeys = [CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL,
-      CASES_PER_ONE_MILLION, DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY];
+    const coronaArrKeys = [CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
+      DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, RANK];
     const coronaData = coronaCountries.find(corona => corona.countryInfo._id === country.numericCode);
     coronaArrKeys.forEach(key => coronaObj[key] = coronaData ? coronaData[key] : null);
     return coronaObj;
-  }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
+  })
+    .sort((b, a) => a[sortBy] > b[sortBy] ? 1 : (b[sortBy] > a[sortBy] ? -1 : 0))
+    .map((item, idx) => ({ ...item, [RANK]: idx }))
 }
 
 const _createWorldData = (coronaWorld, worldHistory) => {

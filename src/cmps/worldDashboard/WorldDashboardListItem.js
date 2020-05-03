@@ -1,15 +1,15 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
 import VirusSVG from '../helpers/svg-icons/VirusSVG';
-import { CASES, DEATHS, RECOVERED, CRITICAL, getDataKeysByKeys } from '../../constants/DataKeys';
+import { CASES, DEATHS, RECOVERED, CRITICAL, RANK, getDataKeysByKeys } from '../../constants/DataKeys';
 
-function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry }) {
+function WorldDashboardListItem({ country, selectedCountry, onSelectCountry }) {
 
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
 
   const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, CRITICAL]);
-  
+
   const categoryView = caterogies.map(category => {
     const shortNum = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
     const commasNum = UtilsService.numberWithCommas(country[category.key]);
@@ -31,9 +31,9 @@ function WorldDashboardListItem({ country, idx, selectedCountry, onSelectCountry
         <div className="wrap-country-status">
           <h3 className="country-name">{country.name}</h3>
           <div className="status-details">
-            <span className="rank" title={`Rank ${idx + 1}`}>
+            <span className="rank" title={`Rank ${country[RANK] + 1}`}>
               <span className="rank-icon">❱❱</span>
-              {idx + 1}
+              {country[RANK] + 1}
             </span>
             <div className="cases" title={`Today Cases ${UtilsService.numberWithCommas(country.todayCases)}`}>
               <div className="wrap-icon-svg"><VirusSVG /></div>
