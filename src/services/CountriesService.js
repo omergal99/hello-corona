@@ -20,18 +20,21 @@ import ServiceConfig from '../config/ServiceConfig';
 import actions from '../store/actions';
 import store from '../store/AppStore';
 
+const EXPIRED_LCL_STRG_HOURS = 4;
+
 async function getData() {
   const initState = _getEmpty();
   let coronaCountries = JSONcoronaCountries;
   let coronaWorld = JSONcoronaWorld;
   let coronaWorldHistory = JSONcoronaWorldHistory;
   if (ServiceConfig.isServerCountriesConnected) {
-    const countriesLclStrg = _getCountriesLocalStorage();
+    const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
     if (countriesLclStrg) {
       coronaCountries = countriesLclStrg.coronaCountries;
       coronaWorld = countriesLclStrg.coronaWorld;
       coronaWorldHistory = countriesLclStrg.coronaWorldHistory;
-    } else {
+    }
+    if (_isLclStrgExpired()) {
       const dataAPI = await _getStateDataAPI();
       if (dataAPI.coronaCountries) coronaCountries = dataAPI.coronaCountries;
       if (dataAPI.coronaWorld) coronaWorld = dataAPI.coronaWorld;
@@ -51,7 +54,7 @@ async function getCountryHistory(country) {
     const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
     serverCountryHistory = await getCountryHistory;
 
-    const countriesLclStrg = _getCountriesLocalStorage();
+    const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
     if (countriesLclStrg) {
       const idx = countriesLclStrg.coronaCountries.findIndex(corona => corona.countryInfo._id === country.numericCode);
       if (idx >= 0) countriesLclStrg.coronaCountries[idx][HISTORY] = serverCountryHistory;
@@ -72,11 +75,9 @@ const _getEmpty = () => ({
   worldData: null
 })
 
-const _getCountriesLocalStorage = () => {
-  const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
+const _isLclStrgExpired = () => {
   const lastTimeAskCountries = StorageService.load(LAST_TIME_GET_COUNTRIES);
-  const isNotExpired = countriesLclStrg && lastTimeAskCountries > getTimestempSubHours(4);
-  return isNotExpired ? countriesLclStrg : null;
+  return lastTimeAskCountries < getTimestempSubHours(EXPIRED_LCL_STRG_HOURS);
 }
 
 const _getStateDataAPI = async () => {
