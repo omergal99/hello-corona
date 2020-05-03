@@ -50,7 +50,7 @@
   &.firebrick {
     background-color: rgba(178, 34, 34, $opacity);
     &.active {
-      background-color: firebrick;
+      background-color: #e42b2b;
     }
     &:hover {
       background-color: rgba(178, 34, 34, $opacityHover);

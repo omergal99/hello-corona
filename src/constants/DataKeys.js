@@ -31,15 +31,15 @@ export const getAllDataKeys = () => ([
 export const getCoronaDataKeys = () => ([
   { key: CASES, title: 'Cases', color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
   { key: TODAY_CASES, title: 'Today Cases', dividBy: CASES, color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
-  { key: DEATHS, title: 'Deaths', dividBy: CASES, color: 'firebrick', colorHEX: '#b22222', svgIcon: <HeartBrokenSVG /> },
-  { key: TODAY_DEATHS, title: 'Today Deaths', dividBy: 'deaths', color: 'firebrick', colorHEX: '#b22222', svgIcon: <HeartBrokenSVG /> },
+  { key: DEATHS, title: 'Deaths', dividBy: CASES, color: 'firebrick', colorHEX: '#e42b2b', svgIcon: <HeartBrokenSVG /> },
+  { key: TODAY_DEATHS, title: 'Today Deaths', dividBy: 'deaths', color: 'firebrick', colorHEX: '#e42b2b', svgIcon: <HeartBrokenSVG /> },
   { key: RECOVERED, title: 'Recovered', dividBy: CASES, color: 'mediumseagreen', colorHEX: '#3cb371', svgIcon: <HeartbeatSVG /> },
   { key: ACTIVE, title: 'Active', dividBy: CASES, color: 'orange', colorHEX: '#ffa500', svgIcon: <VirusSVG /> },
-  { key: CRITICAL, title: 'Critical', dividBy: CASES, color: 'darkorchid', colorHEX: '#9932cc', svgIcon: <SickBedSVG /> },
+  { key: CRITICAL, title: 'Critical', dividBy: CASES, color: 'darkorchid', colorHEX: '#bc34ff', svgIcon: <SickBedSVG /> },
   { key: TESTS, title: 'Tests', color: 'dodgerblue', colorHEX: '#1e90ff', svgIcon: <TestTubeSVG /> },
   { key: TESTS_PER_ONE_MILLION, title: 'Tests Per 1M', color: 'dodgerblue', colorHEX: '#1e90ff', svgIcon: <TestTubeSVG /> },
   { key: CASES_PER_ONE_MILLION, title: 'Cases Per 1M', color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
-  { key: DEATHS_PER_ONE_MILLION, title: 'Deaths Per 1M', color: 'firebrick', colorHEX: '#b22222', svgIcon: <HeartBrokenSVG /> },
+  { key: DEATHS_PER_ONE_MILLION, title: 'Deaths Per 1M', color: 'firebrick', colorHEX: '#e42b2b', svgIcon: <HeartBrokenSVG /> },
 ])
 
 export const getDataKeysByKeys = keys => {

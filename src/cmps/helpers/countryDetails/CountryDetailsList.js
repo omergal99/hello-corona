@@ -13,7 +13,7 @@ function CountryDetailsList({ country }) {
     const value = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
     const dividBy = category.key === CASES ? POPULATION : category.dividBy;
     const percent = country[category.key] / country[dividBy] * 100;
-    return <li className="country-details-item" key={category.key} style={{ color: category.color }}>
+    return <li className="country-details-item" key={category.key} style={{ color: category.colorHEX }}>
       <span className="title">
         {category.title}:&nbsp;
         {isWishIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
