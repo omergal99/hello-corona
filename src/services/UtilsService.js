@@ -23,12 +23,12 @@ export function toTitleCase(string) {
   return string.replace('-', ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 }
 
-function numberWithCommas(number) {
+export function numberWithCommas(number) {
   if (!number) return number;
   return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
-function numberToShortString(number) {
+export function numberToShortString(number) {
   if (!number) return number;
   if (number < 1_000) return `${number}`;
   if (number < 1_000_000) return `${(number / 1_000).toFixed()}K`;
@@ -37,7 +37,9 @@ function numberToShortString(number) {
   return number;
 }
 
-const sleep = ms => new Promise(res => setTimeout(res, ms));
+export const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+export const getTimestempSubHours = hours => Date.now() - hours * 3_600_000;
 
 export default {
   makeShallowCopy,
