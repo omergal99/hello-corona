@@ -6,14 +6,19 @@ import JSONcoronaWorldHistory from './data/coronaWorldHistory.json';
 import JSONcoronaCountriesHistory from './data/coronaCountriesHistory.json';
 import countries from './data/countries.json';
 import countriesPopulation from './data/countriesPopulation.json';
-import * as DataKeys from '../constants/DataKeys';
+
+import {
+  CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
+  DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, POPULATION
+} from '../constants/DataKeys';
+
+import StorageService from './StorageService';
+import { getTimestempSubHours } from './UtilsService';
+import { COUNTRIES_STATE, LAST_TIME_GET_COUNTRIES } from '../constants/LocalStorageKeys';
 
 import ServiceConfig from '../config/ServiceConfig';
 import actions from '../store/actions';
 import store from '../store/AppStore';
-
-// import UtilsService from './UtilsService';
-// await UtilsService.sleep(2000);
 
 async function getData() {
   const initState = _getEmpty();
@@ -21,17 +26,18 @@ async function getData() {
   let coronaWorld = JSONcoronaWorld;
   let coronaWorldHistory = JSONcoronaWorldHistory;
   if (ServiceConfig.isServerCountriesConnected) {
-    const getCoronaCountries = ApiService.getCoronaCountries();
-    const getCoronaWorld = ApiService.getCoronaWorld();
-    const getWorldHistory = ApiService.getWorldHistory();
-    const serverCoronaCountries = await getCoronaCountries;
-    const serverCoronaWorld = await getCoronaWorld;
-    const serverCoronaWorldHistory = await getWorldHistory;
-    if (serverCoronaCountries) coronaCountries = serverCoronaCountries;
-    if (serverCoronaWorld) coronaWorld = serverCoronaWorld;
-    if (serverCoronaWorldHistory) coronaWorldHistory = serverCoronaWorldHistory;
-    if (!serverCoronaCountries || !serverCoronaCountries || !serverCoronaCountries) {
-      alert('There is problem with data access.\nDisplays latest system data.');
+    const countriesLclStrg = _getCountriesLocalStorage();
+    if (countriesLclStrg) {
+      coronaCountries = countriesLclStrg.coronaCountries;
+      coronaWorld = countriesLclStrg.coronaWorld;
+      coronaWorldHistory = countriesLclStrg.coronaWorldHistory;
+    } else {
+      const dataAPI = await _getStateDataAPI();
+      if (dataAPI.coronaCountries) coronaCountries = dataAPI.coronaCountries;
+      if (dataAPI.coronaWorld) coronaWorld = dataAPI.coronaWorld;
+      if (dataAPI.coronaWorldHistory) coronaWorldHistory = dataAPI.coronaWorldHistory;
+      StorageService.store(COUNTRIES_STATE, { ...dataAPI });
+      StorageService.store(LAST_TIME_GET_COUNTRIES, Date.now());
     }
   }
   initState.countries = _mergeCoronaData(coronaCountries);
@@ -44,6 +50,13 @@ async function getCountryHistory(country) {
   if (ServiceConfig.isServerCountriesConnected) {
     const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
     serverCountryHistory = await getCountryHistory;
+
+    const countriesLclStrg = _getCountriesLocalStorage();
+    if (countriesLclStrg) {
+      const idx = countriesLclStrg.coronaCountries.findIndex(corona => corona.countryInfo._id === country.numericCode);
+      if (idx >= 0) countriesLclStrg.coronaCountries[idx][HISTORY] = serverCountryHistory;
+      StorageService.store(COUNTRIES_STATE, { ...countriesLclStrg });
+    }
   }
   store.dispatch(actions.setCountryHistory(country, serverCountryHistory));
 }
@@ -59,25 +72,35 @@ const _getEmpty = () => ({
   worldData: null
 })
 
+const _getCountriesLocalStorage = () => {
+  const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
+  const lastTimeAskCountries = StorageService.load(LAST_TIME_GET_COUNTRIES);
+  const isNotExpired = countriesLclStrg && lastTimeAskCountries > getTimestempSubHours(4);
+  return isNotExpired ? countriesLclStrg : null;
+}
+
+const _getStateDataAPI = async () => {
+  const getCoronaCountries = ApiService.getCoronaCountries();
+  const getCoronaWorld = ApiService.getCoronaWorld();
+  const getWorldHistory = ApiService.getWorldHistory();
+  const coronaCountries = await getCoronaCountries;
+  const coronaWorld = await getCoronaWorld;
+  const coronaWorldHistory = await getWorldHistory;
+  if (!coronaCountries || !coronaWorld || !coronaWorldHistory) {
+    alert('There is problem with data access.\nDisplays latest system data.');
+  }
+  return { coronaCountries, coronaWorld, coronaWorldHistory };
+}
+
 const _mergeCoronaData = coronaCountries => {
-  const sortBy = DataKeys.CASES;
+  const sortBy = CASES;
   return countries.map(country => {
+    const coronaObj = { ...country };
+    const coronaArrKeys = [CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL,
+      CASES_PER_ONE_MILLION, DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY];
     const coronaData = coronaCountries.find(corona => corona.countryInfo._id === country.numericCode);
-    return {
-      ...country,
-      [DataKeys.CASES]: coronaData ? coronaData.cases : null,
-      [DataKeys.TODAY_CASES]: coronaData ? coronaData.todayCases : null,
-      [DataKeys.DEATHS]: coronaData ? coronaData.deaths : null,
-      [DataKeys.TODAY_DEATHS]: coronaData ? coronaData.todayDeaths : null,
-      [DataKeys.RECOVERED]: coronaData ? coronaData.recovered : null,
-      [DataKeys.ACTIVE]: coronaData ? coronaData.active : null,
-      [DataKeys.CRITICAL]: coronaData ? coronaData.critical : null,
-      [DataKeys.CASES_PER_ONE_MILLION]: coronaData ? coronaData.casesPerOneMillion : null,
-      [DataKeys.DEATHS_PER_ONE_MILLION]: coronaData ? coronaData.deathsPerOneMillion : null,
-      [DataKeys.TESTS]: coronaData ? coronaData.tests : null,
-      [DataKeys.TESTS_PER_ONE_MILLION]: coronaData ? coronaData.testsPerOneMillion : null,
-      [DataKeys.CONTINENT]: coronaData ? coronaData.continent : null,
-    }
+    coronaArrKeys.forEach(key => coronaObj[key] = coronaData ? coronaData[key] : null);
+    return coronaObj;
   }).sort((b, a) => (a[sortBy] > b[sortBy]) ? 1 : ((b[sortBy] > a[sortBy]) ? -1 : 0))
 }
 
@@ -87,7 +110,7 @@ const _createWorldData = (coronaWorld, worldHistory) => {
     ...coronaWorld,
     name: 'World',
     gifName: 'earth',
-    [DataKeys.POPULATION]: populationWorld.populationInThousands2020 * 1000,
+    [POPULATION]: populationWorld.populationInThousands2020 * 1000,
     history: { timeline: worldHistory }
   };
 }

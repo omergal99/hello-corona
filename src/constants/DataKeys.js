@@ -7,6 +7,7 @@ import SickBedSVG from '../cmps/helpers/svg-icons/SickBedSVG';
 import VirusSVG from '../cmps/helpers/svg-icons/VirusSVG';
 
 export const POPULATION = 'population2020';
+export const HISTORY = 'history';
 
 export const CASES = 'cases';
 export const TODAY_CASES = 'todayCases';
