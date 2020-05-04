@@ -10,7 +10,8 @@ function GCircles({ circlesDataKey = CASES, countries, dynamicRatio, args }) {
     if (!radius) return '';
     const shortNum = UtilsService.numberToShortString(country[circlesDataKey]);
     const dataKey = getDataKeyByKey(circlesDataKey);
-    const fill = `${dataKey.colorHEX}1a`;
+    // const fill = `${dataKey.colorHEX}1a`;
+    const fill = `${dataKey.colorHEX}26`;
     return <g key={country.id}>
       <circle className="country-circle-data" name={country.name} style={{ fill }}
         // style={{ cx: country.centerPoint.x, cy: country.centerPoint.y, r: radius * dynamicRatio }}

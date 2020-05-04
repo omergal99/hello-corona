@@ -32,9 +32,10 @@ function NavBar({ onToggleFloatWindows }) {
     setTimeout(() => setClassAnimation(''), 500);
   }
 
+  const menuOpenClass = isMenuOpen && classAnimation !== 'height-animation-out' ? 'open' : '';
   return (
     <div className="nav-bar">
-      <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`} onClick={menuClicked}>
+      <div className={`nav-menu ${menuOpenClass}`} onClick={menuClicked}>
         <span className="text">Menu</span>
       </div>
       <div className={`wrap-nav-bar-links ${classAnimation}`}>

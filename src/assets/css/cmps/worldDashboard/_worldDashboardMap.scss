@@ -13,21 +13,21 @@
       stroke: #000;
       .country-path {
         cursor: pointer;
-        fill: hsla(var(--base-color1), 100%, 10%, 1);
-        stroke: hsla(var(--base-color2), 100%, 65%, 0.5);
+        fill: hsla(var(--base-color1), 100%, calc(10% * var(--brightness)), 1);
+        stroke: hsla(var(--base-color2), 100%, calc(65% * var(--brightness)), 0.5);
         &.selected {
-          fill: hsla(var(--base-color2), 92%, 12%, 0.2);
+          fill: hsla(var(--base-color2), 92%, calc(12% * var(--brightness)), 0.2);
         }
         &.selecting {
-          fill: hsla(var(--base-color1), 100%, 10%, 0.4);
+          fill: hsla(var(--base-color1), 100%, calc(10% * var(--brightness)), 0.4);
         }
         &:not(.selected):not(.selecting):hover {
-          fill: hsla(var(--base-color1), 100%, 20%, 0.4);
+          fill: hsla(var(--base-color1), 100%, calc(20% * var(--brightness)), 0.4);
         }
       }
       .country-path-label {
         pointer-events: none;
-        fill: #ddd;
+        fill: hsla(0, 0%, calc(174% + -87% * var(--brightness)), 1);
         stroke: transparent;
       }
     }
@@ -35,13 +35,10 @@
       pointer-events: none;
       user-select: none;
       stroke: rgba(255, 255, 255, 0.5);
-      .country-circle-data {
-        fill: rgba(255, 0, 0, 0.1);
-      }
       .circle-text {
         text-anchor: middle;
         stroke: none;
-        fill: var(--color1-glare);
+        fill: var(--color1-font);
       }
     }
   }
@@ -73,11 +70,11 @@
     align-items: center;
     font-size: 1.2rem;
     padding: 2px 4px;
-    color: white;
     outline: transparent;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: hsla(var(--base-color1), 100%, 20%, 1);
+    border: 1px solid hsla(0, 0%, calc(200% + -100% * var(--brightness)), 0.5);
+    color: var(--color1-font);
+    background-color: hsla(var(--base-color1), 100%, calc(20% * var(--brightness)), 1);
     .tooltip-img {
       height: 1.6rem;
     }

@@ -16,8 +16,8 @@
       background: linear-gradient(
         180deg,
         transparent,
-        hsla(var(--base-color1), 71%, 55%, 0.2),
-        hsla(var(--base-color1), 71%, 55%, 0.4)
+        hsla(var(--base-color1), 71%, calc(55% * var(--brightness)), 0.2),
+        hsla(var(--base-color1), 71%, calc(55% * var(--brightness)), 0.4)
       );
     }
     .lighter-1 {
