@@ -12,12 +12,12 @@
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.0/8 are considered localhost for IPv4.
+  window.location.hostname.match(
+    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+  )
 );
 
 export function register(config) {
@@ -43,7 +43,7 @@ export function register(config) {
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
       } else {
@@ -58,6 +58,11 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      // ************************************
+      console.log(registration);
+      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      console.log(registration);
+      // ************************************
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {
@@ -71,7 +76,7 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
+                'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
               );
 
               // Execute callback
@@ -139,3 +144,33 @@ export function unregister() {
       });
   }
 }
+
+const cacheName = 'V1.0.2'
+
+window.addEventListener('message', ev => {
+  console.log('EventListener message', ev, ev.data);
+  if (ev.data && ev.data.type === 'SKIP_WAITING') {
+    console.log('SKIP_WAITING');
+    window.skipWaiting();
+  }
+});
+
+window.addEventListener('activate', ev => {
+  console.log('SW activated');
+  // remove old caches
+  ev.waitUntil(
+    caches.keys()
+      .then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cache => {
+            console.log(cache);
+            console.log(cacheName);
+            if (cache !== cacheName) {
+              console.log('SW deleting old cache');
+              return caches.delete(cache);
+            } else return cache;
+          })
+        )
+      })
+  );
+});
