@@ -10,7 +10,10 @@ function App() {
 
   const [SWOpen, setSWOpen] = useState(true);
 
+
+
   const serviceWorkerStore = useSelector(state => state.serviceWorkerStore);
+  console.log('************************', APP_VERSION);
 
   if (serviceWorkerStore.isServiceWorkerInitialized) {
     console.log('isServiceWorkerInitialized -- True');

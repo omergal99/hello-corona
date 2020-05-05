@@ -147,32 +147,30 @@ export function unregister() {
   }
 }
 
-console.log('************************', APP_VERSION);
+// window.addEventListener('message', ev => {
+//   console.log('EventListener message', ev, ev.data);
+//   if (ev.data && ev.data.type === 'SKIP_WAITING') {
+//     console.log('SKIP_WAITING');
+//     window.skipWaiting();
+//   }
+// });
 
-window.addEventListener('message', ev => {
-  console.log('EventListener message', ev, ev.data);
-  if (ev.data && ev.data.type === 'SKIP_WAITING') {
-    console.log('SKIP_WAITING');
-    window.skipWaiting();
-  }
-});
-
-window.addEventListener('activate', ev => {
-  console.log('SW activated');
-  // remove old caches
-  ev.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cache => {
-            console.log('cache', cache);
-            console.log('APP_VERSION', APP_VERSION);
-            if (cache !== APP_VERSION) {
-              console.log('SW deleting old cache');
-              return caches.delete(cache);
-            } else return cache;
-          })
-        )
-      })
-  );
-});
+// window.addEventListener('activate', ev => {
+//   console.log('SW activated');
+//   // remove old caches
+//   ev.waitUntil(
+//     caches.keys()
+//       .then(cacheNames => {
+//         return Promise.all(
+//           cacheNames.map(cache => {
+//             console.log('cache', cache);
+//             console.log('APP_VERSION', APP_VERSION);
+//             if (cache !== APP_VERSION) {
+//               console.log('SW deleting old cache');
+//               return caches.delete(cache);
+//             } else return cache;
+//           })
+//         )
+//       })
+//   );
+// });
