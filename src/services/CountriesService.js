@@ -36,11 +36,13 @@ async function getData() {
     }
     if (_isLclStrgExpired()) {
       const dataAPI = await _getStateDataAPI();
-      if (dataAPI.coronaCountries) coronaCountries = dataAPI.coronaCountries;
-      if (dataAPI.coronaWorld) coronaWorld = dataAPI.coronaWorld;
-      if (dataAPI.coronaWorldHistory) coronaWorldHistory = dataAPI.coronaWorldHistory;
-      StorageService.store(COUNTRIES_STATE, { ...dataAPI });
-      StorageService.store(LAST_TIME_GET_COUNTRIES, Date.now());
+      if (dataAPI) {
+        if (dataAPI.coronaCountries) coronaCountries = dataAPI.coronaCountries;
+        if (dataAPI.coronaWorld) coronaWorld = dataAPI.coronaWorld;
+        if (dataAPI.coronaWorldHistory) coronaWorldHistory = dataAPI.coronaWorldHistory;
+        StorageService.store(COUNTRIES_STATE, dataAPI);
+        StorageService.store(LAST_TIME_GET_COUNTRIES, Date.now());
+      }
     }
   }
   initState.countries = _mergeCoronaData(coronaCountries);
@@ -56,7 +58,8 @@ async function getCountryHistory(country) {
 
     const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
     if (countriesLclStrg) {
-      const idx = countriesLclStrg.coronaCountries.findIndex(corona => corona.countryInfo._id === country.numericCode);
+      const countries = countriesLclStrg.coronaCountries || [];
+      const idx = countries.findIndex(corona => corona.countryInfo._id === country.numericCode);
       if (idx > -1) countriesLclStrg.coronaCountries[idx][HISTORY] = serverCountryHistory;
       StorageService.store(COUNTRIES_STATE, { ...countriesLclStrg });
     }
@@ -90,7 +93,9 @@ const _getStateDataAPI = async () => {
   if (!coronaCountries || !coronaWorld || !coronaWorldHistory) {
     alert('There is problem with data access.\nDisplays latest system data.');
   }
-  return { coronaCountries, coronaWorld, coronaWorldHistory };
+  const resObj = { coronaCountries, coronaWorld, coronaWorldHistory };
+  const isEmpty = Object.keys(resObj).length === 0 && resObj.constructor === Object;
+  return !isEmpty ? resObj : null;
 }
 
 const _mergeCoronaData = (coronaCountries = []) => {
