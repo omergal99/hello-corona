@@ -8,10 +8,6 @@ function loadSettingsData() {
   }
 }
 
-function updateColors() {
-  SettingsService.updateColorsLocalStorage();
-}
-
 function toggleIsCirclesShow() {
   return async (dispatch, getState) => {
     dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_CIRCLES_SHOW });
@@ -43,7 +39,6 @@ export default {
   loadSettingsData,
   toggleIsCirclesShow,
   toggleIsAutoFocus,
-  updateColors,
   setCirclesDataKey,
   toggleIsTooltipShow,
 }

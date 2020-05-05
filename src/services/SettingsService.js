@@ -1,5 +1,5 @@
 import StorageService from './StorageService';
-import { INIT_COLORS, PRIMARY_COLOR, SECONDARY_COLOR } from '../constants/CssVariable';
+import { INIT_COLORS, PRIMARY_COLOR, SECONDARY_COLOR, BRIGHTNESS } from '../constants/CssVariable';
 import { WORLD_MAP, COLORS } from '../constants/LocalStorageKeys';
 
 async function getData() {
@@ -14,10 +14,11 @@ function updateWorldMapLocalStorage({ worldMap }) {
   StorageService.store(WORLD_MAP, worldMap);
 }
 
-function updateColorsLocalStorage() {
+function updateColorsToLocalStorage() {
   const primary = Number(getComputedStyle(document.documentElement).getPropertyValue(PRIMARY_COLOR));
   const secondary = Number(getComputedStyle(document.documentElement).getPropertyValue(SECONDARY_COLOR));
-  StorageService.store(COLORS, { primary, secondary });
+  const brightness = Number(getComputedStyle(document.documentElement).getPropertyValue(BRIGHTNESS));
+  StorageService.store(COLORS, { primary, secondary, brightness });
 }
 
 function resetColorsLocalStorage() {
@@ -29,7 +30,7 @@ function resetColorsLocalStorage() {
 export default {
   getData,
   updateWorldMapLocalStorage,
-  updateColorsLocalStorage,
+  updateColorsToLocalStorage,
   resetColorsLocalStorage,
 }
 
@@ -44,8 +45,9 @@ const _getEmpty = () => ({
 })
 
 const _setCssVariableColors = colors => {
-  const colorsLocalStorage = colors || StorageService.load(COLORS);
-  if (!colorsLocalStorage) return;
-  document.documentElement.style.setProperty(PRIMARY_COLOR, colorsLocalStorage.primary);
-  document.documentElement.style.setProperty(SECONDARY_COLOR, colorsLocalStorage.secondary);
+  const colorsLclStrg = colors || StorageService.load(COLORS);
+  if (!colorsLclStrg) return;
+  colorsLclStrg.primary && document.documentElement.style.setProperty(PRIMARY_COLOR, colorsLclStrg.primary);
+  colorsLclStrg.secondary && document.documentElement.style.setProperty(SECONDARY_COLOR, colorsLclStrg.secondary);
+  colorsLclStrg.brightness && document.documentElement.style.setProperty(BRIGHTNESS, colorsLclStrg.brightness);
 }

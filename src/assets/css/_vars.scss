@@ -13,7 +13,8 @@ $margin6: 0 auto 6px auto;
 :root {
   --navBar-height: 2.0625rem;
   --main-padding: 0.75rem;
-  --brightness: 3;
+  --brightness: 1;
+
   --base-color1: 200;
   --color1-light: hsla(var(--base-color1), 24%, calc(10% + 15% * var(--brightness)), 1);
   --color1-light-saturation: hsla(var(--base-color1), 40%, calc(10% + 15% * var(--brightness)), 1);
@@ -22,55 +23,11 @@ $margin6: 0 auto 6px auto;
   --color1-font: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 1);
   --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
   --color1-strong: hsla(var(--base-color1), 100%, calc(10% + 15% * var(--brightness)), 1);
+  
   --base-color2: 35;
   --color2-light: hsla(var(--base-color2), 24%, calc(10% + 15% * var(--brightness)), 1);
   --color2-normal: hsla(var(--base-color2), 24%, calc(-15% + 30% * var(--brightness)), 1);
   --color2-dark: hsla(var(--base-color2), 24%, calc(-5% + 15% * var(--brightness)), 1);
   --color2-font: hsla(var(--base-color2), 0%, calc(186% + -93% * var(--brightness)), 1);
   --color2-border: hsla(var(--base-color2), 50%, 50%, 1);
-
-  // --color1-light: hsla(var(--base-color1), 24%, calc(25% * var(--brightness)), 1);
-  // --color1-light-saturation: hsla(var(--base-color1), 40%, calc(25% * var(--brightness)), 1);
-  // --color1-normal: hsla(var(--base-color1), 24%, calc(15% * var(--brightness)), 1);
-  // --color1-dark: hsla(var(--base-color1), 24%, calc(10% * var(--brightness)), 1);
-  // --color1-font: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 1);
-  // --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
-  // --color1-strong: hsla(var(--base-color1), 100%, calc(25% * var(--brightness)), 1);
-  // --base-color2: 35;
-  // --color2-light: hsla(var(--base-color2), 24%, calc(25% * var(--brightness)), 1);
-  // --color2-normal: hsla(var(--base-color2), 24%, calc(15% * var(--brightness)), 1);
-  // --color2-dark: hsla(var(--base-color2), 24%, calc(10% * var(--brightness)), 1);
-  // --color2-font: hsla(var(--base-color2), 0%, calc(186% + -93% * var(--brightness)), 1);
-  // --color2-border: hsla(var(--base-color2), 50%, 50%, 1);
-
-  // --base-color1: 200;
-  // --color1-light: hsla(var(--base-color1), 24%, 25%, 1);
-  // --color1-light-saturation: hsla(var(--base-color1), 40%, 25%, 1);
-  // --color1-normal: hsla(var(--base-color1), 24%, 15%, 1);
-  // --color1-dark: hsla(var(--base-color1), 24%, 10%, 1);
-  // --color1-font: hsla(var(--base-color1), 0%, 93%, 1);
-  // --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
-  // --color1-strong: hsla(var(--base-color1), 100%, 25%, 1);
-
-  // --base-color2: 35;
-  // --color2-light: hsla(var(--base-color2), 24%, 25%, 1);
-  // --color2-normal: hsla(var(--base-color2), 24%, 15%, 1);
-  // --color2-dark: hsla(var(--base-color2), 24%, 10%, 1);
-  // --color2-font: hsla(var(--base-color2), 0%, 93%, 1);
-  // --color2-border: hsla(var(--base-color2), 50%, 50%, 1);
 }
-
-// --base-color1: 200;
-// --color1-light: hsla(var(--base-color1), 24%, calc(25% * var(--brightness)), 1);
-// --color1-light-saturation: hsla(var(--base-color1), 40%, calc(25% * var(--brightness)), 1);
-// --color1-normal: hsla(var(--base-color1), 24%, calc(15% * var(--brightness)), 1);
-// --color1-dark: hsla(var(--base-color1), 24%, calc(10% * var(--brightness)), 1);
-// --color1-font: hsla(var(--base-color1), 0%, calc(186% + 93% * -var(--brightness)), 1);
-// --color1-border: hsla(var(--base-color1), 100%, calc(50% * 4 + 50% * -var(--brightness)), 1);
-// --color1-strong: hsla(var(--base-color1), 100%, calc(25% * var(--brightness)), 1);
-// --base-color2: 35;
-// --color2-light: hsla(var(--base-color2), 24%, calc(25% * var(--brightness)), 1);
-// --color2-normal: hsla(var(--base-color2), 24%, calc(15% * var(--brightness)), 1);
-// --color2-dark: hsla(var(--base-color2), 24%, calc(10% * var(--brightness)), 1);
-// --color2-font: hsla(var(--base-color2), 0%, calc(186% + 93% * -var(--brightness)), 1);
-// --color2-border: hsla(var(--base-color2), 50%, calc(50% * 4 + 50% * -var(--brightness)), 1);
