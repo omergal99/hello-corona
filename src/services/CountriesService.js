@@ -30,9 +30,9 @@ async function getData() {
   if (ServiceConfig.isServerCountriesConnected) {
     const countriesLclStrg = StorageService.load(COUNTRIES_STATE);
     if (countriesLclStrg) {
-      coronaCountries = countriesLclStrg.coronaCountries;
-      coronaWorld = countriesLclStrg.coronaWorld;
-      coronaWorldHistory = countriesLclStrg.coronaWorldHistory;
+      if (countriesLclStrg.coronaCountries) coronaCountries = countriesLclStrg.coronaCountries;
+      if (countriesLclStrg.coronaWorld) coronaWorld = countriesLclStrg.coronaWorld;
+      if (countriesLclStrg.coronaWorldHistory) coronaWorldHistory = countriesLclStrg.coronaWorldHistory;
     }
     if (_isLclStrgExpired()) {
       const dataAPI = await _getStateDataAPI();
@@ -93,7 +93,7 @@ const _getStateDataAPI = async () => {
   return { coronaCountries, coronaWorld, coronaWorldHistory };
 }
 
-const _mergeCoronaData = coronaCountries => {
+const _mergeCoronaData = (coronaCountries = []) => {
   const sortBy = CASES;
   return countries.map(country => {
     const coronaObj = { ...country };

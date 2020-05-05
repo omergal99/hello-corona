@@ -20,9 +20,6 @@ render(
 
 
 serviceWorker.register({
-  // Page has been saved for offline use.
-  onSuccess: () => console.log('onSuccess') || store.dispatch({ type: ActionTypes.SW_INIT }),
-  // ----------------------
-  // Click to get the latest version.
-  onUpdate: reg => console.log('onUpdate', reg) || store.dispatch({ type: ActionTypes.SW_UPDATE, payload: reg }),
+  onSuccess: () => store.dispatch({ type: ActionTypes.SW_INIT }),
+  onUpdate: reg => store.dispatch({ type: ActionTypes.SW_UPDATE, payload: reg }),
 });
