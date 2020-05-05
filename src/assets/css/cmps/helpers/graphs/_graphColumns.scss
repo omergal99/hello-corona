@@ -75,6 +75,7 @@
     .graph-text {
       flex-grow: 1;
       .text {
+        color: var(--color1-font);
         background-color: var(--color1-light-saturation);
         padding: 1px 4px;
         border-radius: 4px;

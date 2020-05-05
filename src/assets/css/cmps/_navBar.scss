@@ -91,7 +91,7 @@
     svg {
       fill: var(--color1-border);
       g :first-child {
-        fill: hsla(var(--base-color1), 75%, calc(50% * var(--brightness)), 1);
+        fill: hsla(var(--base-color1), 75%, 50%, 1);
       }
     }
     &.top-left {

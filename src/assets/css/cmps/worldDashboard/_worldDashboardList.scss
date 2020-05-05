@@ -14,10 +14,10 @@ $numeric-code-left: 1rem;
       border-color: var(--color1-dark);
       border-width: 0.25rem 0.25rem 0 $numeric-code-left;
       border-style: solid;
-      background-color: hsla(var(--base-color1), 25%, calc(25% * var(--brightness)), 1);
+      background-color: hsla(var(--base-color1), 25%, calc(5% + 20% * var(--brightness)), 1);
       transition: background-color 0.3s;
       &:not(.selected):hover {
-        background-color: hsla(var(--base-color1), 40%, calc(30% * var(--brightness)), 1);
+        background-color: hsla(var(--base-color1), 40%, calc(10% + 20% * var(--brightness)), 1);
       }
       &.selected {
         background-color: var(--color1-strong);

@@ -6,7 +6,7 @@
   font-size: 1rem;
   color: white;
   &::placeholder {
-    color: rgb(202, 202, 202);
+    color: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 0.6);
   }
 }
 

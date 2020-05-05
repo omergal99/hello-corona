@@ -16,8 +16,8 @@
       background: linear-gradient(
         180deg,
         transparent,
-        hsla(var(--base-color1), 71%, calc(55% * var(--brightness)), 0.2),
-        hsla(var(--base-color1), 71%, calc(55% * var(--brightness)), 0.4)
+        hsla(var(--base-color1), 70%, calc(50% - 5% * var(--brightness)), 0.2),
+        hsla(var(--base-color1), 70%, calc(50% - 5% * var(--brightness)), 0.4)
       );
     }
     .lighter-1 {
@@ -33,7 +33,7 @@
       .g-loader {
         @include transform(translate(50%, 50%));
         .light-source {
-          fill: var(--color1-glare);
+          fill: hsla(var(--base-color1), 100%, calc(120% - 30% * var(--brightness)), 1);
         }
         .spiner {
           fill: transparent;

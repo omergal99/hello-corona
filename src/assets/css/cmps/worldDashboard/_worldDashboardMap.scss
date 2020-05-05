@@ -14,7 +14,7 @@
       .country-path {
         cursor: pointer;
         fill: hsla(var(--base-color1), 100%, calc(10% * var(--brightness)), 1);
-        stroke: hsla(var(--base-color2), 100%, calc(65% * var(--brightness)), 0.5);
+        stroke: hsla(var(--base-color2), 100%, calc(60% - 5% * var(--brightness)), 0.5);
         &.selected {
           fill: hsla(var(--base-color2), 92%, calc(12% * var(--brightness)), 0.2);
         }
@@ -22,7 +22,7 @@
           fill: hsla(var(--base-color1), 100%, calc(10% * var(--brightness)), 0.4);
         }
         &:not(.selected):not(.selecting):hover {
-          fill: hsla(var(--base-color1), 100%, calc(20% * var(--brightness)), 0.4);
+          fill: hsla(var(--base-color1), 100%, calc(10% + 10% * var(--brightness)), 0.4);
         }
       }
       .country-path-label {
@@ -72,7 +72,7 @@
     padding: 2px 4px;
     outline: transparent;
     border-radius: 4px;
-    border: 1px solid hsla(0, 0%, calc(200% + -100% * var(--brightness)), 0.5);
+    border: 2px solid hsla(0, 0%, calc(186% + -93% * var(--brightness)), 0.5);
     color: var(--color1-font);
     background-color: hsla(var(--base-color1), 100%, calc(20% * var(--brightness)), 1);
     .tooltip-img {
