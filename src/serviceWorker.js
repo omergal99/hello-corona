@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+import { APP_VERSION } from './constants/Version';
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -59,8 +61,8 @@ function registerValidSW(swUrl, config) {
     .register(swUrl)
     .then(registration => {
       // ************************************
-      console.log(registration);
-      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      // console.log(registration);
+      // registration.waiting.postMessage({ type: 'SKIP_WAITING' });
       console.log(registration);
       // ************************************
       registration.onupdatefound = () => {
@@ -145,7 +147,7 @@ export function unregister() {
   }
 }
 
-const cacheName = 'V1.0.2'
+console.log('************************', APP_VERSION);
 
 window.addEventListener('message', ev => {
   console.log('EventListener message', ev, ev.data);
@@ -163,9 +165,9 @@ window.addEventListener('activate', ev => {
       .then(cacheNames => {
         return Promise.all(
           cacheNames.map(cache => {
-            console.log(cache);
-            console.log(cacheName);
-            if (cache !== cacheName) {
+            console.log('cache', cache);
+            console.log('APP_VERSION', APP_VERSION);
+            if (cache !== APP_VERSION) {
               console.log('SW deleting old cache');
               return caches.delete(cache);
             } else return cache;

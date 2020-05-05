@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Router from './Router';
 import HudLayout from './cmps/HudLayout';
 import FloatWindows from './cmps/FloatWindows';
+import { APP_VERSION } from './constants/Version';
 
 function App() {
   const [isFloatWindowsShow, setIsFloatWindowsShow] = useState(false);
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="App">
+      <div style={{ display: 'none' }}>{APP_VERSION}</div>
       {serviceWorkerStore.isServiceWorkerUpdated && SWOpen &&
         <div style={{
           backgroundColor: '#8a5c5c',
