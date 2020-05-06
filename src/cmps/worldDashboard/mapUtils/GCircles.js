@@ -6,7 +6,8 @@ function GCircles({ circlesDataKey = CASES, countries, dynamicRatio, args }) {
 
   const countriesCircles = countries.map(country => {
     const calcRadius = (country[circlesDataKey] / 1000).toFixed();
-    const radius = calcRadius > 15 ? 18 : calcRadius > 5 ? 14 : calcRadius > 1 ? 10 : 0;
+    // const radius = calcRadius > 15 ? 18 : calcRadius > 5 ? 14 : calcRadius > 1 ? 10 : 0;
+    const radius = calcRadius > 100 ? 18 : calcRadius > 50 ? 14 : calcRadius > 10 ? 11 :  calcRadius > 2 ? 8 : 0;
     if (!radius) return '';
     const shortNum = UtilsService.numberToShortString(country[circlesDataKey]);
     const dataKey = getDataKeyByKey(circlesDataKey);
