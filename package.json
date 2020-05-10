@@ -1,7 +1,7 @@
 {
   "homepage": "https://omergal99.github.io/hello-corona",
   "name": "hello-corona",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "author": "omer gal",
   "dependencies": {

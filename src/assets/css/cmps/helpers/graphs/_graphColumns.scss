@@ -39,6 +39,7 @@
         margin: 0 1px;
         background-color: var(--color1-strong);
         border-top: 5px solid var(--color2-border);
+        pointer-events: auto;
         .wrap-value {
           opacity: 0;
           transition: opacity 0.5s ease-out;
