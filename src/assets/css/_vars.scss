@@ -18,12 +18,13 @@ $margin6: 0 auto 6px auto;
   --base-color1: 200;
   --color1-light: hsla(var(--base-color1), 24%, calc(10% + 15% * var(--brightness)), 1);
   --color1-light-saturation: hsla(var(--base-color1), 40%, calc(10% + 15% * var(--brightness)), 1);
-  --color1-normal: hsla(var(--base-color1), 24%, calc(clamp(10%, calc(-15% + 30% * var(--brightness)),90%)), 1);
+  // --color1-normal: hsla(var(--base-color1), 24%, calc(clamp(10%, calc(-15% + 30% * var(--brightness)), 90%)), 1);
+  --color1-normal: hsla(var(--base-color1), 24%, calc(-15% + 30% * var(--brightness)), 1);
   --color1-dark: hsla(var(--base-color1), 24%, calc(-5% + 15% * var(--brightness)), 1);
   --color1-font: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 1);
   --color1-border: hsla(var(--base-color1), 50%, 50%, 1);
   --color1-strong: hsla(var(--base-color1), 100%, calc(10% + 15% * var(--brightness)), 1);
-  
+
   --base-color2: 35;
   --color2-light: hsla(var(--base-color2), 24%, calc(10% + 15% * var(--brightness)), 1);
   --color2-normal: hsla(var(--base-color2), 24%, calc(-15% + 30% * var(--brightness)), 1);
