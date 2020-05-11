@@ -1,9 +1,27 @@
 {
   "homepage": "https://omergal99.github.io/hello-corona",
   "name": "hello-corona",
-  "version": "1.1.0",
+  "description": "Information about the Corona virus, in the countries of the world",
+  "version": "1.1.1",
+  "main": "index.js",
   "private": true,
-  "author": "omer gal",
+  "author": {
+    "name": "Omer Gal",
+    "email": "omergal9999a@gmail.com",
+    "url": "https://flaviocopes.com"
+  },
+  "engines": {
+    "node": ">=12.13.0",
+    "yarn": "^1.21.1"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omergal99/hello-corona.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omergal99/hello-corona/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -42,5 +60,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "countries map",
+    "hud ui",
+    "PWA",
+    "colors control",
+    "offline",
+    "corona virus",
+    "covid-19"
+  ]
 }
