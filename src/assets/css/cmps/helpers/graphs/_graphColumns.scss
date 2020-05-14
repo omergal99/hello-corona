@@ -83,6 +83,7 @@
       }
     }
     .buttons-options {
+      pointer-events: auto;
       flex-grow: 1;
       & > :not(:last-child) {
         margin: 0 0.5rem 0 0;
