@@ -19,7 +19,7 @@
 
 // All mobile
 @media (min-width: 64px) and (max-width: 767px) {
-  .nav-bar .nav-bar-links {
+  .nav-bar .links .nav-bar-links {
     &.desktop {
       display: none;
     }
@@ -85,7 +85,7 @@
 
 // All desktop
 @media (min-width: 768px) {
-  .nav-bar {
+  .nav-bar .links {
     .nav-menu {
       display: none;
     }

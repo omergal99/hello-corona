@@ -9,49 +9,13 @@
   display: flex;
   align-items: center;
   z-index: 500;
-  .nav-menu {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color: var(--color1-normal);
-    color: var(--color1-font);
-    @include transform(skew(-45deg));
-    padding: 4px 0.75rem;
-    border-color: var(--color1-border);
-    border-style: solid;
-    border-width: 2px 3px 2px 3px;
-    transition: all 0.3s;
-    &.open {
-      background-color: var(--color1-strong);
-    }
-    &:hover {
-      box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
-    }
-    .text {
-      @include transform(skew(45deg));
-      display: inline-block;
-    }
-  }
-  .wrap-nav-bar-links {
-    overflow: hidden;
-    position: absolute;
-    top: 100%;
-    padding: 0 calc(var(--navBar-height) / 2);
-    left: calc(var(--main-padding) + 2px);
-    &.height-animation-out {
-      animation: height-animation-out 0.5s linear;
-    }
-    &.height-animation-in {
-      animation: height-animation-in 0.5s linear;
-    }
-  }
-  .nav-bar-links {
-    display: flex;
-    flex-direction: column;
-    .nav-link {
+  .links {
+    display: inline-block;
+    .nav-menu {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
       height: 100%;
-      display: inline-block;
       background-color: var(--color1-normal);
       color: var(--color1-font);
       @include transform(skew(-45deg));
@@ -60,11 +24,10 @@
       border-style: solid;
       border-width: 2px 3px 2px 3px;
       transition: all 0.3s;
-      &.active {
-        background-color: var(--color1-light);
-        box-shadow: 0 0 6px var(--color1-border) inset, 0 0 6px var(--color1-border);
+      &.open {
+        background-color: var(--color1-strong);
       }
-      &:not(.active):hover {
+      &:hover {
         box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
       }
       .text {
@@ -72,16 +35,81 @@
         display: inline-block;
       }
     }
+    .wrap-nav-bar-links {
+      overflow: hidden;
+      position: absolute;
+      top: 100%;
+      padding: 0 calc(var(--navBar-height) / 2);
+      left: calc(var(--main-padding) + 2px);
+      &.height-animation-out {
+        animation: height-animation-out 0.5s linear;
+      }
+      &.height-animation-in {
+        animation: height-animation-in 0.5s linear;
+      }
+    }
+    .nav-bar-links {
+      display: flex;
+      flex-direction: column;
+      .nav-link {
+        height: 100%;
+        display: inline-block;
+        background-color: var(--color1-normal);
+        color: var(--color1-font);
+        @include transform(skew(-45deg));
+        padding: 4px 0.75rem;
+        border-color: var(--color1-border);
+        border-style: solid;
+        border-width: 2px 3px 2px 3px;
+        transition: all 0.3s;
+        &.active {
+          background-color: var(--color1-light);
+          box-shadow: 0 0 6px var(--color1-border) inset, 0 0 6px var(--color1-border);
+        }
+        &:not(.active):hover {
+          box-shadow: 0 0 3px var(--color1-border) inset, 0 0 3px var(--color1-border);
+        }
+        .text {
+          @include transform(skew(45deg));
+          display: inline-block;
+        }
+      }
+    }
   }
-  .float-windows-icon {
-    cursor: pointer;
-    margin: 0 0 0 0.5rem;
-    padding: 0 0.5rem;
-    border-radius: 4px;
-    font-size: 1.4rem;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: rgba(221, 221, 221, 0.2);
+  .controls {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 0.75rem;
+    .color-palette {
+      cursor: pointer;
+      padding: 0 0.25rem;
+      border-radius: 200px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      svg {
+        height: 70%;
+      }
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: rgba(221, 221, 221, 0.2);
+      }
+    }
+    .country-voice {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0.25rem;
+      transition: all 0.3s;
+      &:hover {
+        opacity: 0.9;
+      }
+      svg {
+        height: 70%;
+      }
     }
   }
   .wrap-icon-svg {

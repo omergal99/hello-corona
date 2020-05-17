@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UtilsService from '../../../services/UtilsService';
 
-function CountryDetailsTitle({ country }) {
+function CountryDetailsTitle({ country, sounds }) {
 
   const isWorld = country.name === 'World';
 
@@ -14,6 +14,14 @@ function CountryDetailsTitle({ country }) {
       : <img className="country-flag" alt="Flag" title={country.name}
         src={UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`)} />
   })()
+
+  useEffect(() => {
+    if (sounds.isCountryVoice) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = country.name;
+      speechSynthesis.speak(msg);
+    }
+  }, [country, sounds])
 
   return (
     <div className="country-details-title">

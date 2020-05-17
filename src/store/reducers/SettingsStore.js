@@ -21,6 +21,12 @@ export default (state = initialState, action) => {
     case ActionTypes.WORLD_MAP_SET_CIRCLES_DATA_KEY:
       copy.worldMap.circlesDataKey = action.payload;
       return copy;
+    case ActionTypes.WORLD_MAP_TOGGLE_IS_GRAPH_SHOW:
+      copy.worldMap.isGraphShow = !copy.worldMap.isGraphShow;
+      return copy;
+    case ActionTypes.SOUNDS_COUNTRY_VOICE:
+      copy.sounds.isCountryVoice = !copy.sounds.isCountryVoice;
+      return copy;
     default:
       return state;
   }

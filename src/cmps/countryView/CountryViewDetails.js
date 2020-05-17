@@ -1,12 +1,11 @@
 import React from 'react';
 import CountryDetails from '../helpers/countryDetails';
 
-function CountryViewDetails({ selectedCountry, worldData }) {
+function CountryViewDetails({ selectedCountry }) {
 
-  const country = selectedCountry.alpha2 ? selectedCountry : worldData;
   return (
     <div className="country-view-details flex-col">
-      <CountryDetails country={country} />
+      <CountryDetails country={selectedCountry} />
     </div>
   );
 }

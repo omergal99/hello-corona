@@ -1,17 +1,24 @@
 import StorageService from './StorageService';
 import { INIT_COLORS, PRIMARY_COLOR, SECONDARY_COLOR, BRIGHTNESS } from '../constants/CssVariable';
-import { WORLD_MAP, COLORS } from '../constants/LocalStorageKeys';
+import { WORLD_MAP, SOUNDS, COLORS } from '../constants/LocalStorageKeys';
+import { CASES } from '../constants/DataKeys';
 
 async function getData() {
   _setCssVariableColors();
   const initState = _getEmpty();
   const worldMapLocalStorage = StorageService.load(WORLD_MAP);
+  const soundsLocalStorage = StorageService.load(SOUNDS);
   if (worldMapLocalStorage) initState.worldMap = worldMapLocalStorage;
+  if (soundsLocalStorage) initState.sounds = soundsLocalStorage;
   return Promise.resolve(initState);
 }
 
 function updateWorldMapLocalStorage({ worldMap }) {
   StorageService.store(WORLD_MAP, worldMap);
+}
+
+function updateSoundsLocalStorage({ sounds }) {
+  StorageService.store(SOUNDS, sounds);
 }
 
 function updateColorsToLocalStorage() {
@@ -30,6 +37,7 @@ function resetColorsLocalStorage() {
 export default {
   getData,
   updateWorldMapLocalStorage,
+  updateSoundsLocalStorage,
   updateColorsToLocalStorage,
   resetColorsLocalStorage,
 }
@@ -39,8 +47,12 @@ const _getEmpty = () => ({
     viewBox: '',
     isTooltipShow: true,
     isCirclesShow: true,
-    circlesDataKey: undefined,
+    circlesDataKey: CASES,
     isAutoFocus: true,
+    isGraphShow: true,
+  },
+  sounds: {
+    isCountryVoice: true
   }
 })
 

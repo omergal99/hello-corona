@@ -37,13 +37,15 @@ function CountryView() {
 
   const selectedCountryIndex = countriesStore && countriesStore.selectedCountryIndex;
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0
-    ? countriesStore.countries[selectedCountryIndex] : {};
+    ? countriesStore.countries[selectedCountryIndex]
+    : countriesStore ? countriesStore.worldData : {};
+
   return (
     <>{countriesStore && <>
       <div className="country-view">
         <CountryViewList countriesStore={countriesStore} onSelectCountry={selectCountry} />
         <CountryViewPresentation selectedCountry={selectedCountry} />
-        <CountryViewDetails selectedCountry={selectedCountry} worldData={countriesStore.worldData} />
+        <CountryViewDetails selectedCountry={selectedCountry} />
         <CountryViewBottom />
       </div>
     </>}</>
