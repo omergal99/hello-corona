@@ -16,12 +16,19 @@ function CountryDetailsTitle({ country, sounds }) {
   })()
 
   useEffect(() => {
-    if (sounds.isCountryVoice) {
+    if (sounds.isCountryVoice && !isWorld) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = country.name;
+      // const voices = window.speechSynthesis.getVoices();
+      // msg.voice = voices[10];
+      // msg.voiceURI = "native";
+      // msg.volume = 1;
+      // msg.rate = 1;
+      // msg.pitch = 0.8;
+      // msg.lang = 'en-US';
       speechSynthesis.speak(msg);
     }
-  }, [country, sounds])
+  }, [country, sounds, isWorld])
 
   return (
     <div className="country-details-title">
