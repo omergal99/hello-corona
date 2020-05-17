@@ -15,7 +15,18 @@
     position: relative;
     padding: 0.5rem 0.75rem 0.75rem;
     border-radius: 8px;
-    border: 1px solid var(--color1-font);
+    border: 2px dashed var(--color1-font);
     background-color: var(--color1-normal);
+    animation: toTop0 1.2s linear;
+    @keyframes toTop0 {
+      from {
+        position: relative;
+        top: 150px;
+      }
+      to {
+        position: relative;
+        top: 0;
+      }
+    }
   }
 }

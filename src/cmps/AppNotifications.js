@@ -19,19 +19,19 @@ function AppNotifications() {
     });
   };
 
-  const btnStyle = { padding: '0.2rem 0.5rem 0.1rem 0.5rem' };
+  const btnStyle = { padding: '4px 10px 2px', fontSize: '1.2rem', borderWidth: '2px' };
   return (
     <div className="app-notifications">
       {serviceWorkerStore.isUpdated && SWOpen &&
-        <div className="service-worker-msg" >
-          <p className="text">A new version of this app is available.</p>
-          <div className="flex-evenly">
-            <Button text={'Not Now'} style={btnStyle} type={'firebrick'}
-              onClick={() => setSWOpen(false)} />
-            <Button text={'Update'} style={btnStyle} type={'mediumseagreen'}
-              onClick={updateServiceWorker} />
-          </div>
+      <div className="service-worker-msg" >
+        <p className="text">New version of this app is available.</p>
+        <div className="flex-evenly">
+          <Button text={'Not Now'} style={btnStyle} type={'firebrick'}
+            onClick={() => setSWOpen(false)} />
+          <Button text={'Update'} style={btnStyle} type={'mediumseagreen'}
+            onClick={updateServiceWorker} />
         </div>
+      </div>
       }
     </div>
   );
