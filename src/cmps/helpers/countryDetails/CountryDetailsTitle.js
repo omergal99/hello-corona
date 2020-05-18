@@ -22,12 +22,13 @@ function CountryDetailsTitle({ country, sounds }) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = country.name;
       // const voices = window.speechSynthesis.getVoices();
-      // msg.voice = voices[10];
-      // msg.voiceURI = "native";
-      // msg.volume = 1;
-      // msg.rate = 1;
-      // msg.pitch = 0.8;
-      // msg.lang = 'en-US';
+      // msg.voice = voices[1];
+      msg.voice = window.speechSynthesis.getVoices()[1];
+      msg.voiceURI = "native";
+      msg.volume = 1;
+      msg.rate = 1;
+      msg.pitch = 0.8;
+      msg.lang = 'en-US';
       speechSynthesis.speak(msg);
     }
   }, [country, isCountryVoice, isWorld])

@@ -13,11 +13,8 @@ async function getData() {
   return Promise.resolve(initState);
 }
 
-function updateWorldMapLocalStorage({ worldMap }) {
+function updateSettingsLocalStorage({ worldMap, sounds }) {
   StorageService.store(WORLD_MAP, worldMap);
-}
-
-function updateSoundsLocalStorage({ sounds }) {
   StorageService.store(SOUNDS, sounds);
 }
 
@@ -36,8 +33,7 @@ function resetColorsLocalStorage() {
 
 export default {
   getData,
-  updateWorldMapLocalStorage,
-  updateSoundsLocalStorage,
+  updateSettingsLocalStorage,
   updateColorsToLocalStorage,
   resetColorsLocalStorage,
 }

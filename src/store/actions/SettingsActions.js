@@ -10,43 +10,48 @@ function loadSettingsData() {
 
 function toggleIsCirclesShow() {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_CIRCLES_SHOW });
-    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+    const isCirclesShow = !getState().settingsStore.worldMap.isCirclesShow;
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isCirclesShow } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 
 function toggleIsTooltipShow() {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_TOOLTIP_SHOW });
-    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+    const isTooltipShow = !getState().settingsStore.worldMap.isTooltipShow;
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isTooltipShow } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 
 function toggleIsAutoFocus() {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_AUTO_FOCUS });
-    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+    const isAutoFocus = !getState().settingsStore.worldMap.isAutoFocus;
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isAutoFocus } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 
-function setCirclesDataKey(dataKey) {
+function setCirclesDataKey(circlesDataKey) {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.WORLD_MAP_SET_CIRCLES_DATA_KEY, payload: dataKey });
-    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { circlesDataKey } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 
 function toggleIsGraphShow() {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.WORLD_MAP_TOGGLE_IS_GRAPH_SHOW });
-    SettingsService.updateWorldMapLocalStorage(getState().settingsStore);
+    const isGraphShow = !getState().settingsStore.worldMap.isGraphShow;
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isGraphShow } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 
 function toggleIsCountryVoice() {
   return async (dispatch, getState) => {
-    dispatch({ type: ActionTypes.SOUNDS_COUNTRY_VOICE });
-    SettingsService.updateSoundsLocalStorage(getState().settingsStore);
+    const isCountryVoice = !getState().settingsStore.sounds.isCountryVoice;
+    dispatch({ type: ActionTypes.UPDATE_SOUNDS, payload: { isCountryVoice } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }
 

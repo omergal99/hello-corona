@@ -9,23 +9,11 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.SET_SETTING_DATA:
       return action.payload;
-    case ActionTypes.WORLD_MAP_TOGGLE_IS_CIRCLES_SHOW:
-      copy.worldMap.isCirclesShow = !copy.worldMap.isCirclesShow;
+    case ActionTypes.UPDATE_WORLD_MAP:
+      copy.worldMap = { ...copy.worldMap, ...action.payload };
       return copy;
-    case ActionTypes.WORLD_MAP_TOGGLE_IS_TOOLTIP_SHOW:
-      copy.worldMap.isTooltipShow = !copy.worldMap.isTooltipShow;
-      return copy;
-    case ActionTypes.WORLD_MAP_TOGGLE_IS_AUTO_FOCUS:
-      copy.worldMap.isAutoFocus = !copy.worldMap.isAutoFocus;
-      return copy;
-    case ActionTypes.WORLD_MAP_SET_CIRCLES_DATA_KEY:
-      copy.worldMap.circlesDataKey = action.payload;
-      return copy;
-    case ActionTypes.WORLD_MAP_TOGGLE_IS_GRAPH_SHOW:
-      copy.worldMap.isGraphShow = !copy.worldMap.isGraphShow;
-      return copy;
-    case ActionTypes.SOUNDS_COUNTRY_VOICE:
-      copy.sounds.isCountryVoice = !copy.sounds.isCountryVoice;
+    case ActionTypes.UPDATE_SOUNDS:
+      copy.sounds = { ...copy.sounds, ...action.payload };
       return copy;
     default:
       return state;
