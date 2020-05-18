@@ -31,9 +31,9 @@ export function numberWithCommas(number) {
 export function numberToShortString(number) {
   if (!number) return number;
   if (number < 1_000) return `${number}`;
-  if (number < 1_000_000) return `${(number / 1_000).toFixed()}K`;
-  if (number < 1_000_000_000) return `${(number / 1_000_000).toFixed()}M`;
-  if (number < 1_000_000_000_000) return `${(number / 1_000_000_000).toFixed()}B`;
+  if (number < 1_000_000) return _RoundNumWith05(number, 1_000, 'K', 10);
+  if (number < 1_000_000_000) return _RoundNumWith05(number, 1_000_000, 'M', 10);
+  if (number < 1_000_000_000_000) return _RoundNumWith05(number, 1_000_000_000, 'B', 10);
   return number;
 }
 
@@ -50,4 +50,10 @@ export default {
   numberWithCommas,
   numberToShortString,
   sleep
+}
+
+function _RoundNumWith05 (num, divid, letter, smallerThan) {
+  return (num / divid) < smallerThan
+    ? `${Math.round((num / divid) * 2) / 2}${letter}`
+    : `${(num / divid).toFixed()}${letter}`;
 }
