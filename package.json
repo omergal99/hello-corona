@@ -2,7 +2,7 @@
   "homepage": "https://omergal99.github.io/hello-corona",
   "name": "hello-corona",
   "description": "Information about the Corona virus, in the countries of the world",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "index.js",
   "private": true,
   "author": {

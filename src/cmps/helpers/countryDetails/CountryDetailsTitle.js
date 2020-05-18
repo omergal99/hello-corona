@@ -4,6 +4,7 @@ import UtilsService from '../../../services/UtilsService';
 function CountryDetailsTitle({ country, sounds }) {
 
   const isWorld = country.name === 'World';
+  const { isCountryVoice } = sounds;
 
   const countryIcon = (() => {
     return isWorld
@@ -15,8 +16,9 @@ function CountryDetailsTitle({ country, sounds }) {
         src={UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`)} />
   })()
 
+  
   useEffect(() => {
-    if (sounds.isCountryVoice && !isWorld) {
+    if (isCountryVoice && !isWorld) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = country.name;
       // const voices = window.speechSynthesis.getVoices();
@@ -28,7 +30,7 @@ function CountryDetailsTitle({ country, sounds }) {
       // msg.lang = 'en-US';
       speechSynthesis.speak(msg);
     }
-  }, [country, sounds, isWorld])
+  }, [country, isCountryVoice, isWorld])
 
   return (
     <div className="country-details-title">
