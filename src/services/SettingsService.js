@@ -8,8 +8,8 @@ async function getData() {
   const initState = _getEmpty();
   const worldMapLocalStorage = StorageService.load(WORLD_MAP);
   const soundsLocalStorage = StorageService.load(SOUNDS);
-  if (worldMapLocalStorage) initState.worldMap = worldMapLocalStorage;
-  if (soundsLocalStorage) initState.sounds = soundsLocalStorage;
+  if (worldMapLocalStorage) initState.worldMap = { ...initState.worldMap, ...worldMapLocalStorage };
+  if (soundsLocalStorage) initState.sounds = { ...initState.sounds, ...soundsLocalStorage };
   return Promise.resolve(initState);
 }
 
