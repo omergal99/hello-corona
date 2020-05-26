@@ -69,5 +69,8 @@
     "offline",
     "corona virus",
     "covid-19"
-  ]
+  ],
+  "devDependencies": {
+    "cypress": "^4.6.0"
+  }
 }

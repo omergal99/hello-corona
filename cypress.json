@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://localhost:3006/hello-corona#/",
+  "viewportHeight": 800,
+  "viewportWidth": 1280
+}
