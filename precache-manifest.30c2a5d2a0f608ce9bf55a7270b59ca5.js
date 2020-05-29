@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25dbee10a411964b8675e809afc4a040",
+    "revision": "47e4ce2744ada4805656558bc05bb345",
     "url": "/hello-corona/index.html"
   },
   {
-    "revision": "80596acb45c247cbd63e",
-    "url": "/hello-corona/static/css/main.1dacb39a.chunk.css"
+    "revision": "df5f3988678acbf6de3a",
+    "url": "/hello-corona/static/css/main.106105d2.chunk.css"
   },
   {
-    "revision": "bc3bd8f82536a055c557",
-    "url": "/hello-corona/static/js/2.7f6e931c.chunk.js"
+    "revision": "f507087622efc6813c6c",
+    "url": "/hello-corona/static/js/2.74000bf0.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/hello-corona/static/js/2.7f6e931c.chunk.js.LICENSE.txt"
+    "url": "/hello-corona/static/js/2.74000bf0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3ee9fc6a8d42dd7511f4",
-    "url": "/hello-corona/static/js/3.8817372b.chunk.js"
+    "revision": "8c035f85d1b941d04f4c",
+    "url": "/hello-corona/static/js/3.6370ef9f.chunk.js"
   },
   {
-    "revision": "cec37195faae7abd02fd",
-    "url": "/hello-corona/static/js/4.9f023de9.chunk.js"
+    "revision": "f55a2ecc2ceb4ca8e76c",
+    "url": "/hello-corona/static/js/4.1cf857ab.chunk.js"
   },
   {
-    "revision": "47e3bb79361738517ccf",
-    "url": "/hello-corona/static/js/5.f0beaa70.chunk.js"
+    "revision": "e4f28f66b300279541f2",
+    "url": "/hello-corona/static/js/5.1579aceb.chunk.js"
   },
   {
-    "revision": "488a6143f74420053aa6",
-    "url": "/hello-corona/static/js/6.e5d52dc4.chunk.js"
+    "revision": "d0f77cf780e02f260ed1",
+    "url": "/hello-corona/static/js/6.086a3a31.chunk.js"
   },
   {
-    "revision": "80596acb45c247cbd63e",
-    "url": "/hello-corona/static/js/main.86496b52.chunk.js"
+    "revision": "df5f3988678acbf6de3a",
+    "url": "/hello-corona/static/js/main.33d53d84.chunk.js"
   },
   {
-    "revision": "f340fac26ebdb5e0a3c1",
-    "url": "/hello-corona/static/js/runtime-main.ce00775f.js"
+    "revision": "e01063afe4eac8073584",
+    "url": "/hello-corona/static/js/runtime-main.239e89ed.js"
   },
   {
     "revision": "d325ec368ef121f557cee3e378ba05b9",
