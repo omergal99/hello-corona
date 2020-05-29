@@ -1,29 +1,37 @@
 import React from 'react';
 import UtilsService from '../../services/UtilsService';
 import VirusSVG from '../helpers/svg-icons/VirusSVG';
-import { CASES, DEATHS, RECOVERED, CRITICAL, RANK, getDataKeysByKeys } from '../../constants/DataKeys';
+import { CASES, DEATHS, RECOVERED, ACTIVE, RANK, getDataKeysByKeys } from '../../constants/DataKeys';
 
 function WorldDashboardListItem({ country, selectedCountry, onSelectCountry }) {
 
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
 
-  const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, CRITICAL]);
+  const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, ACTIVE]);
 
   const categoryView = caterogies.map(category => {
     const shortNum = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
     const commasNum = UtilsService.numberWithCommas(country[category.key]);
+    const APercent = (country[ACTIVE] / country[CASES] * 100).toFixed();
+    const activePercent = !isNaN(APercent) && APercent > 0 ? APercent + '%' : '';
     return <div className="category flex-col" key={category.key}
       title={`${commasNum} ${category.title}`}>
-      <span className="title">{category.title}</span>
+      <span className="title">
+        {category.title}
+        {category.key === ACTIVE && <span className="title-percent">
+          &nbsp;{activePercent}
+        </span>}
+      </span>
       <span className="value">{shortNum}</span>
     </div>
   })
 
   return (
     <li className={`country ${isSelected}`} onClick={() => onSelectCountry(country)}>
-      <span className="numeric-code" title="Numeric Code">N-C {country.numericCode}</span>
-
+      <span className="numeric-code" title={`Numeric Code ${country.numericCode}`}>
+        N-C {country.numericCode}
+      </span>
       <div className="top-section">
         <div className="wrap-country-flag">
           <img className="country-flag" src={src} alt="Flag" title={country.name} />

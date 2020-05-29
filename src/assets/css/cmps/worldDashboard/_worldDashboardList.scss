@@ -101,6 +101,10 @@ $numeric-code-left: 1rem;
         .category {
           .title {
             font-size: 0.8rem;
+            .title-percent {
+              color: hsla(var(--base-color2), 100%, 50%, 1);
+              font-weight: 600;
+            }
           }
           .value {
             font-size: 1rem;
