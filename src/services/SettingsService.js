@@ -1,7 +1,7 @@
 import StorageService from './StorageService';
 import { INIT_COLORS, PRIMARY_COLOR, SECONDARY_COLOR, BRIGHTNESS } from '../constants/CssVariable';
 import { WORLD_MAP, SOUNDS, COLORS } from '../constants/LocalStorageKeys';
-import { CASES } from '../constants/DataKeys';
+import { ACTIVE } from '../constants/DataKeys';
 
 async function getData() {
   _setCssVariableColors();
@@ -43,7 +43,7 @@ const _getEmpty = () => ({
     viewBox: '',
     isTooltipShow: true,
     isCirclesShow: true,
-    circlesDataKey: CASES,
+    circlesDataKey: ACTIVE,
     isAutoFocus: true,
     isGraphShow: true,
   },

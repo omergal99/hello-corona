@@ -74,4 +74,13 @@
       background-color: rgba(30, 143, 255, $opacityHover);
     }
   }
+  &.orange {
+    background-color: rgba(255, 165, 0, $opacity);
+    &.active {
+      background-color: rgb(220, 143, 0);
+    }
+    &:hover {
+      background-color: rgba(255, 165, 0, $opacityHover);
+    }
+  }
 }

@@ -43,7 +43,8 @@ export const getCoronaDataKeys = () => ([
 ])
 
 export const getDataKeysByKeys = keys => {
-  return getAllDataKeys().filter(dataKey => keys.some(key => key === dataKey.key));
+  return keys.map(key => getDataKeyByKey(key));
+  // return getAllDataKeys().filter(dataKey => keys.some(key => key === dataKey.key));
 }
 
 export const getDataKeyByKey = key => {
