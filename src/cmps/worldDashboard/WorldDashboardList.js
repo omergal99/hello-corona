@@ -25,8 +25,12 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
   }
 
   const filterCountries = filteredList => {
-    setFilteredCountries(filteredList);
-    setIsFiltered(true);
+    if (filteredList) {
+      setFilteredCountries(filteredList);
+      setIsFiltered(true);
+    } else {
+      setFilteredCountries(countries.filter((item, idx) => idx < 40));
+    }
   }
 
   return (

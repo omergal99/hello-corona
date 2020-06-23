@@ -1,12 +1,34 @@
-.filter-input {
+.text-filter {
+  position: relative;
   background-color: transparent;
-  width: 100%;
-  border: none;
-  padding: 0.5rem 0.5rem 0.4rem;
-  font-size: 1rem;
-  color: white;
-  &::placeholder {
+  display: block;
+  .filter-input {
+    min-height: 28px;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    padding: 0.5rem 0.5rem 0.4rem;
+    font-size: 1rem;
+    color: white;
+    &::placeholder {
+      color: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 0.6);
+    }
+  }
+  .clear-button {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 2.5rem;
+    top: 0;
+    right: 0;
+    padding: 0 0.5rem;
     color: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 0.6);
+    .clear-button-svg {
+      display: block;
+      height: 100%;
+      width: 100%;
+      fill: currentColor;
+    }
   }
 }
 
