@@ -105,7 +105,7 @@
       padding: 0 0.25rem;
       transition: all 0.3s;
       &:hover {
-        opacity: 0.9;
+        color: var(--color1-border);
       }
       svg {
         height: 70%;

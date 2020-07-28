@@ -3,7 +3,7 @@ import UtilsService from '../../services/UtilsService';
 import VirusSVG from '../helpers/svg-icons/VirusSVG';
 import { CASES, DEATHS, RECOVERED, ACTIVE, RANK, getDataKeysByKeys } from '../../constants/DataKeys';
 
-function WorldDashboardListItem({ country, selectedCountry, onSelectCountry }) {
+function WorldDashboardListItem({ country, selectedCountry, onSelectCountry, countryRef }) {
 
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
@@ -28,7 +28,8 @@ function WorldDashboardListItem({ country, selectedCountry, onSelectCountry }) {
   })
 
   return (
-    <li className={`country ${isSelected}`} onClick={() => onSelectCountry(country)}>
+    <li className={`country ${isSelected}`} ref={countryRef}
+      onClick={() => onSelectCountry(country)}>
       <span className="numeric-code" title={`Numeric Code ${country.numericCode}`}>
         N-C {country.numericCode}
       </span>

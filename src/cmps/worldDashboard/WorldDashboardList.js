@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FilterInput from '../helpers/FilterInput';
 import WorldDashboardListItem from './WorldDashboardListItem';
 
 function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
+  console.log('WorldDashboardList');
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
-  const [filteredCountries, setFilteredCountries] = useState(countries.filter((item, idx) => idx < 40));
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [isScroll, setIsScroll] = useState(false);
+  const [filteredCountries, setFilteredCountries] = React.useState(countries.filter((item, idx) => idx < 40));
+  const [isFiltered, setIsFiltered] = React.useState(false);
+  const [isScroll, setIsScroll] = React.useState(false);
+
+  const selectedCountryRef = React.useRef(null);
 
   const list = filteredCountries.map((country, idx) => {
+    const countryRef = selectedCountry.alpha2 === country.alpha2 ? selectedCountryRef : null;
     return (isScroll || isFiltered || idx < 10)
-      ? <WorldDashboardListItem key={country.id} country={country} selectedCountry={selectedCountry}
+      ? <WorldDashboardListItem key={country.id} countryRef={countryRef}
+        country={country} selectedCountry={selectedCountry}
         onSelectCountry={onSelectCountry} />
-      : <li key={idx} style={{ height: '6.5rem' }}></li>
+      : <li key={idx} ref={countryRef} style={{ height: '6.5rem' }}></li>
   })
 
   const handleScroll = ev => {
@@ -32,6 +37,26 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
       setFilteredCountries(countries.filter((item, idx) => idx < 40));
     }
   }
+
+  const handleUserKeyPress = React.useCallback((ev) => {
+    const arrowUpOrDown = ev.code === 'ArrowDown' ? 1 : ev.code === 'ArrowUp' ? -1 : 0;
+    if (!arrowUpOrDown || selectedCountryIndex + arrowUpOrDown < 0
+      || selectedCountryIndex + arrowUpOrDown > filteredCountries.length - 1) return;
+    ev.preventDefault();
+    onSelectCountry(filteredCountries[selectedCountryIndex + arrowUpOrDown]);
+    selectedCountryRef.current.scrollIntoView({ block: 'center' });
+  }, [filteredCountries, selectedCountryIndex, onSelectCountry])
+
+  React.useEffect(() => {
+    window.addEventListener('keyup', handleUserKeyPress);
+    return (() => window.removeEventListener('keyup', handleUserKeyPress));
+  }, [handleUserKeyPress])
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      if (selectedCountryRef.current) selectedCountryRef.current.scrollIntoView({ block: 'center' });
+    }, 0)
+  }, [selectedCountryRef])
 
   return (
     <div className="world-dashboard-list flex-col">

@@ -53,7 +53,8 @@ async function getData() {
 async function getCountryHistory(country) {
   let serverCountryHistory = JSONcoronaCountriesHistory.find(his => his.country === country.name);
   const { isGraphShow } = store.getState().settingsStore.worldMap;
-  if (ServiceConfig.isServerCountriesConnected && isGraphShow) {
+  if (!isGraphShow) return;
+  if (ServiceConfig.isServerCountriesConnected) {
     const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
     serverCountryHistory = await getCountryHistory;
 
