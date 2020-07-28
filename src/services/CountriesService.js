@@ -52,7 +52,8 @@ async function getData() {
 
 async function getCountryHistory(country) {
   let serverCountryHistory = JSONcoronaCountriesHistory.find(his => his.country === country.name);
-  if (ServiceConfig.isServerCountriesConnected) {
+  const { isGraphShow } = store.getState().settingsStore.worldMap;
+  if (ServiceConfig.isServerCountriesConnected && isGraphShow) {
     const getCountryHistory = ApiService.getCountryHistory(country.numericCode);
     serverCountryHistory = await getCountryHistory;
 
@@ -99,7 +100,7 @@ const _getStateDataAPI = async () => {
 }
 
 const _mergeCoronaData = (coronaCountries = []) => {
-  const sortBy = CASES;
+  const sortBy = ACTIVE;
   return countries.map(country => {
     const coronaObj = { ...country };
     const coronaArrKeys = [CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
@@ -119,6 +120,6 @@ const _createWorldData = (coronaWorld, worldHistory) => {
     name: 'World',
     gifName: 'earth',
     [POPULATION]: populationWorld.populationInThousands2020 * 1000,
-    history: { timeline: worldHistory }
+    history: { timeline: worldHistory },
   };
 }

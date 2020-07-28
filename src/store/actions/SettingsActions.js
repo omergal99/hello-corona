@@ -1,4 +1,5 @@
 import SettingsService from '../../services/SettingsService';
+import CountriesService from '../../services/CountriesService';
 import * as ActionTypes from '../ActionTypes';
 
 function loadSettingsData() {
@@ -43,6 +44,14 @@ function toggleIsGraphShow() {
   return async (dispatch, getState) => {
     const isGraphShow = !getState().settingsStore.worldMap.isGraphShow;
     dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isGraphShow } });
+    if (isGraphShow) {
+      const { countries, selectedCountryIndex } = getState().countriesStore;
+      if (selectedCountryIndex || selectedCountryIndex === 0) {
+        if (!countries[selectedCountryIndex].history) {
+          CountriesService.getCountryHistory(countries[selectedCountryIndex]);
+        }
+      }
+    }
     SettingsService.updateSettingsLocalStorage(getState().settingsStore);
   }
 }

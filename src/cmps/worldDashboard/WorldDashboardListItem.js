@@ -8,7 +8,7 @@ function WorldDashboardListItem({ country, selectedCountry, onSelectCountry }) {
   const isSelected = country.name === selectedCountry.name ? 'selected' : '';
   const src = UtilsService.getImgSrc(`flags/${country.alpha2.toLowerCase()}.png`);
 
-  const caterogies = getDataKeysByKeys([CASES, DEATHS, RECOVERED, ACTIVE]);
+  const caterogies = getDataKeysByKeys([ACTIVE, CASES, DEATHS, RECOVERED]);
 
   const categoryView = caterogies.map(category => {
     const shortNum = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
