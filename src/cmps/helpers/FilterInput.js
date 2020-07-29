@@ -27,6 +27,7 @@ function FilterInput({ list = [], filterKeys = [], placeholder = 'Search',
           </svg>
         </div>
       }
+      <span className="span-animation"></span>
     </label>
   );
 }

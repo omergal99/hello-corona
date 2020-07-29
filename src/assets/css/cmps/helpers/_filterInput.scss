@@ -2,6 +2,8 @@
   position: relative;
   background-color: transparent;
   display: block;
+  border-radius: 3px 3px 10px 0px;
+  border-bottom: 2px solid var(--color1-border);
   .filter-input {
     min-height: 28px;
     background-color: transparent;
@@ -10,6 +12,7 @@
     padding: 0.5rem 0.5rem 0.4rem;
     font-size: 1rem;
     color: white;
+    outline: transparent;
     &::placeholder {
       color: hsla(var(--base-color1), 0%, calc(186% + -93% * var(--brightness)), 0.6);
     }
@@ -30,10 +33,37 @@
       fill: currentColor;
     }
   }
+  .span-animation {
+    display: flex;
+    cursor: text;
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+
+  .span-animation::before {
+    content: "";
+    height: 2px;
+    width: 0;
+    background: var(--color2-border);
+    transition: all 0.2s ease;
+  }
+
+  // .filter-input:focus ~ .span-animation::before {
+  //   width: 100%;
+  // }
+
+  &:focus-within {
+    border-bottom: 2px solid var(--color2-border);
+    transition: all 0.2s ease;
+    .span-animation::before {
+      width: 100%;
+    }
+  }
+
 }
 
 .custom-filter-input {
   background-color: var(--color1-light);
   border-radius: 3px 3px 10px 0px;
-  border-bottom: 2px solid var(--color1-border);
 }

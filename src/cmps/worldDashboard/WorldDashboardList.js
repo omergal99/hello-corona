@@ -4,7 +4,7 @@ import WorldDashboardListItem from './WorldDashboardListItem';
 
 function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex },
   onSelectCountry }) {
-  console.log('WorldDashboardList');
+  // console.log('WorldDashboardList');
   const selectedCountry = selectedCountryIndex || selectedCountryIndex === 0 ? countries[selectedCountryIndex] : {};
 
   const [filteredCountries, setFilteredCountries] = React.useState(countries.filter((item, idx) => idx < 40));
