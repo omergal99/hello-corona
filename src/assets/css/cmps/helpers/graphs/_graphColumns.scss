@@ -27,12 +27,24 @@
       &:hover .column-percent {
         border-top: 5px solid var(--color1-border);
         // transition: border-top 0.2s ease-in;
-        .wrap-value {
+        .hover-value {
           opacity: 1;
           z-index: 100;
+          top: -80px;
+          display: flex;
+          flex-direction: column-reverse;
+          align-items: center;
           // transition: opacity 0.2s ease-in;
           .value {
             border: 1px solid white;
+          }
+          .date {
+            display: inline-block;
+            font-size: 0.9rem;
+            background-color: var(--color1-strong);
+            border: 1px solid white;
+            padding: 0px 2px;
+            border-radius: 3px;
           }
         }
       }
@@ -43,7 +55,8 @@
         background-color: var(--color1-strong);
         border-top: 5px solid var(--color2-border);
         pointer-events: auto;
-        .wrap-value {
+        .wrap-value,
+        .hover-value {
           opacity: 0;
           // transition: opacity 0.5s ease-out;
           display: flex;
@@ -59,6 +72,9 @@
             padding: 1px 2px;
             border-radius: 4px;
             top: 0.5rem;
+          }
+          .date {
+            display: none;
           }
         }
         .line {

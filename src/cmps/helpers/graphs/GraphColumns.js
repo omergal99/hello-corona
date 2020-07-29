@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Button from '../../elements/Button';
 import { CASES, DEATHS, RECOVERED, getDataKeysByKeys, getDataKeyByKey } from '../../../constants/DataKeys';
+import { orderDate } from '../../../services/UtilsService';
 
 import GraphColumnsPreview from './GraphColumnsPreview';
 
@@ -41,14 +42,15 @@ function GraphColumns({ selectedCountry }) {
       <div className="graph-options">
         <div className="graph-text">
           <p>
-            <span className="text">{`From ${historyArr[0].date} To ${historyArr[historyArr.length - 1].date}`}</span>
+            <span className="text">{`From ${orderDate(historyArr[0].date)}`}</span>
+            <span className="text">{`To ${orderDate(historyArr[historyArr.length - 1].date)}`}</span>
           </p>
         </div>
         <div className="buttons-options flex-center">
           {graphTypesButtons}
         </div>
       </div>
-      
+
       {graphRef && graphRef.current &&
         <GraphColumnsPreview arr={historyArr} maxHeight={maxHeight} graphRatio={graphRatio}
           graphDataType={graphDataType} />

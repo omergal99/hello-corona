@@ -41,6 +41,11 @@ export const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 export const getTimestempSubHours = hours => Date.now() - hours * 3_600_000;
 
+export const orderDate = date => {
+  const arr = date.split('/');
+  return `${arr[1]}/${arr[0]}/20${arr[2]}`;
+}
+
 export default {
   makeShallowCopy,
   makeDeepCopy,
@@ -49,7 +54,8 @@ export default {
   toTitleCase,
   numberWithCommas,
   numberToShortString,
-  sleep
+  sleep,
+  orderDate
 }
 
 function _RoundNumWith05 (num, divid, letter, smallerThan) {

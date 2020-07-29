@@ -1,5 +1,5 @@
 import React from 'react';
-import UtilsService from '../../../services/UtilsService';
+import { numberWithCommas, orderDate } from '../../../services/UtilsService';
 
 function GraphColumnsPreview({ arr, maxHeight, graphRatio, graphDataType }) {
 
@@ -23,7 +23,11 @@ function GraphColumnsPreview({ arr, maxHeight, graphRatio, graphDataType }) {
     return <li className="column" key={item.date} style={{ width }}>
       <div className="column-percent" style={{ height, backgroundColor }}>
         <div className="wrap-value">
-          <span className="value">{UtilsService.numberWithCommas(item.value)}</span>
+          <span className="value">{numberWithCommas(item.value)}</span>
+        </div>
+        <div className="hover-value">
+          <span className="value">{numberWithCommas(item.value)}</span>
+          <span className="date">{orderDate(item.date)}</span>
         </div>
         {arr[idx + 1] && <span className="line" style={style}></span>}
       </div>
