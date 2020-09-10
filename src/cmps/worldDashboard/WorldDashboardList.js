@@ -39,13 +39,19 @@ function WorldDashboardList({ countriesStore: { countries, selectedCountryIndex 
   }
 
   const handleUserKeyPress = React.useCallback((ev) => {
-    const arrowUpOrDown = ev.code === 'ArrowDown' ? 1 : ev.code === 'ArrowUp' ? -1 : 0;
-    if (!arrowUpOrDown || selectedCountryIndex + arrowUpOrDown < 0
-      || selectedCountryIndex + arrowUpOrDown > filteredCountries.length - 1) return;
     ev.preventDefault();
-    onSelectCountry(filteredCountries[selectedCountryIndex + arrowUpOrDown]);
+    const arrowUpOrDown = ev.code === 'ArrowDown' ? 1 : ev.code === 'ArrowUp' ? -1 : 0;
+    if (!arrowUpOrDown) return;
+    let nextIndex = selectedCountryIndex + arrowUpOrDown;
+    if (nextIndex < 0) nextIndex = filteredCountries.length - 1;
+    if (nextIndex > countries.length - 1) nextIndex = 0;
+    if (filteredCountries[nextIndex]) {
+      onSelectCountry(filteredCountries[nextIndex]);
+    } else {
+      setFilteredCountries(countries);
+    }
     selectedCountryRef.current.scrollIntoView({ block: 'center' });
-  }, [filteredCountries, selectedCountryIndex, onSelectCountry])
+  }, [filteredCountries, selectedCountryIndex, onSelectCountry, countries])
 
   React.useEffect(() => {
     window.addEventListener('keyup', handleUserKeyPress);
