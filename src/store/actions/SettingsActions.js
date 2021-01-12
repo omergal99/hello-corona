@@ -25,6 +25,14 @@ function toggleIsTooltipShow() {
   }
 }
 
+function toggleGradient() {
+  return async (dispatch, getState) => {
+    const isGradient = !getState().settingsStore.worldMap.isGradient;
+    dispatch({ type: ActionTypes.UPDATE_WORLD_MAP, payload: { isGradient } });
+    SettingsService.updateSettingsLocalStorage(getState().settingsStore);
+  }
+}
+
 function toggleIsAutoFocus() {
   return async (dispatch, getState) => {
     const isAutoFocus = !getState().settingsStore.worldMap.isAutoFocus;
@@ -70,6 +78,7 @@ export default {
   toggleIsAutoFocus,
   setCirclesDataKey,
   toggleIsTooltipShow,
+  toggleGradient,
   toggleIsGraphShow,
   toggleIsCountryVoice,
 }

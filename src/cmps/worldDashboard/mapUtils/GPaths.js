@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useMemo } from "react";
 import countriesLabels from "../../../services/data/countriesLabels.json";
 
 function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, didDrag,
-  pathClassName, currPathName, isDragging, initZoom, isAutoFocus, isTooltipShow,
+  pathClassName, currPathName, isDragging, initZoom, isAutoFocus, isTooltipShow, isGradient,
   onSetViewBox, onSetDynamicRatio, onSetMapView, onSelectCountry }) {
 
   const selectedCountryRef = useRef();
@@ -30,12 +30,12 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, di
         alpha2={country.alpha2} name={country.name} d={country.d}
         onClick={() => !didDrag && onSelectCountry(country)}
         ref={isSelected ? selectedCountryRef : undefined}
-        style={{ fill: `${isSelected ? "url('#pattern')" : ""}` }}
+        style={{ fill: `${isGradient && isSelected ? "url('#pattern')" : ""}` }}
       >
         {!isTooltipShow && <title>{country.name}</title>}
       </path>
     })
-  }, [countries, currPathName, didDrag, isDragging, isTooltipShow, onSelectCountry, pathClassName, selectedCountry.name])
+  }, [countries, currPathName, didDrag, isDragging, isGradient, isTooltipShow, onSelectCountry, pathClassName, selectedCountry.name])
 
   const countriesPathsLabels = countriesLabels.map(country => {
     return <path className="country-path-label" d={country.d} key={country.id}></path>

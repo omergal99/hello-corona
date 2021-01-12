@@ -6,8 +6,10 @@ import {
 } from '../../../constants/DataKeys';
 
 function CountryDetailsList({ country }) {
+  console.log('country', country);
 
   const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS];
+
   const coronaDetails = getCoronaDataKeys().map(category => {
     const isWishIcon = categoriesToAddIcon.some(key => key === category.key);
     const value = country[category.key] ? UtilsService.numberWithCommas(country[category.key]) : 'No Data';
@@ -19,7 +21,7 @@ function CountryDetailsList({ country }) {
         {isWishIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
       </span>
       <span className="value" title={value}>{value}</span>
-      {dividBy && !!country[category.key] &&
+      {!!percent && dividBy && !!country[category.key] &&
         <span className="percent" title={percent.toFixed(2)}>
           {Number(percent.toFixed(0)) !== 0 ? percent.toFixed(0) : percent.toFixed(2)}
           %

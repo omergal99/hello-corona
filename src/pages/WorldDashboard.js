@@ -53,6 +53,7 @@ function WorldDashboard() {
     onToggleIsAutoFocus: () => dispatch(actions.toggleIsAutoFocus()),
     onSetCirclesDataKey: dataKey => dispatch(actions.setCirclesDataKey(dataKey)),
     onToggleIsTooltipShow: () => dispatch(actions.toggleIsTooltipShow()),
+    onToggleGradient: () => dispatch(actions.toggleGradient()),
     onToggleIsGraphShow: () => dispatch(actions.toggleIsGraphShow()),
   }
 

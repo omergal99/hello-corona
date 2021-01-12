@@ -9,7 +9,7 @@ import countriesPopulation from './data/countriesPopulation.json';
 
 import {
   CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
-  DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, POPULATION, RANK
+  DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, POPULATION, RANK, UPDATED
 } from '../constants/DataKeys';
 
 import StorageService from './StorageService';
@@ -105,7 +105,7 @@ const _mergeCoronaData = (coronaCountries = []) => {
   return countries.map(country => {
     const coronaObj = { ...country };
     const coronaArrKeys = [CASES, TODAY_CASES, DEATHS, TODAY_DEATHS, RECOVERED, ACTIVE, CRITICAL, CASES_PER_ONE_MILLION,
-      DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, RANK];
+      DEATHS_PER_ONE_MILLION, TESTS, TESTS_PER_ONE_MILLION, CONTINENT, HISTORY, RANK, UPDATED];
     const coronaData = coronaCountries.find(corona => corona.countryInfo._id === country.numericCode);
     coronaArrKeys.forEach(key => coronaObj[key] = coronaData ? coronaData[key] : null);
     return coronaObj;

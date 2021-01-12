@@ -23,7 +23,7 @@ function SvgCountriesMap(props) {
   const {
     countries,
     selectedCountry,
-    settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow }, onSelectCountry
+    settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow, isGradient }, onSelectCountry
   } = props;
 
   const svgRef = useRef(initZoom);
@@ -124,6 +124,7 @@ function SvgCountriesMap(props) {
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName} didDrag={didDrag}
           initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus} isTooltipShow={isTooltipShow}
+          isGradient={isGradient}
           onSetViewBox={setViewBox} onSetDynamicRatio={setDynamicRatio} onSetMapView={setMapView}
           onSelectCountry={onSelectCountry} />
         {isCirclesShow &&

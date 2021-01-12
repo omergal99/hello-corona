@@ -2,8 +2,8 @@ import React from "react";
 import Button from '../../elements/Button';
 import { CASES, DEATHS, RECOVERED, TESTS, ACTIVE, getDataKeysByKeys } from '../../../constants/DataKeys';
 
-function MapOptions({ settings: { isCirclesShow, isAutoFocus, circlesDataKey, isTooltipShow, isGraphShow },
-  onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow, onToggleIsGraphShow }) {
+function MapOptions({ settings: { isCirclesShow, isAutoFocus, circlesDataKey, isTooltipShow, isGraphShow, isGradient },
+  onToggleIsCirclesShow, onToggleIsAutoFocus, onSetCirclesDataKey, onToggleIsTooltipShow, onToggleIsGraphShow,onToggleGradient }) {
 
   const circleClicked = key => {
     if (circlesDataKey !== key) onSetCirclesDataKey(key);
@@ -30,6 +30,8 @@ function MapOptions({ settings: { isCirclesShow, isAutoFocus, circlesDataKey, is
           onClick={onToggleIsTooltipShow} />
         <Button text="Graph" textCondition={isGraphShow} isBoolean={true}
           onClick={onToggleIsGraphShow} />
+        <Button text="Gradient" textCondition={isGradient} isBoolean={true}
+          onClick={onToggleGradient} />
       </div>
 
       {isCirclesShow &&
