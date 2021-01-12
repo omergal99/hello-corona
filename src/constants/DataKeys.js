@@ -41,6 +41,7 @@ export const getCoronaDataKeys = () => ([
   { key: TESTS_PER_ONE_MILLION, title: 'Tests Per 1M', color: 'dodgerblue', colorHEX: '#1e90ff', svgIcon: <TestTubeSVG /> },
   { key: CASES_PER_ONE_MILLION, title: 'Cases Per 1M', color: 'lightblue', colorHEX: '#add8e6', svgIcon: <BiohazardSVG /> },
   { key: DEATHS_PER_ONE_MILLION, title: 'Deaths Per 1M', color: 'firebrick', colorHEX: '#e42b2b', svgIcon: <HeartBrokenSVG /> },
+  { key: UPDATED, title: 'As of date', color: 'dodgerblue', colorHEX: '#1e90ff' },
 ])
 
 export const getDataKeysByKeys = keys => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import UtilsService from '../../../services/UtilsService';
 import {
-  POPULATION, CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS,
+  POPULATION, CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS, UPDATED,
   getCoronaDataKeys, getDataKeyByKey
 } from '../../../constants/DataKeys';
 
@@ -20,7 +20,12 @@ function CountryDetailsList({ country }) {
         {category.title}:&nbsp;
         {isWishIcon && <div className="wrap-icon-svg">{category.svgIcon}</div>}
       </span>
-      <span className="value" title={value}>{value}</span>
+      {category.key === UPDATED
+        ? <span className="value" title={new Date(country[category.key]).toString()}>
+          {new Date(country[category.key]).toLocaleString()}
+        </span>
+        : <span className="value" title={value}>{value}</span>
+      }
       {!!percent && dividBy && !!country[category.key] &&
         <span className="percent" title={percent.toFixed(2)}>
           {Number(percent.toFixed(0)) !== 0 ? percent.toFixed(0) : percent.toFixed(2)}
