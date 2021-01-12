@@ -1,6 +1,7 @@
 import React, { memo, useState, useEffect, useCallback, useRef } from "react";
 
 import SvgDefsFilterShadow from '../../helpers/mapHelpers/SvgDefsFilterShadow';
+import SvgDefsScanning from '../../helpers/mapHelpers/SvgDefsScanning';
 import GCircles from './GCircles';
 import GPaths from './GPaths';
 import MapTooltip from './MapTooltip';
@@ -118,6 +119,7 @@ function SvgCountriesMap(props) {
         onMouseUp={stopDrag} onMouseLeave={handleMouseLeave}>
 
         <SvgDefsFilterShadow />
+        <SvgDefsScanning />
 
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName} didDrag={didDrag}

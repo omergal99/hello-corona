@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import countriesLabels from "../../../services/data/countriesLabels.json";
-import SvgDefsScanning from '../../helpers/mapHelpers/SvgDefsScanning';
 
 function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, didDrag,
   pathClassName, currPathName, isDragging, initZoom, isAutoFocus, isTooltipShow,
@@ -22,17 +21,21 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, di
     onSetMapView({ zoom, x, y });
   }, [selectedCountry, onSetViewBox, onSetDynamicRatio, onSetMapView, initZoom, minMapZoom, isAutoFocus])
 
-  const countriesPaths = countries.map(country => {
-    const isSelected = country.name === selectedCountry.name;
-    const classSelected = isSelected ? 'selected' : '';
-    const isSelecting = isDragging && !didDrag && currPathName === country.name ? 'selecting' : '';
-    return <path className={`${pathClassName} ${classSelected} ${isSelecting}`} key={country.id}
-      alpha2={country.alpha2} name={country.name} d={country.d}
-      onClick={() => !didDrag && onSelectCountry(country)}
-      ref={isSelected ? selectedCountryRef : undefined}>
-      {!isTooltipShow && <title>{country.name}</title>}
-    </path>
-  })
+  const countriesPaths = useMemo(() => {
+    return countries.map(country => {
+      const isSelected = country.name === selectedCountry.name;
+      const classSelected = isSelected ? 'selected' : '';
+      const isSelecting = isDragging && !didDrag && currPathName === country.name ? 'selecting' : '';
+      return <path className={`${pathClassName} ${classSelected} ${isSelecting}`} key={country.id}
+        alpha2={country.alpha2} name={country.name} d={country.d}
+        onClick={() => !didDrag && onSelectCountry(country)}
+        ref={isSelected ? selectedCountryRef : undefined}
+        style={{ fill: `${isSelected ? "url('#pattern')" : ""}` }}
+      >
+        {!isTooltipShow && <title>{country.name}</title>}
+      </path>
+    })
+  }, [countries, currPathName, didDrag, isDragging, isTooltipShow, onSelectCountry, pathClassName, selectedCountry.name])
 
   const countriesPathsLabels = countriesLabels.map(country => {
     return <path className="country-path-label" d={country.d} key={country.id}></path>
@@ -40,7 +43,6 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, di
 
   return (
     <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
-      <SvgDefsScanning/>
       {countriesPaths}
       {countriesPathsLabels}
     </g>
