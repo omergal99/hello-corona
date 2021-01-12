@@ -1,24 +1,31 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { memo, useState, useEffect, useCallback, useRef } from "react";
 
 import SvgDefsFilterShadow from '../../helpers/mapHelpers/SvgDefsFilterShadow';
 import GCircles from './GCircles';
 import GPaths from './GPaths';
 import MapTooltip from './MapTooltip';
 
-function SvgCountriesMap({ countries, selectedCountry,
-  settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow },
-  onSelectCountry}) {
 
-  const initZoom = 554;
-  const baseMap = { width: 954, height: 514 };
+const pathClassName = 'country-path';
+const svgClassName = 'svg-map';
+
+const initZoom = 554;
+const baseMap = { width: 954, height: 514 };
+
+const args = {
+  minMapZoom: 30, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
+  minTopSvg: (baseMap.height - initZoom) / 2, minLeftSvg: (baseMap.width - initZoom) / 2,
+  initFontSize: initZoom / 30, initStroke: initZoom / 1000
+};
+
+function SvgCountriesMap(props) {
+  const {
+    countries,
+    selectedCountry,
+    settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow }, onSelectCountry
+  } = props;
 
   const svgRef = useRef(initZoom);
-
-  const args = {
-    minMapZoom: 30, maxMapZoom: 1100, ratioUpdateZoom: 0.15,
-    minTopSvg: (baseMap.height - initZoom) / 2, minLeftSvg: (baseMap.width - initZoom) / 2,
-    initFontSize: initZoom / 30, initStroke: initZoom / 1000
-  };
 
   const [viewBox, setViewBox] = useState(`${args.minLeftSvg} ${args.minTopSvg} ${initZoom} ${initZoom}`);
   const [mapView, setMapView] = useState({ zoom: initZoom, x: args.minLeftSvg, y: args.minTopSvg });
@@ -54,7 +61,7 @@ function SvgCountriesMap({ countries, selectedCountry,
     }
     setDynamicRatio(mapView.zoom / initZoom);
     setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
-  }, [mapView, args]);
+  }, [mapView]);
 
   useEffect(() => {
     window.addEventListener("mousewheel", handleWheel, { passive: false });
@@ -66,7 +73,7 @@ function SvgCountriesMap({ countries, selectedCountry,
     setIsDragging(true);
     setCurrPathName(ev.target.getAttribute('name'));
   }
-  const handleMouseMove = ev => {
+  const handleMouseMove = useCallback(ev => {
     if (isDragging) {
       const ratioBySvgHeight = initZoom / svgRef.current.clientHeight;
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
@@ -87,7 +94,8 @@ function SvgCountriesMap({ countries, selectedCountry,
         setTooltip(null);
       }
     }
-  }
+  }, [dynamicRatio, isDragging, isTooltipShow, mapView, pointerDiff]);
+
   const stopDrag = () => {
     setIsDragging(false);
     setTimeout(() => setDidDrag(false), 0);
@@ -101,15 +109,16 @@ function SvgCountriesMap({ countries, selectedCountry,
     console.log(ev);
   }
 
-  const pathClassName = 'country-path';
-  const svgClassName = 'svg-map';
-
   return (
     <>
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
         onScroll={handleScroll} onWheel={handleWheel}
-        onMouseDown={startDrag} onMouseMove={handleMouseMove} onMouseUp={stopDrag} onMouseLeave={handleMouseLeave}>
+        onMouseDown={startDrag}
+        onMouseMove={handleMouseMove}
+        onMouseUp={stopDrag} onMouseLeave={handleMouseLeave}>
+
         <SvgDefsFilterShadow />
+
         <GPaths countries={countries} selectedCountry={selectedCountry} dynamicRatio={dynamicRatio} args={args}
           currPathName={currPathName} isDragging={isDragging} pathClassName={pathClassName} didDrag={didDrag}
           initZoom={initZoom} minMapZoom={args.minMapZoom} isAutoFocus={isAutoFocus} isTooltipShow={isTooltipShow}
@@ -127,4 +136,4 @@ function SvgCountriesMap({ countries, selectedCountry,
   );
 }
 
-export default SvgCountriesMap;
+export default memo(SvgCountriesMap);

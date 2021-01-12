@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import countriesLabels from "../../../services/data/countriesLabels.json";
+import SvgDefsScanning from '../../helpers/mapHelpers/SvgDefsScanning';
 
 function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, didDrag,
   pathClassName, currPathName, isDragging, initZoom, isAutoFocus, isTooltipShow,
@@ -39,6 +40,7 @@ function GPaths({ countries, selectedCountry, dynamicRatio, args, minMapZoom, di
 
   return (
     <g className="g-paths" style={{ strokeWidth: args.initStroke * dynamicRatio, filter: 'url(#dropshadow)' }}>
+      <SvgDefsScanning/>
       {countriesPaths}
       {countriesPathsLabels}
     </g>

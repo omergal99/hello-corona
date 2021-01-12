@@ -1,3 +1,5 @@
+@import "./media.text";
+
 // small mobile
 @media (min-width: 64px) and (max-width: 279px) {
   html {
@@ -10,6 +12,14 @@
     font-size: 12px;
   }
 }
+
+// // large mobile
+// @media (min-width: $lala) and (max-width: $breakpoint-tablet) {
+//   .App {
+//     background-color: blue;
+//   }
+// }
+
 // large mobile
 @media (min-width: 480px) and (max-width: 767px) {
   html {
