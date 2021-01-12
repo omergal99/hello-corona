@@ -6,8 +6,6 @@ import {
 } from '../../../constants/DataKeys';
 
 function CountryDetailsList({ country }) {
-  console.log('country', country);
-
   const categoriesToAddIcon = [CASES, DEATHS, RECOVERED, ACTIVE, CRITICAL, TESTS];
 
   const coronaDetails = getCoronaDataKeys().map(category => {
