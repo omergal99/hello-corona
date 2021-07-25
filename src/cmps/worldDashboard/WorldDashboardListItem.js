@@ -42,7 +42,7 @@ function WorldDashboardListItem({ country, selectedCountry, onSelectCountry, cou
           <div className="status-details">
             <span className="rank" title={`Rank ${country[RANK] + 1}`}>
               <span className="rank-icon">❱❱</span>
-              {country[RANK] + 1}
+              <span className='rank-number' >{country[RANK] + 1}</span>
             </span>
             <div className="cases" title={`Today Cases ${UtilsService.numberWithCommas(country.todayCases)}`}>
               <div className="wrap-icon-svg"><VirusSVG /></div>
