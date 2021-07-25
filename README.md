@@ -17,3 +17,7 @@ After that install node modules:
 
 And then we can run the App:
 ### `yarn start`
+
+------
+
+To run locally with connect data api: you must rename `example.env` file to `.env`.
