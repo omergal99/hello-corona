@@ -7,8 +7,6 @@ import GraphColumnsPreview from './GraphColumnsPreview';
 
 function GraphColumns({ selectedCountry }) {
 
-  console.log('selectedCountry', selectedCountry);
-
   const graphRef = useRef();
   const [graphRatio, setGraphRatio] = useState();
   const [graphType, setGraphType] = useState(CASES);
