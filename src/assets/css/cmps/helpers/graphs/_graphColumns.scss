@@ -4,7 +4,7 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column-reverse;
-  padding: 0 1.5rem;
+  padding: 0 1.75rem;
   .columns {
     display: flex;
     height: 100%;
@@ -95,7 +95,6 @@
     flex-wrap: wrap;
     padding: 0.25rem 0 0 0;
     .graph-text {
-      flex-grow: 1;
       .text {
         color: var(--color1-font);
         background-color: var(--color1-light-saturation);
@@ -105,7 +104,6 @@
     }
     .buttons-options {
       pointer-events: auto;
-      flex-grow: 1;
       & > :not(:last-child) {
         margin: 0 0.5rem 0 0;
       }
