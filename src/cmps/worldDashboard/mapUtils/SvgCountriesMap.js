@@ -5,6 +5,7 @@ import SvgDefsScanning from '../../helpers/mapHelpers/SvgDefsScanning';
 import GCircles from './GCircles';
 import GPaths from './GPaths';
 import MapTooltip from './MapTooltip';
+import MapOptions from './MapOptions';
 
 
 const pathClassName = 'country-path';
@@ -39,35 +40,28 @@ function SvgCountriesMap(props) {
 
   const [currPathName, setCurrPathName] = useState(null);
 
+  const zoomMap = useCallback(direction => {
+    setMapView(current => {
+      const updateZoom = current.zoom * args.ratioUpdateZoom * direction;
+      const zoom = Math.min(args.maxMapZoom, Math.max(args.minMapZoom, current.zoom - updateZoom));
+      if (zoom === current.zoom) return current;
+      return {
+        zoom,
+        x: current.x - (zoom - current.zoom) / 2,
+        y: current.y - (zoom - current.zoom) / 2
+      };
+    });
+  }, []);
+
   const handleWheel = useCallback(ev => {
-    const isMouseOnSvgMap = ev.path && ev.path.some(path => path.className && path.className.baseVal
-      && path.className.baseVal.includes(svgClassName));
-    if (!isMouseOnSvgMap) return;
-    const updateZoom = mapView.zoom * args.ratioUpdateZoom;
-    const copy = mapView;
-    if (ev.deltaY > 0) {
-      if (mapView.zoom + updateZoom + args.minMapZoom < args.maxMapZoom) {
-        copy.zoom = copy.zoom + updateZoom;
-        copy.x = copy.x - updateZoom / 2;
-        copy.y = copy.y - updateZoom / 2;
-        setMapView(copy);
-      }
-    } else {
-      if (mapView.zoom - updateZoom - args.minMapZoom > 0) {
-        copy.zoom = copy.zoom - updateZoom;
-        copy.x = copy.x + updateZoom / 2;
-        copy.y = copy.y + updateZoom / 2;
-        setMapView(copy);
-      }
-    }
+    ev.preventDefault();
+    zoomMap(ev.deltaY > 0 ? -1 : 1);
+  }, [zoomMap]);
+
+  useEffect(() => {
     setDynamicRatio(mapView.zoom / initZoom);
     setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
   }, [mapView]);
-
-  useEffect(() => {
-    window.addEventListener("mousewheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("mousewheel", handleWheel, { passive: false });
-  }, [handleWheel])
 
   const startDrag = ev => {
     setPointerDiff({ x: ev.clientX, y: ev.clientY });
@@ -76,13 +70,17 @@ function SvgCountriesMap(props) {
   }
   const handleMouseMove = useCallback(ev => {
     if (isDragging) {
+      const hasMoved = Math.abs(ev.clientX - pointerDiff.x) > 1 || Math.abs(ev.clientY - pointerDiff.y) > 1;
+      if (hasMoved && !ev.currentTarget.hasPointerCapture(ev.pointerId)) {
+        ev.currentTarget.setPointerCapture(ev.pointerId);
+      }
       const ratioBySvgHeight = initZoom / svgRef.current.clientHeight;
       const x = mapView.x - (ev.clientX - pointerDiff.x) * dynamicRatio * ratioBySvgHeight;
       const y = mapView.y - (ev.clientY - pointerDiff.y) * dynamicRatio * ratioBySvgHeight;
       setMapView({ ...mapView, x, y });
       setViewBox(`${mapView.x} ${mapView.y} ${mapView.zoom} ${mapView.zoom}`);
       setPointerDiff({ x: ev.clientX, y: ev.clientY });
-      (ev.movementX !== 0 || ev.movementY !== 0) && setDidDrag(true);
+      hasMoved && setDidDrag(true);
     }
     if (isTooltipShow) {
       if (ev.target.getAttribute('class').includes(pathClassName)) {
@@ -97,7 +95,10 @@ function SvgCountriesMap(props) {
     }
   }, [dynamicRatio, isDragging, isTooltipShow, mapView, pointerDiff]);
 
-  const stopDrag = () => {
+  const stopDrag = ev => {
+    if (ev && ev.currentTarget.hasPointerCapture(ev.pointerId)) {
+      ev.currentTarget.releasePointerCapture(ev.pointerId);
+    }
     setIsDragging(false);
     setTimeout(() => setDidDrag(false), 0);
   }
@@ -106,17 +107,13 @@ function SvgCountriesMap(props) {
     setTooltip(null);
   }
 
-  const handleScroll = ev => {
-    console.log(ev);
-  }
-
   return (
     <>
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
-        onScroll={handleScroll} onWheel={handleWheel}
-        onMouseDown={startDrag}
-        onMouseMove={handleMouseMove}
-        onMouseUp={stopDrag} onMouseLeave={handleMouseLeave}>
+        onWheel={handleWheel}
+        onPointerDown={startDrag}
+        onPointerMove={handleMouseMove}
+        onPointerUp={stopDrag} onPointerCancel={stopDrag} onPointerLeave={handleMouseLeave}>
 
         <SvgDefsFilterShadow />
         <SvgDefsScanning />
@@ -131,6 +128,8 @@ function SvgCountriesMap(props) {
           <GCircles circlesDataKey={circlesDataKey} countries={countries} dynamicRatio={dynamicRatio} args={args} />
         }
       </svg>
+
+      <MapOptions settings={props.settings} zoomMap={zoomMap} {...props.mapOptionsFunction} />
 
       {isTooltipShow && tooltip &&
         <MapTooltip tooltip={tooltip} />

@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 
 import SvgCountriesMap from './mapUtils/SvgCountriesMap';
-import MapOptions from './mapUtils/MapOptions';
 import GraphColumns from '../helpers/graphs/GraphColumns';
 
 function WorldDashboardMap({ settings, countriesStore: { countries, selectedCountryIndex, worldData },
@@ -16,8 +15,7 @@ function WorldDashboardMap({ settings, countriesStore: { countries, selectedCoun
   return (
     <div className="world-dashboard-map">
       <SvgCountriesMap countries={countries} settings={settings} selectedCountry={selectedCountry}
-        onSelectCountry={onSelectCountry} />
-      <MapOptions settings={settings} {...mapOptionsFunction} />
+        onSelectCountry={onSelectCountry} mapOptionsFunction={mapOptionsFunction} />
       {isGraphShow && selectedCountry.history &&
         <div className="wrap-graph-columns">
           <GraphColumns selectedCountry={selectedCountry} />

@@ -9,6 +9,8 @@
   .svg-map {
     height: 100%;
     width: 100%;
+    touch-action: none;
+    user-select: none;
     .g-paths {
       stroke: #000;
       .country-path {
@@ -61,6 +63,24 @@
       display: flex;
       & > :not(:last-child) {
         margin: 0 0.5rem 0 0;
+      }
+      .zoom-control {
+        min-width: 2rem;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.1rem;
+        line-height: 1;
+        color: var(--color1-font);
+        background-color: var(--color1-strong);
+        border-color: var(--color1-border);
+        &:hover {
+          background-color: var(--color1-light-saturation);
+          box-shadow: 0 0 3px var(--color1-border);
+        }
+      }
+      .zoom-controls {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: auto;
       }
     }
   }
