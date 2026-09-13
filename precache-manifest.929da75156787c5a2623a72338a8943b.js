@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e68951d9c138599c9274f14e1a39cdf3",
+    "revision": "2700d4dacf71275d52cba8effa1ec198",
     "url": "/hello-corona/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hello-corona/static/js/2.a4d7b8a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "096a688370a29c1d00a7",
-    "url": "/hello-corona/static/js/3.499ef3ab.chunk.js"
+    "revision": "bd5123e251d93969fa1d",
+    "url": "/hello-corona/static/js/3.5cda539b.chunk.js"
   },
   {
     "revision": "4b468533bc1d2114d709",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hello-corona/static/js/main.121559f2.chunk.js"
   },
   {
-    "revision": "9f51901480afd42a4eaa",
-    "url": "/hello-corona/static/js/runtime-main.e9aed1de.js"
+    "revision": "d5d57d963db33625c9cc",
+    "url": "/hello-corona/static/js/runtime-main.798df8c7.js"
   },
   {
     "revision": "d325ec368ef121f557cee3e378ba05b9",
