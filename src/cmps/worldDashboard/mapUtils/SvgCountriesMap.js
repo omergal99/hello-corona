@@ -27,7 +27,7 @@ function SvgCountriesMap(props) {
     settings: { isCirclesShow, circlesDataKey, isAutoFocus, isTooltipShow, isGradient }, onSelectCountry
   } = props;
 
-  const svgRef = useRef(initZoom);
+  const svgRef = useRef(null);
 
   const [viewBox, setViewBox] = useState(`${args.minLeftSvg} ${args.minTopSvg} ${initZoom} ${initZoom}`);
   const [mapView, setMapView] = useState({ zoom: initZoom, x: args.minLeftSvg, y: args.minTopSvg });
@@ -57,6 +57,13 @@ function SvgCountriesMap(props) {
     ev.preventDefault();
     zoomMap(ev.deltaY > 0 ? -1 : 1);
   }, [zoomMap]);
+
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return undefined;
+    svg.addEventListener('wheel', handleWheel, { passive: false });
+    return () => svg.removeEventListener('wheel', handleWheel);
+  }, [handleWheel]);
 
   useEffect(() => {
     setDynamicRatio(mapView.zoom / initZoom);
@@ -110,7 +117,6 @@ function SvgCountriesMap(props) {
   return (
     <>
       <svg className={svgClassName} viewBox={viewBox} ref={svgRef}
-        onWheel={handleWheel}
         onPointerDown={startDrag}
         onPointerMove={handleMouseMove}
         onPointerUp={stopDrag} onPointerCancel={stopDrag} onPointerLeave={handleMouseLeave}>
