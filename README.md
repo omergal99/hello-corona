@@ -28,8 +28,8 @@ To run locally with the connected data API, `make setup` creates `.env` from `ex
 
 ## GitHub Pages deployment
 
-Every push to the `master` branch builds and deploys the app through GitHub Actions:
+Every push to the `master` branch builds the app and publishes the `build/` directory to the `gh-pages` branch through GitHub Actions:
 
 https://omergal99.github.io/hello-corona
 
-You can also start the workflow manually from the repository's Actions tab. GitHub Pages must be configured to use **GitHub Actions** as its source under repository Settings > Pages.
+You can also start the workflow manually from the repository's Actions tab. GitHub Pages must be configured to use the `gh-pages` branch as its source under repository Settings > Pages.
