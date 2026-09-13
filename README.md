@@ -7,9 +7,9 @@ App for Corona Virus Information
 ## React Redux Hooks
 
 ## Explanation:
-### Use Node.js 14.x and Yarn 1.x
+### Use Node.js 22.x and Yarn 1.x
 
-The project uses an older Create React App and Sass toolchain. Node.js 14.x is the most reliable local and deployment runtime for this version.
+The project uses an older Create React App with Dart Sass. Node.js 22.x is the supported local and deployment runtime.
 
 Im use yarn so we need to install it:
 ### `npm i -g yarn` or not globaly: `npm i yarn`
